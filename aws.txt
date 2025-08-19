@@ -1,0 +1,178 @@
+# Step-by-step guide for setting up website on AWS
+- Create root account
+
+- Search for IAM Identity Center
+- Create a user
+- Create PermissionSet for user
+- Assign PermissionSet to user
+- Go to Settings
+- Copy AWS access portal: https://d-9667b8c8bc.awsapps.com/start
+
+## From now on, only use the new user
+- Go to AWS Access Portal
+- Login via new user
+- Click on the PermissionSet in AWS Access Portal
+
+- Search for Certificate Manager
+- Change to us-east-1 because of CloudFront
+- Add <website>.com and www.<website>.com
+
+- Search for Route 53
+- Create hosted name
+- Add <website>.com and www.<website>.com
+- Find 4 nameservers
+- Copy all 4 nameservers and paste into Namecheap or other host providers' nameservers
+- For Namecheap, change to Custom DNS in settings to allow pasting
+- Save changes on Namecheap
+
+- Search for Certificate Manager
+- Add to Route 53 for both <website>.com and www.<website>.com
+- Wait for a while until both status are Success and certificate is Issued
+
+- Search for S3
+- Change to ap-southeast-1 because of S3
+- Create bucket: leerically-com-site
+- Set name for bucket <website>-com-site
+- Create folder called web in bucket
+- If on Jekyll project, copy everything from _site/
+- Paste into web/
+
+- Go to CloudFront
+- Create a distribution
+- Add distribution name like <website>-website
+- Add <website>.com to custom domain and subdomain www
+- Specify Amazon S3 origin
+- Select S3 created earlier
+- If origin path not in root, type /web or whatever folder the site is in
+- For TLS, select certificate created earlier
+
+## If custom domain not working
+- Search for Route 53
+- Go to hosted zone
+- Create two records for root (apex) and www
+- Turn both alias on
+- Route endpoint to CloudFront distribution
+- Select distribution created earlier
+- Keep record type as A - IPv4
+
+# Setup GitHub workflow
+- Search for IAM
+- Go to Identity providers
+- Add provider
+- Select OpenID Connect
+- Add Provider URL: https://token.actions.githubusercontent.com
+- Add Audience: sts.amazonaws.com
+
+- Search for IAM
+- Go to Policies
+- Create policy
+- Choose JSON
+- Paste this in
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetBucketLocation",
+        "s3:ListBucketMultipartUploads"
+      ],
+      "Resource": "arn:aws:s3:::leerically-com-site"
+    },
+    {
+      "Sid": "WriteObjects",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:DeleteObject",
+        "s3:AbortMultipartUpload",
+        "s3:GetObject"
+      ],
+      "Resource": "arn:aws:s3:::leerically-com-site/web/*"
+    },
+    {
+      "Sid": "InvalidateCloudFront",
+      "Effect": "Allow",
+      "Action": "cloudfront:CreateInvalidation",
+      "Resource": "*"
+    }
+  ]
+}
+- Takes a while before being able to click Next
+- Name it LeericallyS3DeployPolicy
+
+- Go to Roles
+- Create role
+- For trusted entity, select Web identity
+- Select Identity provider created earlier
+- If GitHub repo is on https://github.com/leeyanleryan/Leerically/tree/main
+- Organisation: leeyanleryan, Repository: Leerically, branch: main
+- Select policy created earlier
+- Name it GitHubActionsDeploy
+- Create the role
+- Copy the Role ARN: arn:aws:iam::192933325418:role/GithubActionsDeploy
+
+- Search for CloudFront
+- Select distribution created earlier
+- Copy ID of distribution: E9CHNVBXBNU4W
+
+- Copy S3 bucket and prefix: leerically-com-site, web
+
+- Go to GitHub repo
+- Create a new file .github/workflows/deploy.yml
+name: Build & Deploy Jekyll to S3
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  id-token: write     # OIDC to assume the AWS role
+  contents: read
+
+env:
+  AWS_REGION: ap-southeast-1
+  ROLE_ARN: arn:aws:iam::<ACCOUNT_ID>:role/GithubActionsDeploy   # <-- put your Role ARN here
+  S3_BUCKET: leerically-com-site
+  S3_PREFIX: web
+  CF_DISTRIBUTION_ID: DXXXXXXXXXXXX                              # <-- put your CloudFront ID here
+  JEKYLL_ENV: production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: deploy
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build Jekyll
+        run: |
+          bundle install
+          bundle exec jekyll build --trace
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Sync _site to S3
+        run: |
+          aws s3 sync ./_site s3://${{ env.S3_BUCKET }}/${{ env.S3_PREFIX }} --delete --only-show-errors
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ env.CF_DISTRIBUTION_ID }} --paths "/*"
+- Paste that into the yml file
