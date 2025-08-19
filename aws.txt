@@ -176,3 +176,11 @@ jobs:
         run: |
           aws cloudfront create-invalidation --distribution-id ${{ env.CF_DISTRIBUTION_ID }} --paths "/*"
 - Paste that into the yml file
+
+- Go to GitHub repo on the website
+- Go to Settings
+- Go to Actions -> General
+- Tick Allow all actions and reusable workflows
+
+- Go to Actions
+- Check if anything is wrong
