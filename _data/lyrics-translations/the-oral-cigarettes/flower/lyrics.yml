@@ -1,0 +1,290 @@
+- divider: true
+
+- language: "jp"
+  original: "きつく眩しい太陽の下"
+  romanized: "Kitsuku mabushii taiyou no shita"
+  english: "Beneath the harsh, dazzling sun..."
+  explanation:
+  - "きつく|jp|-"
+  - "眩しい|jp|-"
+  - "太陽|jp|-"
+  - "の|jp|possessive"
+  - "下|jp|-"
+
+- language: "jp"
+  original: "くらむ眼を見開いて"
+  romanized: "Kuramu me wo mihiraite"
+  english: "I open my blurred eyes."
+  explanation:
+  - "くらむ|jp|-"
+  - "眼|jp|-"
+  - "を|jp|object"
+  - "見開いて|jp|-"
+
+- language: "jp"
+  original: "空の青と馴染むあなたの眼に"
+  romanized: "Sora no ao to najimu anata no me ni"
+  english: "In your eyes that blend with the blue sky..."
+  explanation:
+  - "空|jp|-"
+  - "の|jp|possessive"
+  - "青|jp|-"
+  - "と|jp|comitative"
+  - "馴染む|jp|-"
+  - "あなた|jp|-"
+  - "の|jp|possessive"
+  - "眼|jp|-"
+  - "に|jp|indirect_object"
+
+- language: "jp"
+  original: "吸い込まれそうさ"
+  romanized: "Suikomare sou sa"
+  english: "It feels like I'm being pulled in."
+  explanation:
+  - "吸い込まれ|jp|-"
+  - "そう|jp|seeming"
+  - "さ|jp|emphatic"
+
+- divider: true
+
+- language: "jp"
+  original: "ポケットの中きゅっと"
+  romanized: "Poketto no naka kyutto"
+  english: "Clenched in my pocket..."
+  explanation:
+  - "ポケット|jp|-"
+  - "の|jp|possessive"
+  - "中|jp|-"
+  - "きゅっと|jp|-"
+
+- language: "jp"
+  original: "握りしめてた未来に"
+  romanized: "Nigirishimeteta mirai ni"
+  english: "Into the future I'd been holding tight."
+  explanation:
+  - "握りしめてた|jp|-"
+  - "未来|jp|-"
+  - "に|jp|temporal"
+
+- language: "jp"
+  original: "あなたを引き込んだなら行こうぜ"
+  romanized: "Anata wo hikikonda nara ikou ze"
+  english: "I pulled you in, let's go!"
+  explanation:
+  - "あなた|jp|-"
+  - "を|jp|object"
+  - "引き込んだ|jp|-"
+  - "なら|jp|conditional"
+  - "行こう|jp|-"
+  - "ぜ|jp|emphatic"
+
+- divider: true
+
+- language: "jp"
+  original: "曖昧な夢も希望も乗せ僕ら"
+  romanized: "Aimai na yume mo kibou mo nose bokura"
+  english: "Carrying our vague dreams and hopes, we…"
+  explanation:
+  - "曖昧|jp|-"
+  - "な|jp|adnominal"
+  - "夢|jp|-"
+  - "も|jp|additive"
+  - "希望|jp|-"
+  - "も|jp|additive"
+  - "乗せ|jp|-"
+  - "僕ら|jp|-"
+
+- language: "jp"
+  original: "忙しない街へと繰り出した"
+  romanized: "Sewashinai machi e to kuridashita"
+  english: "Headed out for that restless town"
+  explanation: null
+
+- language: "jp"
+  original: "曖昧な夢も希望もきっといつか"
+  romanized: "Aimai na yume mo kibou mo kitto itsuka"
+  english: "Vague dreams and hopes that surely, someday"
+  explanation: null
+
+- language: "jp"
+  original: "まだ知らぬ大地で出会うだろう"
+  romanized: "Mada shiranu daichi de deau darou"
+  english: "We'll meet again by chance on this unknown Earth"
+  explanation: null
+
+- language: "jp"
+  original: "誰がのために今は息を吸って"
+  romanized: "Dareka no tame ni ima wa iki wo sutte"
+  english: "That person who I breathe for right now"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "何も知らない"
+  romanized: "Nanimo shiranai"
+  english: "I don't know anything"
+  explanation: null
+
+- language: "jp"
+  original: "未完成な僕を"
+  romanized: "Mikansei na boku wo"
+  english: "You took in"
+  explanation: null
+
+- language: "jp"
+  original: "拾ってくれた"
+  romanized: "Hirotte kureta"
+  english: "An incomplete version of me"
+  explanation: null
+
+- language: "jp"
+  original: "誰も手に負えないと"
+  romanized: "Daremo te ni oenai to"
+  english: "No one could handle me, but"
+  explanation: null
+
+- language: "jp"
+  original: "捨てられた日"
+  romanized: "Suterareta hi"
+  english: "On that day I was discarded"
+  explanation: null
+
+- language: "jp"
+  original: "視界は広がって"
+  romanized: "Shikai wa hirogatte"
+  english: "My world grew"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "曖昧な夢も希望も乗せ僕ら"
+  romanized: "Aimai na yume mo kibou mo nose bokura"
+  english: "We who carry vague dreams and hopes"
+  explanation: null
+
+- language: "jp"
+  original: "忙しない街へと繰り出した"
+  romanized: "Sewashinai machi e to kuridashita"
+  english: "Headed out for that restless town"
+  explanation: null
+
+- language: "jp"
+  original: "曖昧な夢も希望もきっといつか"
+  romanized: "Aimai na yume mo kibou mo kitto itsuka"
+  english: "Vague dreams and hopes that surely, someday"
+  explanation: null
+
+- language: "jp"
+  original: "まだ知らぬ大地で出会うだろう"
+  romanized: "Mada shiranu daichi de deau darou"
+  english: "We'll meet again by chance on this unknown Earth"
+  explanation: null
+
+- language: "jp"
+  original: "鼓動は速度上げて"
+  romanized: "Kodou wa sokudo agete"
+  english: "My heart races for it"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "あなたと見ている"
+  romanized: "Anata to mite iru"
+  english: "I'm watching with you"
+  explanation: null
+
+- language: "jp"
+  original: "世界はまた手をふるって"
+  romanized: "Sekai wa mata te wo futte"
+  english: "The world, again, waving its hands"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "何もいらない"
+  romanized: "Nanimo iranai"
+  english: "I don't need anything"
+  explanation: null
+
+- language: "jp"
+  original: "初めての出会いに"
+  romanized: "Hajimete no deai ni"
+  english: "Add some color to"
+  explanation: null
+
+- language: "jp"
+  original: "色をつけて"
+  romanized: "Iro wo tsukete"
+  english: "The first meeting."
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "曖昧な夢も希望も乗せ僕ら"
+  romanized: "Aimai na yume mo kibou mo nose bokura"
+  english: "We who carry vague dreams and hopes"
+  explanation: null
+
+- language: "jp"
+  original: "忙しない街へと繰り出した"
+  romanized: "Sewashinai machi e to kuridashita"
+  english: "Headed out for that restless town"
+  explanation: null
+
+- language: "jp"
+  original: "曖昧な夢も希望もきっといつか"
+  romanized: "Aimai na yume mo kibou mo kitto itsuka"
+  english: "Vague dreams and hopes that surely, someday"
+  explanation: null
+
+- language: "jp"
+  original: "今は息を吸って"
+  romanized: "Ima wa iki wo sutte"
+  english: "Now, I take a breath"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "昨日の後悔も"
+  romanized: "Kinou no koukai mo"
+  english: "Today's regrets"
+  explanation: null
+
+- language: "jp"
+  original: "明日の期待もきっと"
+  romanized: "Asu no kitai mo kitto"
+  english: "And tomorrow's excitement, too, surely"
+  explanation: null
+
+- language: "jp"
+  original: "繋がっていて"
+  romanized: "Tsunagatteite"
+  english: "Are all connected."
+  explanation: null
+
+- language: "jp"
+  original: "僕ら見てた"
+  romanized: "Bokura miteta"
+  english: "We've been watching"
+  explanation: null
+
+- language: "jp"
+  original: "テレビサイズの世に"
+  romanized: "Terebi saizu no yo ni"
+  english: "In a world the size of a TV"
+  explanation: null
+
+- language: "jp"
+  original: "答えはない"
+  romanized: "Kotae wa nai"
+  english: "With no answer."
+  explanation: null
+
+- divider: true
+

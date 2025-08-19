@@ -1,0 +1,78 @@
+{% assign found_url = false %}
+{% assign first_label = "" %}{% assign first_url = "" %}
+{% assign last_label = "" %}{% assign last_url = "" %}
+{% assign prev_label = "" %}{% assign prev_url = "" %}
+{% assign left_label = "" %}{% assign left_url = "" %}
+{% assign right_label = "" %}{% assign right_url = "" %}
+{% for section in site.data.links %}
+  {% assign section_title = section[0] %}
+  {% assign headers = section[1] %}
+  {% for h in headers %}
+    {% assign header = h[0] %}
+    {% assign header_info = h[1] %}
+    {% assign header_url = header_info.url %}
+    {% if first_label == "" %}{% assign first_label = header %}{% assign first_url = header_url %}{% endif %}
+    {% if found_url and right_url == "" %}
+      {% assign right_label = header %}{% assign right_url = header_url %}
+    {% endif %}
+    {% unless found_url %}
+      {% if header_url == page.url %}
+        {% assign left_label = prev_label %}{% assign left_url = prev_url %}
+        {% assign found_url = true %}
+      {% else %}
+        {% assign prev_label = header %}{% assign prev_url = header_url %}
+      {% endif %}
+    {% endunless %}
+    {% assign last_label = header %}{% assign last_url = header_url %}
+    {% if header_info.subheaders %}
+      {% for sh in header_info.subheaders %}
+        {% assign subheader = sh[0] %}
+        {% assign subheader_info = sh[1] %}
+        {% assign subheader_url = subheader_info.url %}
+        {% if first_label == "" %}{% assign first_label = subheader %}{% assign first_url = subheader_url %}{% endif %}
+        {% if found_url and right_url == "" %}
+          {% assign right_label = subheader %}{% assign right_url = subheader_url %}
+        {% endif %}
+        {% unless found_url %}
+          {% if subheader_url == page.url %}
+            {% assign left_label = prev_label %}{% assign left_url = prev_url %}
+            {% assign found_url = true %}
+          {% else %}
+            {% assign prev_label = subheader %}{% assign prev_url = subheader_url %}
+          {% endif %}
+        {% endunless %}
+        {% assign last_label = subheader %}{% assign last_url = subheader_url %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% if found_url %}
+  {% if left_url == "" %}{% assign left_label = last_label %}{% assign left_url = last_url %}{% endif %}
+  {% if right_url == "" %}{% assign right_label = first_label %}{% assign right_url = first_url %}{% endif %}
+{% endif %}
+
+<!-- Navigation Arrows -->
+<a href="{{ left_url }}" class="nav-arrow nav-arrow-left w3-hide-small">
+  <!-- Label above the arrow -->
+  <div class="nav-label">{{ left_label }}</div>
+  <i class="arrow-symbol fa fa-angle-double-left"></i>
+</a>
+
+<a href="{{ right_url }}" class="nav-arrow nav-arrow-right w3-hide-small">
+  <!-- Label above the arrow -->
+  <div class="nav-label">{{ right_label }}</div>
+  <i class="arrow-symbol fa fa-angle-double-right"></i>
+</a>
+
+<!-- NAVIGATION BOTTOM BAR (Small screens) -->
+<div class="nav-bottom">
+  <a href="{{ left_url }}">
+    <i class="fa fa-angle-double-left"></i>
+    &nbsp;{{ left_label }}
+  </a>
+  <a href="{{ right_url }}">
+    {{ right_label }}&nbsp;
+    <i class="fa fa-angle-double-right"></i>
+  </a>
+</div>

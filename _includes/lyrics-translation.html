@@ -1,0 +1,85 @@
+{% comment %} <div class="progress-bar">
+  <div class="progress-fill" style="width: {{ page.lyrics_progress | replace: '%', '' }}%"></div>
+  <div class="progress-marker" style="left: 25%"></div>
+  <div class="progress-marker" style="left: 50%"></div>
+  <div class="progress-marker" style="left: 75%"></div>
+</div> {% endcomment %}
+<div class="lt-toggle-buttons-jp no-double-tap-zoom">
+  <div id="lt-toggle-original" class="lt-toggle-button">Toggle Original</div>
+  <div id="lt-toggle-romanized" class="lt-toggle-button">Toggle Romanized</div>
+  <div id="lt-toggle-english" class="lt-toggle-button">Toggle English</div>
+</div>
+<div class="lyrics-translations">
+  {% assign lyrics = include.lyrics %}
+  {% for line in lyrics %}
+    {% assign i = forloop.index0 %}
+    {% assign div_line = line.divider %}
+    {% assign lang_line = line.language %}
+    {% assign orig_line = line.original %}
+    {% assign roma_line = line.romanized %}
+    {% assign eng_line  = line.english %}
+    {% assign expl_line = line.explanation %}
+    {% if div_line %}
+      <h5 class="h5-margin-0">-----------------------------------<br></h5>
+    {% else %}
+      {% if lang_line == "jp" %}
+        <div class="lyrics-stanza no-double-tap-zoom no-hover-background-after-click" data-idx="{{ i }}">
+          <h5 class="h5-margin-0">
+            <span class="lt-original-text">{{ orig_line }}<br></span>
+            <span class="lt-romanized-text"><em>{{ roma_line }}</em><br></span>
+            <span class="lt-english-text lyrics-explanation-english">{{ eng_line }}<br></span>
+          </h5>
+        </div>
+      {% elsif lang_line == "en" %}
+        <div class="lyrics-stanza-none">
+          <h5 class="h5-margin-0">
+            <span class="lt-english-text-only">{{ eng_line }}<br></span>
+          </h5>
+        </div>
+      {% endif %}
+      
+      {%- comment -%} parse the comma-delimited “text|lang|function” row {%- endcomment -%}
+      <div class="w3-row lyrics-explanation" id="exp-{{ i }}">
+        <h6 class="w3-col s4 m4 h6-margin-0">Original</h6>
+        <h6 class="w3-col s4 m4 h6-margin-0">Romanized</h6>
+        <h6 class="w3-col s4 m4 h6-margin-0">English</h6>
+        <hr class="hr-lyrics-explanation">
+
+        {% if expl_line %}
+          {% for cell in expl_line %}
+            {% assign parts = cell | split: "|" %}
+            {% assign orig_word = parts[0] %}
+            {% assign lang_word = parts[1] %}
+            {% assign func_word = parts[2] %}
+            {% comment %} 
+              ADD MORE LANGUAGES HERE
+            {% endcomment %}
+            {% if lang_word == "jp" %}
+              {% assign entry = site.data["word-banks"]["jp"][orig_word] %}
+            {% endif %}
+            {% if entry.functions %}
+              {% if func_word != "-" %}
+                {% assign fw = func_word %}
+              {% else %}
+                {% assign fw = entry.functions | first | first %}
+              {% endif %}
+              {% assign gloss = entry.functions[fw].english %}
+            {% else %}
+              {% assign gloss = entry.english %}
+            {% endif %}
+            {% comment %} 
+              ADD MORE LANGUAGES HERE
+            {% endcomment %}
+            {% if lang_word == "jp" %}
+              <h6 class="w3-col s4 m4 h6-margin-0">
+                {{ entry.kanji | default: entry.katakana | default: orig_word }}
+              </h6>
+              <h6 class="w3-col s4 m4 h6-margin-0"><em>{{ entry.romaji | default: "-" }}</em></h6>
+              <h6 class="w3-col s4 m4 h6-margin-0 lyrics-explanation-english">{{ gloss | default: "-" }}</h6>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

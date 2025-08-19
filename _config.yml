@@ -1,0 +1,9 @@
+title: leeyanleryan
+description: >-
+  Lee Yan Le Ryan's Website
+baseurl: ""
+url: "https://leeyanleryan.github.io"
+theme: null
+plugins:
+  - jekyll-redirect-from
+google_analytics: G-WXMZHEF5E7

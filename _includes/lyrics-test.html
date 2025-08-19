@@ -1,0 +1,158 @@
+<div id="lt-test-container" style="margin-top:1.5em;">
+  <!-- JS will populate this -->
+</div>
+<div id="lt-quiz-next" class="lt-quiz-next no-double-tap-zoom" style="margin-top:1em;">Next Question</div>
+<script>
+  function replaceNth(str, search, repl, n) {
+  let i = 0;
+  return str.replace(new RegExp(search, 'g'), m => {
+    i++;
+    return i === n ? repl : m;
+  });
+}
+</script>
+<script>
+  {% assign lyrics = include.lyrics %}
+
+  window._lyricsTestData = [
+    {% for line in lyrics %}
+      {% assign i = forloop.index0 %}
+      {% assign div_line = line.divider %}
+      {% assign lang_line = line.language %}
+      {% assign orig_line = line.original %}
+      {% assign roma_line = line.romanized %}
+      {% assign eng_line  = line.english %}
+      {% assign expl_line = line.explanation %}
+      {% if expl_line %}
+      {
+        original:  {{ orig_line | jsonify }},
+        romanized: {{ roma_line | jsonify }},
+        english:   {{ eng_line  | jsonify }},
+        explanations: [
+          {% for cell in expl_line %}
+            {% assign parts = cell | split: "|" %}
+            {% assign orig_word = parts[0] %}
+            {% assign lang_word = parts[1] %}
+            {% assign func_word = parts[2] %}
+            {% comment %} 
+              ADD MORE LANGUAGES HERE
+            {% endcomment %}
+            {% if lang_word == "jp" %}
+              {% assign entry = site.data["word-banks"]["jp"][orig_word] %}
+            {% endif %}
+            {% if entry %}
+              {% if entry.functions %}
+                {% if func_word != "-" %}
+                  {% assign fw = func_word %}
+                {% else %}
+                  {% assign fw = entry.functions | first | first %}
+                {% endif %}
+                {% assign gloss = entry.functions[fw].english %}
+              {% else %}
+                {% assign gloss = entry.english %}
+              {% endif %}
+              {
+                  word:  {{ orig_word  | jsonify }},
+                  lang:  {{ lang_word  | jsonify }},
+                  func:  {{ func_word | jsonify }},
+                  gloss: {{ gloss      | jsonify }}
+              }{% unless forloop.last %},{% endunless %}
+            {% endif %}
+          {% endfor %}
+        ]
+      }{% unless forloop.last %},{% endunless %}
+      {% endif %}
+    {% endfor %}
+  ];
+</script>
+<script>
+  ;(() => {
+    // 1) Grab the data once
+    const data = window._lyricsTestData;
+    if (!data.length) return;
+
+    // 2) Utility
+    function pick(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
+
+    // 3) The render function
+    function renderQuestion() {
+      const line = pick(data);
+      const exp  = pick(line.explanations);
+
+      // build distractors
+      const others = data
+        .flatMap(l => l.explanations.map(e => e.gloss))
+        .filter(g => g && g !== exp.gloss);
+
+      const numChoices    = 4;
+      const numDistractors = numChoices - 1;
+
+      // build a unique pool of wrong glosses
+      const uniqueOthers = Array.from(new Set(
+        data.flatMap(l => l.explanations.map(e => e.gloss))
+          .filter(g => g && g !== exp.gloss)
+      ));
+
+      // shuffle & take as many as you can up to numDistractors
+      const distractors = uniqueOthers
+        .sort(() => Math.random() - 0.5)
+        .slice(0, numDistractors);
+
+      const options = [exp.gloss, ...distractors]
+        .sort(() => Math.random() - 0.5);
+
+      // render into container
+      const container = document.getElementById('lt-test-container');
+      const highlighted = replaceNth(
+        line.original,
+        exp.word,
+        `<span class="lt-highlight">${exp.word}</span>`,
+        /* compute which “の” (or word) this is in the line */  
+        line.explanations
+            .filter(e => e.word === exp.word)
+            .indexOf(exp) + 1
+      );
+
+      container.innerHTML = `
+        <h4>
+          Sentence:
+          <span class="lt-test-sentence">
+            ${highlighted}
+          </span>
+        </h4>
+        <ul class="lt-test-options">
+          ${options.map(opt =>
+            `<li><div class="lt-option-button no-double-tap-zoom"><h5 style="margin: 3px 0;">${opt}</h5></div></li>`
+          ).join('')}
+        </ul>
+      `;
+
+      // wire up the newly‐inserted buttons
+      const optionsEls = container.querySelectorAll('.lt-option-button');
+
+      optionsEls.forEach(el => {
+        // reset state
+        el.classList.remove('correct','incorrect','disabled');
+        el.addEventListener('click', () => {
+          // disable all options
+          optionsEls.forEach(o => o.classList.add('disabled'));
+
+          // highlight correct
+          optionsEls.forEach(o => {
+            if (o.textContent === exp.gloss) o.classList.add('correct');
+          });
+          // highlight wrong choice
+          if (el.textContent !== exp.gloss) el.classList.add('incorrect');
+        });
+      });
+    }
+
+    // 4) Initial draw
+    renderQuestion();
+
+    // 5) “Next” button hooks into it
+    document.getElementById('lt-quiz-next')
+            .addEventListener('click', renderQuestion);
+
+  })();
+</script>

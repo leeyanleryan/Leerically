@@ -1,0 +1,15 @@
+{
+  // ignore 5 warnings from lines 39-43 -ms-filter 
+  // from file /assets/css/vendor/font-awesome.min.css
+  "css.lint.vendorPrefix": "ignore",
+  "less.lint.vendorPrefix": "ignore",
+  "scss.lint.vendorPrefix": "ignore",
+
+  "files.associations": {
+    // Treat just search.json as Liquid/Jekyll, not JSON
+    "search.json": "liquid",
+
+    // Treat any file in _includes/*.html as Liquid
+    "**/_includes/*.html": "liquid"
+  },
+}

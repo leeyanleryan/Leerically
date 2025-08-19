@@ -1,0 +1,81 @@
+html,body,h1,h2,h3,h4,h5,h6 {
+  font-family: "Raleway", sans-serif;
+  scroll-behavior: auto;
+  scroll-padding-top: 43px;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+/* Default light mode */
+body {
+  background-color: #f1f1f1;
+  color: #000000;
+  transition: background-color var(--theme-transition) ease, 
+              color var(--theme-transition) ease;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: var(--dark-mode-background-color);
+  color: #ffffff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.no-double-tap-zoom {
+  -webkit-tap-highlight-color: transparent;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .no-hover-background-after-click:hover {
+    background: var(--light-mode-hover-background-color);
+  }
+  body.dark-mode .no-hover-background-after-click:hover {
+    background: var(--dark-mode-hover-background-color);
+  }
+}
+.no-hover-background-after-click:active {
+  background: transparent !important;
+}
+.no-hover-background-after-click.touch-active {
+  background: var(--light-mode-hover-background-color);
+  transition: background-color 0.2s ease-out;
+}
+body.dark-mode .no-hover-background-after-click.touch-active {
+  background: var(--dark-mode-hover-background-color);
+  transition: background-color 0.2s ease-out;
+}
+
+li.li-padding-bottom-10 {
+  padding-bottom: 10px;
+}
+
+ul.ul-margin-top-0 {
+  margin-top: 0px;
+}
+ol.ol-margin-top-0 {
+  margin-top: 0px;
+}
+
+h5.h5-margin-0 {
+  margin: 0;
+}
+
+h6.h6-margin-0 {
+  margin: 0;
+}
+
+h5.h5-text-gap {
+  margin-bottom: 20px;
+}
+
+h5.h5-img-gap {
+  margin-bottom: 30px;
+}

@@ -1,0 +1,30 @@
+{% assign header = include.header %}
+{% assign header_info = include.header_info %}
+{% assign header_url = include.header_url %}
+{% assign subheaders = header_info.subheaders %}
+
+<div class="submenu-wrapper
+  {% if page.url contains header_url %}open{% endif %}">
+  <div class="submenu-header">
+    <a href="{{ header_url }}"
+        class="w3-bar-item w3-button w3-padding main-link {% if page.url == header_url %}active{% endif %}">
+      {{ header }}
+    </a>
+  </div>
+  <div class="submenu">
+    {% for sh in subheaders %}
+      {% assign subheader = sh[0] %}
+      {% assign subheader_info = sh[1] %}
+      {% assign subheader_url = subheader_info.url %}
+      {% assign subheader_image = subheader_info.image %}
+      {% assign subheader_video = subheader_info.video %}
+      {% assign subheader_excerpt = subheader_info.excerpt %}
+      {% unless subheader_url == {{ header_url }} %}
+        <a href="{{ subheader_url }}"
+          class="w3-bar-item w3-button w3-padding {% if page.url == subheader_url %}active{% endif %}">
+          {{ subheader }}
+        </a>
+      {% endunless %}
+    {% endfor %}
+  </div>
+</div>

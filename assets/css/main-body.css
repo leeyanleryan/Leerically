@@ -1,0 +1,45 @@
+.w3-main {
+  margin: 43px auto 20px;
+  max-width: 900px;
+  padding-bottom: 20px;
+  transition: none;
+}
+
+.media-display {
+  display:flex; 
+  justify-content:center; 
+  gap:10px; 
+  align-items:center;
+}
+
+hr.hr-main-body {
+  height: 1px;
+  color: var(--light-mode-border-color);
+  background: var(--light-mode-border-color);
+  font-size: 0;
+  border: 0;
+  transition: background-color var(--theme-transition) ease, 
+              color var(--theme-transition) ease;
+}
+
+body.dark-mode hr.hr-main-body {
+  color: var(--dark-mode-border-color);
+  background: var(--dark-mode-border-color);
+}
+
+.hr-hide-1180 {
+  border: 1px solid gray; 
+  opacity:0;
+}
+
+/* 
+Used for extra padding at the bottom.
+Hidden for screens bigger than or equal to 1181px.
+Shown for screens smaller than or equal to 1180px.
+Works in conjunction with .nav-bottom .
+*/
+@media (min-width: 1181px) {
+  .hr-hide-1180 {
+    display: none !important;
+  }
+}

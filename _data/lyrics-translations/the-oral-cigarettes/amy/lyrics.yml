@@ -1,0 +1,400 @@
+- divider: true
+
+- language: "jp"
+  original: "「今何してる?」"
+  romanized: "Ima nani shiteru?"
+  english: "What are you doing right now?"
+  explanation:
+  - "今|jp|temporal"
+  - "何|jp|-"
+  - "してる|jp|-"
+
+- language: "jp"
+  original: "「きっと恋してる」"
+  romanized: "Kitto koi shiteru"
+  english: "I'm definitely in love."
+  explanation:
+  - "きっと|jp|-"
+  - "恋|jp|-"
+  - "してる|jp|-"
+
+- language: "jp"
+  original: "「こんな思いなんて初めてなの」って"
+  romanized: "Konna omoi nante hajimete nano tte"
+  english: "I've never felt this way before."
+  explanation:
+  - "こんな|jp|-"
+  - "思い|jp|-"
+  - "なんて|jp|exclamative"
+  - "初めて|jp|-"
+  - "なの|jp|-"
+  - "って|jp|quotative"
+
+- language: "jp"
+  original: "本当にわかってくれてたのは"
+  romanized: "Hontou ni wakatte kureteta no wa"
+  english: "The one who truly understood me was..."
+  explanation:
+  - "本当に|jp|-"
+  - "わかって|jp|-"
+  - "くれてた|jp|-"
+  - "の|jp|nominalizer"
+  - "は|jp|topic"
+
+- language: "jp"
+  original: "君のほうだと気付いた"
+  romanized: "Kimi no hou da to kizuita"
+  english: "I realised it was you."
+  explanation:
+  - "君|jp|you"
+  - "の|jp|possessive"
+  - "ほう|jp|-"
+  - "だ|jp|copula"
+  - "と|jp|quotative"
+  - "気付いた|jp|-"
+
+- divider: true
+
+- language: "jp"
+  original: "知らないうちに"
+  romanized: "Shiranai uchi ni"
+  english: "Without realizing it,"
+  explanation:
+  - "知らない|jp|-"
+  - "うち|jp|temporal"
+  - "に|jp|temporal"
+
+- language: "jp"
+  original: "長い道のりを歩いたね僕ら"
+  romanized: "Nagai michinori wo aruita ne bokura"
+  english: "We've come a long way, haven't we?"
+  explanation:
+  - "長い|jp|-"
+  - "道のり|jp|-"
+  - "を|jp|object"
+  - "歩いた|jp|-"
+  - "ね|jp|confirmation"
+  - "僕ら|jp|-"
+
+- language: "jp"
+  original: "ずっと君のためだって"
+  romanized: "Zutto kimi no tame datte"
+  english: "It was always for you."
+  explanation:
+  - "ずっと|jp|continuity"
+  - "君|jp|you"
+  - "の|jp|possessive"
+  - "ため|jp|-"
+  - "だって|jp|-"
+
+- language: "jp"
+  original: "思ってたんだよ"
+  romanized: "Omotteta nda yo"
+  english: "That's what I was thinking."
+  explanation:
+  - "思ってた|jp|-"
+  - "ん|jp|explanatory"
+  - "だ|jp|copula"
+  - "よ|jp|emphatic"
+
+- divider: true
+
+- language: "jp"
+  original: "諦めてた君との時間に"
+  romanized: "Akirameteta kimi to no jikan ni"
+  english: "The time I had given up on with you..."
+  explanation:
+  - "諦めてた|jp|-"
+  - "君|jp|you"
+  - "と|jp|comitative"
+  - "の|jp|possessive"
+  - "時間|jp|-"
+  - "に|jp|temporal"
+
+- language: "jp"
+  original: "手を伸ばせば少しなら届く気がした"
+  romanized: "Te wo nobaseba sukoshi nara todoku ki ga shita"
+  english: "I felt like I could reach it if I stretched out my hand a little."
+  explanation:
+  - "手|jp|-"
+  - "を|jp|object"
+  - "伸ばせば|jp|-"
+  - "少し|jp|-"
+  - "なら|jp|conditional"
+  - "届く|jp|-"
+  - "気|jp|-"
+  - "が|jp|subject"
+  - "した|jp|-"
+
+- language: "jp"
+  original: "もし時を戻せるのなら"
+  romanized: "Moshi toki wo modoseru no nara"
+  english: "If I could turn back time..."
+  explanation:
+  - "もし|jp|hypothetical"
+  - "時|jp|-"
+  - "を|jp|object"
+  - "戻せる|jp|-"
+  - "の|jp|nominalizer"
+  - "なら|jp|conditional"
+
+- language: "jp"
+  original: "君に一言伝えたい"
+  romanized: "Kimi ni hitokoto tsutaetai"
+  english: "I want to say something to you."
+  explanation:
+  - "君|jp|you"
+  - "に|jp|indirect_object"
+  - "一言|jp|-"
+  - "伝えたい|jp|-"
+
+- language: "jp"
+  original: "ごめんねありがとう"
+  romanized: "Gomen ne arigatou"
+  english: "I'm sorry... thank you."
+  explanation:
+  - "ごめん|jp|apology"
+  - "ね|jp|softener"
+  - "ありがとう|jp|-"
+
+- divider: true
+
+- language: "jp"
+  original: "エイミーここで今二人"
+  romanized: "Amy koko de ima futari"
+  english: "Amy, the two of us, here and now..."
+  explanation:
+  - "エイミー|jp|-"
+  - "ここ|jp|location"
+  - "で|jp|location"
+  - "今|jp|temporal"
+  - "二人|jp|-"
+
+- language: "jp"
+  original: "肩を寄せ合った日々を"
+  romanized: "Kata wo yoseatta hibi wo"
+  english: "Those days we huddled close..."
+  explanation:
+  - "肩|jp|-"
+  - "を|jp|object"
+  - "寄せ合った|jp|-"
+  - "日々|jp|-"
+  - "を|jp|object"
+
+- language: "jp"
+  original: "思い出すと胸の奥ぎゅっと"
+  romanized: "Omoidasu to mune no oku gyutto"
+  english: "When I remember them, my heart tightens deep inside."
+  explanation:
+  - "思い出す|jp|-"
+  - "と|jp|conditional"
+  - "胸|jp|-"
+  - "の|jp|possessive"
+  - "奥|jp|-"
+  - "ぎゅっと|jp|-"
+
+- language: "jp"
+  original: "エイミーここで今二人"
+  romanized: "Amy koko de ima futari"
+  english: "Amy, the two of us, here and now..."
+  explanation:
+  - "エイミー|jp|-"
+  - "ここ|jp|location"
+  - "で|jp|location"
+  - "今|jp|temporal"
+  - "二人|jp|-"
+
+- language: "jp"
+  original: "また出会えるってことを"
+  romanized: "Mata deaeru tte koto wo"
+  english: "The fact that we'll meet again..."
+  explanation:
+  - "また|jp|-"
+  - "出会える|jp|-"
+  - "って|jp|quotative"
+  - "こと|jp|nominalizer"
+  - "を|jp|object"
+
+- language: "jp"
+  original: "信じて待つよ"
+  romanized: "Shinjite matsu yo"
+  english: "I'll keep waiting and believing."
+  explanation:
+  - "信じて|jp|-"
+  - "待つ|jp|-"
+  - "よ|jp|emphatic"
+
+- language: "jp"
+  original: "何があってもずっと"
+  romanized: "Nani ga attemo zutto"
+  english: "No matter what happens, always."
+  explanation:
+  - "何|jp|-"
+  - "が|jp|subject"
+  - "あっても|jp|concessive"
+  - "ずっと|jp|continuity"
+
+- language: "jp"
+  original: "ねぇ君もそうだろう?"
+  romanized: "Nee kimi mo sou darou?"
+  english: "Hey, you feel the same way... don't you?"
+  explanation:
+  - "ねぇ|jp|vocative"
+  - "君|jp|you"
+  - "も|jp|additive"
+  - "そう|jp|demonstrative"
+  - "だろう|jp|probability"
+
+- divider: true
+
+- language: "jp"
+  original: "季節が過ぎて"
+  romanized: "Kisetsu ga sugite"
+  english: "As the seasons passed..."
+  explanation:
+  - "季節|jp|-"
+  - "が|jp|subject"
+  - "過ぎて|jp|-"
+
+- language: "jp"
+  original: "僕のことを本当に思うのなら"
+  romanized: "Boku no koto wo hontou ni omou no nara"
+  english: "If you still really care about me..."
+  explanation:
+  - "僕|jp|-"
+  - "の|jp|possessive"
+  - "こと|jp|nominalizer"
+  - "を|jp|object"
+  - "本当に|jp|-"
+  - "思う|jp|-"
+  - "の|jp|nominalizer"
+  - "なら|jp|conditional"
+
+- language: "jp"
+  original: "今更だって構わない"
+  romanized: "Imasara datte kamawanai"
+  english: "Even if it's too late now, I don't mind."
+  explanation:
+  - "今更|jp|-"
+  - "だって|jp|even-if"
+  - "構わない|jp|-"
+
+- language: "jp"
+  original: "小さな手を掴むよ"
+  romanized: "Chiisana te wo tsukamu yo"
+  english: "I'll hold your little hand."
+  explanation:
+  - "小さな|jp|-"
+  - "手|jp|-"
+  - "を|jp|object"
+  - "掴む|jp|-"
+  - "よ|jp|emphatic"
+
+- divider: true
+
+- language: "jp"
+  original: "愛しき人よ"
+  romanized: "Itoshiki hito yo"
+  english: "My beloved,"
+  explanation:
+  - "愛しき|jp|-"
+  - "人|jp|-"
+  - "よ|jp|emphatic"
+
+- language: "jp"
+  original: "僕の声は君に届いてますか?"
+  romanized: "Boku no koe wa kimi ni todoitemasu ka?"
+  english: "Is my voice reaching you?"
+  explanation:
+  - "僕|jp|-"
+  - "の|jp|possessive"
+  - "声|jp|-"
+  - "は|jp|topic"
+  - "君|jp|-"
+  - "に|jp|indirect_object"
+  - "届いてます|jp|-"
+  - "か|jp|question"
+
+- language: "jp"
+  original: "愛する人を守るためにそっと"
+  romanized: "Ai suru hito wo mamoru tame ni sotto"
+  english: "Gently, to protect the one I love."
+  explanation:
+  - "愛する|jp|-"
+  - "人|jp|-"
+  - "を|jp|object"
+  - "守る|jp|-"
+  - "ために|jp|purpose"
+  - "そっと|jp|-"
+
+- divider: true
+
+- language: "jp"
+  original: "エイミーここで今二人"
+  romanized: "Amy koko de ima futari"
+  english: "Amy, the two of us, here and now..."
+  explanation:
+  - "エイミー|jp|-"
+  - "ここ|jp|location"
+  - "で|jp|location"
+  - "今|jp|temporal"
+  - "二人|jp|-"
+
+- language: "jp"
+  original: "肩を寄せ合った日々を"
+  romanized: "Kata wo yoseatta hibi wo"
+  english: "Those days we huddled close..."
+  explanation:
+  - "肩|jp|-"
+  - "を|jp|object"
+  - "寄せ合った|jp|-"
+  - "日々|jp|-"
+  - "を|jp|object"
+
+- language: "jp"
+  original: "思い出すと胸の奥ぎゅっと"
+  romanized: "Omoidasu to mune no oku gyutto"
+  english: "When I remember them, my heart tightens deep inside."
+  explanation:
+  - "思い出す|jp|-"
+  - "と|jp|conditional"
+  - "胸|jp|-"
+  - "の|jp|possessive"
+  - "奥|jp|-"
+  - "ぎゅっと|jp|-"
+
+- language: "jp"
+  original: "世界中の人々が笑えるように"
+  romanized: "Sekaijuu no hitobito ga waraeru you ni"
+  english: "So that people around the world can laugh..."
+  explanation:
+  - "世界中|jp|-"
+  - "の|jp|possessive"
+  - "人々|jp|-"
+  - "が|jp|subject"
+  - "笑える|jp|-"
+  - "ように|jp|purpose"
+
+- language: "jp"
+  original: "この歌を送るよ"
+  romanized: "Kono uta wo okuru yo"
+  english: "I'm sending this song."
+  explanation:
+  - "この|jp|-"
+  - "歌|jp|-"
+  - "を|jp|object"
+  - "送る|jp|-"
+  - "よ|jp|emphatic"
+
+- language: "jp"
+  original: "ねぇエイミーいいだろう?"
+  romanized: "Nee Amy ii darou?"
+  english: "Hey, Amy... that's okay, right?"
+  explanation:
+  - "ねぇ|jp|-"
+  - "エイミー|jp|-"
+  - "いい|jp|-"
+  - "だろう|jp|conjectural"
+
+- divider: true
+
