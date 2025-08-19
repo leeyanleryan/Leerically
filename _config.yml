@@ -1,9 +1,8 @@
-title: leeyanleryan
+title: Leerically
 description: >-
-  Lee Yan Le Ryan's Website
+  Accurate lyrics for all your favourite songs in one place.
 baseurl: ""
-url: "https://leeyanleryan.github.io"
+url: "https://leerically.com"
 theme: null
 plugins:
   - jekyll-redirect-from
-google_analytics: G-WXMZHEF5E7

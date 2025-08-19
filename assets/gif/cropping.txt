@@ -1,6 +1,0 @@
-ezgif.com
-
-left 200
-top 75
-width 400
-height 300
