@@ -183,10 +183,10 @@ permissions:
 
 env:
   AWS_REGION: ap-southeast-1
-  ROLE_ARN: arn:aws:iam::<ACCOUNT_ID>:role/GithubActionsDeploy   # -- put your Role ARN here
+  ROLE_ARN: arn:aws:iam::<ACCOUNT_ID>:role/GithubActionsDeploy   # <-- put your Role ARN here
   S3_BUCKET: leerically-com-site
   S3_PREFIX: web
-  CF_DISTRIBUTION_ID: DXXXXXXXXXXXX                              # -- put your CloudFront ID here
+  CF_DISTRIBUTION_ID: DXXXXXXXXXXXX                              # <-- put your CloudFront ID here
   JEKYLL_ENV: production
 
 jobs:
