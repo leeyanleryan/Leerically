@@ -20,12 +20,12 @@ A short comprehensive guide on the entire process of setting up a website on AWS
 ## ACM Part 1
 - Search for Certificate Manager
 - Change to us-east-1 because of CloudFront
-- Add <website>.com and www.<website>.com
+- Add {website}.com and www.{website}.com
 
 ## Nameservers
 - Search for Route 53
 - Create hosted name
-- Add <website>.com and www.<website>.com
+- Add {website}.com and www.{website}.com
 - Find 4 nameservers
 - Copy all 4 nameservers and paste into Namecheap or other host providers' nameservers
 - For Namecheap, change to Custom DNS in settings to allow pasting
@@ -33,14 +33,14 @@ A short comprehensive guide on the entire process of setting up a website on AWS
 
 ## ACM Part 2
 - Search for Certificate Manager
-- Add to Route 53 for both <website>.com and www.<website>.com
+- Add to Route 53 for both {website}.com and www.{website}.com
 - Wait for a while until both status are Success and certificate is Issued
 
 ## S3 Bucket
 - Search for S3
 - Change to ap-southeast-1 because of S3
 - Create bucket: leerically-com-site
-- Set name for bucket <website>-com-site
+- Set name for bucket {website}-com-site
 - Create folder called web in bucket
 - If on Jekyll project, copy everything from _site/
 - Paste into web/
@@ -48,8 +48,8 @@ A short comprehensive guide on the entire process of setting up a website on AWS
 ## CF Distribution
 - Go to CloudFront
 - Create a distribution
-- Add distribution name like <website>-website
-- Add <website>.com to custom domain and subdomain www
+- Add distribution name like {website}-website
+- Add {website}.com to custom domain and subdomain www
 - Specify Amazon S3 origin
 - Select S3 created earlier
 - If origin path not in root, type /web or whatever folder the site is in
@@ -183,10 +183,10 @@ permissions:
 
 env:
   AWS_REGION: ap-southeast-1
-  ROLE_ARN: arn:aws:iam::<ACCOUNT_ID>:role/GithubActionsDeploy   # <-- put your Role ARN here
+  ROLE_ARN: arn:aws:iam::<ACCOUNT_ID>:role/GithubActionsDeploy   # -- put your Role ARN here
   S3_BUCKET: leerically-com-site
   S3_PREFIX: web
-  CF_DISTRIBUTION_ID: DXXXXXXXXXXXX                              # <-- put your CloudFront ID here
+  CF_DISTRIBUTION_ID: DXXXXXXXXXXXX                              # -- put your CloudFront ID here
   JEKYLL_ENV: production
 
 jobs:
