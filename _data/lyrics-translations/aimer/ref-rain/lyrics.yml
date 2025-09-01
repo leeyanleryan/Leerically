@@ -1,0 +1,356 @@
+- divider: true
+
+- language: "jp"
+  original: "Raining 夏の午後に 通り雨 傘の下"
+  romanized: "Raining natsu no gogo ni tooriame kasa no shita"
+  english: "Raining on a summer afternoon, a passing shower beneath the umbrella."
+  explanation:
+  - "夏|jp|-"
+  - "の|jp|possessive"
+  - "午後|jp|-"
+  - "に|jp|temporal"
+  - "通り雨|jp|-"
+  - "傘|jp|-"
+  - "の|jp|possessive"
+  - "下|jp|-"
+
+- language: "jp"
+  original: "Kissing 濡れた頬に そっと口づけた"
+  romanized: "Kissing nureta hoho ni sotto kuchizuketa"
+  english: "Kissing, I softly kiss your wet cheeks."
+  explanation:
+  - "濡れた|jp|-"
+  - "頬|jp|-"
+  - "に|jp|indirect_object"
+  - "そっと|jp|-"
+  - "口づけた|jp|-"
+
+- language: "jp"
+  original: "あの季節に まだ焦がれている"
+  romanized: "Ano kisetsu ni mada kogarete iru"
+  english: "I'm still longing for that season"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "Miss you 窓の外に 遠ざかる景色たち"
+  romanized: "Miss you mado no soto ni toozakaru keshikitachi"
+  english: "Miss you the sceneries pass by outside the window"
+  explanation: null
+
+- language: "jp"
+  original: "Breezing 虹が見えた すぐに消えそうで"
+  romanized: "Breezing niji ga mieta sugu ni kiesou de"
+  english: "Breezing I saw a rainbow, but it seemed like it'd immediately disappear-"
+  explanation: null
+
+- language: "jp"
+  original: "雨 明日は降らなければいい"
+  romanized: "Ame ashita wa furanakereba ii"
+  english: "So I hope it doesn't rain tomorrow"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "何も手につかずに 上の空の日々"
+  romanized: "Nanimo te ni tsukazu ni uwanosora no hibi"
+  english: "Idle days when I couldn't focus on anything..."
+  explanation:
+  - "何も|jp|-"
+  - "手|jp|-"
+  - "に|jp|indirect_object"
+  - "つかずに|jp|-"
+  - "上の空|jp|-"
+  - "の|jp|possessive"
+  - "日々|jp|-"
+
+- language: "en"
+  original: "Nothing but you're the part of me"
+  romanized: "Nothing but you're the part of me"
+  english: "Nothing but you're the part of me"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "まだ 足りなくて"
+  romanized: "Mada tarinakute"
+  english: "It's still not enough."
+  explanation:
+  - "まだ|jp|-"
+  - "足りなくて|jp|-"
+
+- language: "jp"
+  original: "まだ 消えなくて"
+  romanized: "Mada kienakute"
+  english: "And it's not disappeared yet"
+  explanation: null
+
+- language: "jp"
+  original: "重ねた手のひらから幼さが"
+  romanized: "Kasaneta tenohira kara osana-sa ga"
+  english: "The youth from our touching palms"
+  explanation: null
+
+- language: "en"
+  original: "What a good thing we lose?"
+  romanized: "What a good thing we lose?"
+  english: "What a good thing we lose?"
+  explanation: null
+
+- language: "en"
+  original: "What a bad thing we knew"
+  romanized: "What a bad thing we knew"
+  english: "What a bad thing we knew"
+  explanation: null
+
+- language: "jp"
+  original: "そんなフレーズに濡れてく 雨の中"
+  romanized: "Sonna fureizu ni nureteku ame no naka"
+  english: "I'm being soaked by these phrases in the rain"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "ただ 足りなくて"
+  romanized: "Tada tarinakute"
+  english: "It's just not enough"
+  explanation: null
+
+- language: "jp"
+  original: "まだ 言えなくて"
+  romanized: "Mada ienakute"
+  english: "And I just can't say it yet"
+  explanation: null
+
+- language: "jp"
+  original: "数えた日の夢からさよならが"
+  romanized: "Kazoeta hi no yume kara sayonara ga"
+  english: "A farewell after the dreams of those limited days"
+  explanation: null
+
+- language: "en"
+  original: "What a good thing we lose?"
+  romanized: "What a good thing we lose?"
+  english: "What a good thing we lose?"
+  explanation: null
+
+- language: "en"
+  original: "What a bad thing we knew"
+  romanized: "What a bad thing we knew"
+  english: "What a bad thing we knew"
+  explanation: null
+
+- language: "jp"
+  original: "触れられずにいれたら 笑えたかな？"
+  romanized: "Furerarezu ni iretara waraeta ka na?"
+  english: "Had I kept myself from touching you, would I have been able to smile?"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "Calling 白い息が 舞いあがる 空の下"
+  romanized: "Calling shiroi iki ga maiagaru sora no shita"
+  english: "Calling my white breath dances up beneath the sky"
+  explanation: null
+
+- language: "jp"
+  original: "Freezing 強い風に 少しかじかんだ手と"
+  romanized: "Freezing tsuyoi kaze ni sukoshi kajikanda te to"
+  english: "Freezing I put my hand that's been numbed by the strong winds"
+  explanation: null
+
+- language: "jp"
+  original: "弱さをポケットの中に"
+  romanized: "Yowasa wo poketto no naka ni"
+  english: "And my weakness into my pocket"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "どこを見渡しても 通り過ぎた日々"
+  romanized: "Doko wo miwatashitemo toorisugita hibi"
+  english: "The days passed by wherever I looked"
+  explanation: null
+
+- language: "en"
+  original: "Nothing but you're the part of me"
+  romanized: "Nothing but you're the part of me"
+  english: "Nothing but you're the part of me"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "また 触れたくて"
+  romanized: "Mata furetakute"
+  english: "I want to touch you again"
+  explanation: null
+
+- language: "jp"
+  original: "ただ 眩しくて"
+  romanized: "Tada mabushikute"
+  english: "You're just so bright"
+  explanation: null
+
+- language: "jp"
+  original: "思わず目をそらした優しさに"
+  romanized: "Omowasu me wo sorashita yasashisa ni"
+  english: "I unconsciously turned my eyes away from your gentleness"
+  explanation: null
+
+- language: "en"
+  original: "I wanna sleep in your feel"
+  romanized: "I wanna sleep in your feel"
+  english: "I wanna sleep in your feel"
+  explanation: null
+
+- language: "en"
+  original: "I wanna see you in the deep"
+  romanized: "I wanna see you in the deep"
+  english: "I wanna see you in the deep"
+  explanation: null
+
+- language: "jp"
+  original: "そんなフレーズを並べた詩を 今"
+  romanized: "Sonna fureizu wo narabeta uta wo ima"
+  english: "This is a song with those phrases put alongside one-another"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "あの帰り道"
+  romanized: "Ano kaerimichi"
+  english: "On the way home"
+  explanation: null
+
+- language: "jp"
+  original: "バスに揺られて"
+  romanized: "Basu ni yurarete"
+  english: "Riding the bus"
+  explanation: null
+
+- language: "jp"
+  original: "叶うはずもない様な夢を見た"
+  romanized: "Kanau hazu mo nai you na yume wo mite"
+  english: "I saw dreams that could never come true"
+  explanation: null
+
+- language: "en"
+  original: "I wanna sleep in your feel"
+  romanized: "I wanna sleep in your feel"
+  english: "I wanna sleep in your feel"
+  explanation: null
+
+- language: "en"
+  original: "I wanna see you in the deep"
+  romanized: "I wanna see you in the deep"
+  english: "I wanna see you in the deep"
+  explanation: null
+
+- language: "jp"
+  original: "繰りかえす季節に 慣れないまま"
+  romanized: "Kurikaesu kisetsu ni narenai mama"
+  english: "Still unaccustomed to the cycling seasons"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "もう少しくらい大人でいれたら"
+  romanized: "Mou sukoshi kurai otona de iretara"
+  english: "Had I been able to be just a little more mature"
+  explanation: null
+
+- language: "jp"
+  original: "何て言えただろう？"
+  romanized: "Nante ieta darou?"
+  english: "What could I have said?"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "まだ 足りなくて"
+  romanized: "Mada tarinakute"
+  english: "It's still not enough."
+  explanation:
+  - "まだ|jp|-"
+  - "足りなくて|jp|-"
+
+- language: "jp"
+  original: "まだ 消えなくて"
+  romanized: "Mada kienakute"
+  english: "And it's not disappeared yet"
+  explanation: null
+
+- language: "jp"
+  original: "重ねた手のひらから幼さが"
+  romanized: "Kasaneta tenohira kara osana-sa ga"
+  english: "The youth from our touching palms"
+  explanation: null
+
+- language: "en"
+  original: "What a good thing we lose?"
+  romanized: "What a good thing we lose?"
+  english: "What a good thing we lose?"
+  explanation: null
+
+- language: "en"
+  original: "What a bad thing we knew"
+  romanized: "What a bad thing we knew"
+  english: "What a bad thing we knew"
+  explanation: null
+
+- language: "jp"
+  original: "そんなフレーズに濡れてく 雨の中"
+  romanized: "Sonna fureizu ni nureteku ame no naka"
+  english: "I'm being soaked by these phrases in the rain"
+  explanation: null
+
+- divider: true
+
+- language: "jp"
+  original: "ただ 足りなくて"
+  romanized: "Tada tarinakute"
+  english: "It's just not enough"
+  explanation: null
+
+- language: "jp"
+  original: "まだ 言えなくて"
+  romanized: "Mada ienakute"
+  english: "And I just can't say it yet"
+  explanation: null
+
+- language: "jp"
+  original: "数えた日の夢からさよならが"
+  romanized: "Kazoeta hi no yume kara sayonara ga"
+  english: "A farewell after the dreams of those limited days"
+  explanation: null
+
+- language: "en"
+  original: "What a good thing we lose?"
+  romanized: "What a good thing we lose?"
+  english: "What a good thing we lose?"
+  explanation: null
+
+- language: "en"
+  original: "What a bad thing we knew"
+  romanized: "What a bad thing we knew"
+  english: "What a bad thing we knew"
+  explanation: null
+
+- language: "jp"
+  original: "触れられずにいれたら 笑えたかな？"
+  romanized: "Furerarezu ni iretara waraeta ka na?"
+  english: "Had I kept myself from touching you, would I have been able to smile?"
+  explanation: null
+
+- divider: true
+
