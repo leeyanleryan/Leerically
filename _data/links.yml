@@ -1,33 +1,67 @@
-Lyrics Translations:
-  Aimer:
-    url: /lyrics-translations/aimer/
-    subheaders:
-      Ref:rain:
-        url: /lyrics-translations/aimer/ref-rain/
-        image: no-image.png
-        excerpt: >
-          From the album "Penny Rain", 2019.
+"Aimer":
+  url: /aimer/
+  albums:
+    "Penny Rain":
+      url: /aimer/penny-rain/
+      image: no-image.png
+      year: 2019
+      excerpt: Released in 2019.
+      songs:
+        "Ref:rain":
+          url: /aimer/penny-rain/ref-rain/
+          image: no-image.png
+          year: 2019
+          album: Penny Rain
+          status: Partial
+          excerpt: >
+            From the album "Penny Rain", 2019.
 
-  BABYMETAL:
-    url: /lyrics-translations/babymetal/
-    subheaders:
-      No Rain No Rainbow:
-        url: /lyrics-translations/babymetal/no-rain-no-rainbow/
-        image: no-image.png
-        excerpt: >
-          From the album "METAL RESISTANCE", 2016.
+"BABYMETAL":
+  url: /babymetal/
+  albums:
+    "METAL RESISTANCE":
+      url: /babymetal/metal-resistance/
+      image: no-image.png
+      year: 2016
+      excerpt: Released in 2016.
+      songs:
+        "No Rain No Rainbow":
+          url: /babymetal/metal-resistance/no-rain-no-rainbow/
+          image: no-image.png
+          year: 2016
+          album: METAL RESISTANCE
+          status: Partial
+          excerpt: >
+            From the album "METAL RESISTANCE", 2016.
 
-  THE ORAL CIGARETTES:
-    url: /lyrics-translations/the-oral-cigarettes/
-    subheaders:
-      Amy:
-        url:   /lyrics-translations/the-oral-cigarettes/amy/
-        image: no-image.png
-        excerpt: >
-          From the album "FIXION", 2016.
-
-      Flower:
-        url:   /lyrics-translations/the-oral-cigarettes/flower/
-        image: no-image.png
-        excerpt: >
-          From the album "BLACK MEMORY", 2017.
+"THE ORAL CIGARETTES":
+  url: /the-oral-cigarettes/
+  albums:
+    "FIXION":
+      url: /the-oral-cigarettes/fixion/
+      image: no-image.png
+      year: 2016
+      excerpt: Released in 2016.
+      songs:
+        "Amy":
+          url: /the-oral-cigarettes/fixion/amy/
+          image: no-image.png
+          year: 2016
+          album: FIXION
+          status: Complete
+          excerpt: >
+            From the album "FIXION", 2016.
+    "BLACK MEMORY":
+      url: /the-oral-cigarettes/black-memory/
+      image: no-image.png
+      year: 2017
+      excerpt: Released in 2017.
+      songs:
+        "Flower":
+          url: /the-oral-cigarettes/black-memory/flower/
+          image: no-image.png
+          year: 2016
+          album: FIXION
+          status: Partial
+          excerpt: >
+            From the album "BLACK MEMORY", 2017.

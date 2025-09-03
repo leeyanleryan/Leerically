@@ -1,7 +1,7 @@
 ---
 layout: default
 title: No Rain No Rainbow
-permalink: /lyrics-translations/babymetal/no-rain-no-rainbow/
+permalink: /babymetal/metal-resistance/no-rain-no-rainbow/
 
 song_description: >-
   A song released by BABYMETAL in 2016 under the album 'METAL RESISTANCE'.

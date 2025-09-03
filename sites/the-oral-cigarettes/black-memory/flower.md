@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Flower
-permalink: /lyrics-translations/the-oral-cigarettes/flower/
+permalink: /the-oral-cigarettes/black-memory/flower/
 
 song_description: >-
   A song released by THE ORAL CIGARETTES in 2017 under the album "BLACK MEMORY".

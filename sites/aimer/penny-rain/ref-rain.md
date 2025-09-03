@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Ref:rain
-permalink: /lyrics-translations/aimer/ref-rain/
+permalink: /aimer/penny-rain/ref-rain/
 
 song_description: >-
   A song released by Aimer in 2019 under the album "Penny Rain".

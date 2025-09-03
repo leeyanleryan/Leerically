@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Amy
-permalink: /lyrics-translations/the-oral-cigarettes/amy/
+permalink: /the-oral-cigarettes/fixion/amy/
 
 song_description: >-
   A song released by THE ORAL CIGARETTES in 2016 under the album 'FIXION'.
