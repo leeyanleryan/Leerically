@@ -6,34 +6,22 @@
   <!-- flicker fix -->
   <style>.no-transition, .no-transition * {transition: none !important;}</style>
   <script src="/assets/js/flicker-fix.js"> </script>
-  <!-- take title from front matter of md files -->
+  <!-- flicker fix -->
   <title>{{ page.title }}</title>
-  <!-- favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <!-- css -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon.png">
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="stylesheet" href="/assets/css/variables.css">
-  <!-- <link rel="stylesheet" href="/assets/css/vendor/w3.css">
-  <link rel="stylesheet" href="/assets/css/vendor/font-awesome.css">
-  <link rel="stylesheet" href="/assets/css/vendor/raleway.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"> -->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css"> -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/assets/css/clamp-content.css">
-  <link rel="stylesheet" href="/assets/css/dark-mode.css">
   <link rel="stylesheet" href="/assets/css/default.css">
-  <link rel="stylesheet" href="/assets/css/left-sidebar.css">
   <link rel="stylesheet" href="/assets/css/lyrics-translations.css">
   <link rel="stylesheet" href="/assets/css/main-body.css">
-  <link rel="stylesheet" href="/assets/css/media-list.css">
-  <link rel="stylesheet" href="/assets/css/nav-arrow.css">
-  <link rel="stylesheet" href="/assets/css/right-sidebar.css">
-  <link rel="stylesheet" href="/assets/css/sidebar.css">
   <link rel="stylesheet" href="/assets/css/topbar.css">
 </head>
 
@@ -41,22 +29,11 @@
 
 {% include topbar.html %}
 
-{% include left-sidebar.html %}
-
-{% include right-sidebar.html %}
-
-<!-- Page content goes here -->
 {{ content }}
-
-<!-- Navigation Arrows -->
-{% include nav-arrow.html %}
 
 <hr class="hr-hide-1180">
 
 <script src="/assets/js/dark-mode.js"></script>
-<script src="/assets/js/sidebar-common.js"></script>
-<script src="/assets/js/left-sidebar.js"></script>
-<script src="/assets/js/right-sidebar.js"></script>
 <script src="/assets/js/simple-jekyll-search.js"></script>
 <script src="/assets/js/search-bar-config.js"></script>
 
