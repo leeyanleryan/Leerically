@@ -1,94 +1,174 @@
-<header class="site-topbar">
-  <nav class="top-nav" aria-label="Primary navigation">
-    <ul>
-      <li><a href="{{ '/' | relative_url }}">Home</a></li>
-      <li><a href="{{ '/posts/' | relative_url }}">Posts</a></li>
-      <li><a href="{{ '/about/' | relative_url }}">About</a></li>
-    </ul>
-  </nav>
+<header class="topbar" role="banner">
+  <a class="skip-link" href="#content">Skip to content</a>
 
-  <div class="topbar-overlay">
-    <div class="site-branding">
-      <h1 class="site-title">{{ site.title | default: "LEERICALLY" }}</h1>
-      <p class="site-tagline">{{ site.tagline | default: "Perfecting Transcriptions" }}</p>
+  <div class="topbar_inner">
+    <a class="brand" href="{{ '/' | relative_url }}">LEERICALLY</a>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
+      <a href="{{ '/posts/' | relative_url }}">Posts</a>
+    </nav>
+
+    <form class="search" action="{{ '/search/' | relative_url }}" role="search" method="get">
+      <input type="search" name="q" placeholder="Search" aria-label="Search">
+    </form>
+
+    <div class="auth">
+      <a class="btn btn-ghost" href="{{ '/signin/' | relative_url }}">Sign In</a>
+      <a class="btn btn-cta"   href="{{ '/signup/' | relative_url }}">Sign Up</a>
     </div>
+
+    <button class="menu-btn" aria-label="Toggle Menu" onclick="toggleMenu()">
+      <i class="fa fa-bars"></i>
+    </button>
   </div>
 </header>
 
+
 <style>
-.site-topbar {
-  position: relative;
-  width: 100%;
-  height: 240px;
-  background-image:
-    linear-gradient(rgba(0,0,0,.20), rgba(0,0,0,.20)), 
-    url('{{ site.header_image | default: "/assets/img/header.webp" }}');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  box-sizing: border-box;
+:root{
+  --topbar-h: 64px;
+  --page-bg: var(--dark-mode-background-color, #0f0f10);
+  /* --glass-bg: rgba(15,15,15,.65); */
+  --text: #fff;
+  --muted: rgba(255,255,255,.75);
+  --accent-a: #C956FF;   /* left of gradient */
+  --accent-b: #FF834E;   /* right of gradient */
 }
 
-.site-topbar::after{
-  content:"";
-  position:absolute; left:0; right:0; bottom:-24px; height:24px;
-  background: linear-gradient(to bottom, rgba(0,0,0,.30), var(--dark-mode-background-color));
-  pointer-events:none;
+body{ padding-top: var(--topbar-h); }
+
+.topbar{
+  position: fixed; top:0; left:0; right:0; height:var(--topbar-h);
+  z-index:1000;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
-.top-nav {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
+.topbar_inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex; align-items: center; gap: 16px;
+  padding: 0 16px;
 }
-.top-nav ul {
-  list-style: none;
-  margin: 0;
+
+/* brand */
+.brand{
+  color: var(--text); text-decoration: none;
+  font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+  font-size: 18px;
+}
+
+/* primary links */
+.primary-nav{ display: flex; gap: 18px; margin-left: 8px; }
+.primary-nav a{
+  text-decoration: none; color: var(--muted); font-size: 14px;
+}
+.primary-nav a:hover, .primary-nav a:focus{ color: var(--text); }
+
+/* search */
+.search{ margin-left: auto; }
+.search input{
+  height: 36px; 
+  width: 35vw;
+  max-width: 250px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(0,0,0,.25); 
+  color: var(--text);
+  padding: 0 12px; 
+  outline: none;
+}
+.search input::placeholder{ color: rgba(255,255,255,.6); }
+
+/* auth buttons */
+.auth{ display: flex; gap: 8px; }
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  height: 36px; padding: 0 14px; border-radius: 999px;
+  font-size: 14px; text-decoration:none;
+}
+.btn-ghost{ color: var(--text); border:1px solid rgba(255,255,255,.25); }
+.btn-ghost:hover{ border-color: rgba(255,255,255,.45); }
+
+.btn-cta{
+  color:#fff; border:0;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+}
+.btn-cta:hover{ filter: brightness(1.06); }
+
+/* accessibility */
+.skip-link{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip-link:focus{
+  left: 12px; top: 12px; width:auto; height:auto; padding:6px 10px;
+  background:#000; color:#fff; border-radius:6px; z-index: 1001;
+}
+
+/* Mobile menu button (Font Awesome hamburger icon) */
+.menu-btn {
+  display: none; /* Initially hidden */
+  background: none;
+  border: none;
+  cursor: pointer;
   padding: 0;
-  display: flex;
-  gap: 26px;
-  align-items: center;
+  z-index: 21;
 }
-.top-nav a {
-  color: rgba(255,255,255,0.9);
-  text-decoration: none;
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 6px 6px;
-}
-.top-nav a:hover { color: #fff; }
 
-.topbar-overlay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 260px;
-  text-align: center;
-  padding: 60px 16px;
-  box-sizing: border-box;
+.menu-btn i {
+  font-size: 24px; /* Adjust size of the icon */
+  color: var(--text); /* Text color for the icon */
 }
-.site-branding {
-  max-width: 820px;
+
+/* When the menu is open (toggle animation) */
+.menu-btn.open i {
+  color: var(--text); /* Change icon color when active */
 }
-.site-title {
-  margin: 0;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 300;
-  font-size: 44px;
-  letter-spacing: 6px;
-  line-height: 1;
-  color: #fff;
-  text-transform: uppercase;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+
+/* Mobile styles for the menu */
+@media (max-width: 900px) {
+  .brand { font-size: 16px; }
+
+  .menu-btn {
+    display: block; /* Show the menu button on small screens */
+  }
+
+  .primary-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--glass-bg);
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px;
+  }
+
+  .primary-nav.open {
+    display: flex; /* Show when menu is toggled */
+  }
+
+  .auth { display:none; }
 }
-.site-tagline {
-  margin: 10px 0 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 14px;
-  color: rgba(255,255,255,0.85);
-  font-style: italic;
+
+@media (max-width: 319px) {
+  .brand { display: none; }
+  .search input { width: 70vw; }
 }
 </style>
+
+<script>
+function toggleMenu() {
+  const menuButton = document.querySelector('.menu-btn');
+  const primaryNav = document.querySelector('.primary-nav');
+  menuButton.classList.toggle('open');
+  primaryNav.classList.toggle('open');
+}
+</script>
