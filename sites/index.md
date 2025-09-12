@@ -5,6 +5,10 @@ permalink: /
 ---
 
 <style>
+.hero-left h1 {
+  line-height: 1.1;
+  min-height: 56px;
+}
 @media (max-width: 900px) {
   .hero-container {
     flex-direction: column-reverse !important;
@@ -17,21 +21,74 @@ permalink: /
     text-align: center !important;
   }
 }
+@media (max-width: 500px) {
+  .hero-left h1 {
+    font-size: 2.0rem !important;
+    margin-bottom: 0 !important;
+  }
+  .hero-left p {
+    font-size: 0.9rem !important;
+    margin-top: 0 !important;
+  }
+  .hero-left button {
+    padding: 10px 24px !important;
+    font-size: 0.9rem !important;
+  }
+  .hero-left a {
+    font-size: 0.9rem !important;
+    margin-left: 12px !important;
+  }
+  #circleWaveformContainer {
+    width: 250px !important;
+    height: 250px !important;
+    margin-bottom: 24px !important;
+  }
+  #circleWaveform {
+    width: 250px !important;
+    height: 250px !important;
+  }
+}
+@media (max-width: 350px) {
+  .hero-left h1 {
+    line-height: 0.8 !important;
+    min-height: 40px !important;
+    font-size: 1.6rem !important;
+    margin-bottom: 0 !important;
+  }
+  .hero-left p {
+    font-size: 0.8rem !important;
+    margin-top: 0 !important;
+  }
+  .hero-left button {
+    padding: 8px 20px !important;
+    font-size: 0.8rem !important;
+  }
+  .hero-left a {
+    font-size: 0.8rem !important;
+    margin-left: 8px !important;
+  }
+}
 </style>
 
 <div style="background:#181820; position:relative; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden;">
-  <div class="hero-container" style="width:100%; max-width:1200px; margin:0 auto; padding:0 16px; display:flex; align-items:center; justify-content:space-between;">
+  <div class="hero-container" style="width:100%; max-width:1100px; margin:0 auto; padding:0 16px; display:flex; align-items:center; justify-content:space-between;">
     <div class="hero-left" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; z-index:2; text-align:left; margin-left: 25px;">
-      <h1 style="color:#fff; font-size:3rem; font-weight:800; margin-bottom:12px;">Understand Lyrics</h1>
+      <h1 style="color:#fff; font-size:3rem; font-weight:800; margin-bottom:12px;">
+        Understand <span id="animated-lyrics"></span>
+      </h1>
       <p style="color:#CCCCCC; font-size:1.3rem; margin-top:12px; max-width:450px;">
         Search lyrics, translations, and interpretations.
       </p>
       <div style="margin-top:24px;">
-        <button style="background:linear-gradient(90deg,#C956FF,#FF834E); color:#fff; border:none; border-radius:999px; padding:12px 32px; font-size:1rem; font-weight:600; cursor:pointer;">Random song</button>
-        <a href="/submit" style="color:#C956FF; margin-left:18px; font-size:1rem; text-decoration:underline;">Submit correction</a>
+        <button style="background:linear-gradient(90deg,#C956FF,#FF834E); color:#fff; border:none; border-radius:999px; padding:12px 32px; font-size:1rem; font-weight:600; cursor:pointer;">
+          Search
+        </button>
+        <a href="/submit" style="color:#C956FF; margin-left:18px; font-size:1rem; text-decoration:underline;">
+          Random Song
+        </a>
       </div>
     </div>
-    <div style="width:350px; height:350px; display:flex; justify-content:center; align-items:center; position:relative;">
+    <div id="circleWaveformContainer" style="width:350px; height:350px; display:flex; justify-content:center; align-items:center; position:relative;">
       <canvas id="circleWaveform" width="350" height="350" style="z-index:1;"></canvas>
     </div>
   </div>
@@ -67,4 +124,25 @@ function drawCircleWave() {
   requestAnimationFrame(drawCircleWave);
 }
 drawCircleWave();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  new Typed("#animated-lyrics", {
+    strings: [
+      "Lyrics",
+      "歌詞",      // Japanese
+      "가사",      // Korean
+      "Paroles",  // French
+      "Letras"    // Spanish
+    ],
+    typeSpeed: 80,
+    backSpeed: 40,
+    backDelay: 1200,
+    loop: true,
+    showCursor: false
+  });
+});
 </script>
