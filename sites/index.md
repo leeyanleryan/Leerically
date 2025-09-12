@@ -27,28 +27,28 @@ permalink: /
     margin-bottom: 0 !important;
   }
   .hero-left p {
-    font-size: 0.9rem !important;
+    font-size: 1.0rem !important;
     margin-top: 0 !important;
   }
   .hero-left button {
     padding: 10px 24px !important;
-    font-size: 0.9rem !important;
+    font-size: 1.0rem !important;
   }
   .hero-left a {
-    font-size: 0.9rem !important;
+    font-size: 1.0rem !important;
     margin-left: 12px !important;
   }
   #circleWaveformContainer {
-    width: 250px !important;
-    height: 250px !important;
+    width: 300px !important;
+    height: 300px !important;
     margin-bottom: 24px !important;
   }
   #circleWaveform {
-    width: 250px !important;
-    height: 250px !important;
+    width: 300px !important;
+    height: 300px !important;
   }
 }
-@media (max-width: 350px) {
+@media (max-width: 400px) {
   .hero-left h1 {
     line-height: 0.8 !important;
     min-height: 40px !important;
@@ -66,6 +66,14 @@ permalink: /
   .hero-left a {
     font-size: 0.8rem !important;
     margin-left: 8px !important;
+  }
+  #circleWaveformContainer {
+    width: 250px !important;
+    height: 250px !important;
+  }
+  #circleWaveform {
+    width: 250px !important;
+    height: 250px !important;
   }
 }
 </style>
