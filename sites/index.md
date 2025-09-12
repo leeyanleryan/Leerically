@@ -4,11 +4,25 @@ title: Home
 permalink: /
 ---
 
-<!-- Hero section with centered max-width container -->
+<style>
+@media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .hero-left {
+    margin-left: 0 !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+}
+</style>
+
 <div style="background:#181820; position:relative; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden;">
-  <div style="width:100%; max-width:1200px; margin:0 auto; padding:0 16px; display:flex; align-items:center; justify-content:space-between;">
-    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; z-index:2; text-align:left; margin-left: 30px;">
-      <h1 style="color:#fff; font-size:3rem; font-weight:800; letter-spacing:.02em; margin-bottom:12px;">Accurate Lyrics</h1>
+  <div class="hero-container" style="width:100%; max-width:1200px; margin:0 auto; padding:0 16px; display:flex; align-items:center; justify-content:space-between;">
+    <div class="hero-left" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; z-index:2; text-align:left; margin-left: 25px;">
+      <h1 style="color:#fff; font-size:3rem; font-weight:800; margin-bottom:12px;">Understand Lyrics</h1>
       <p style="color:#CCCCCC; font-size:1.3rem; margin-top:12px; max-width:450px;">
         Search lyrics, translations, and interpretations.
       </p>
@@ -54,19 +68,3 @@ function drawCircleWave() {
 }
 drawCircleWave();
 </script>
-
-<section class="featured">
-  <h2>Featured</h2>
-</section>
-
-<section class="recent">
-  <h2>Recently added / updated</h2>
-</section>
-
-<section class="catalog">
-  <h2>Browse songs</h2>
-</section>
-
-<footer>
-
-</footer>

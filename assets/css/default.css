@@ -4,9 +4,9 @@ html,body,h1,h2,h3,h4,h5,h6 {
   scroll-padding-top: 43px;
 }
 
-html {
+/* html {
   overflow-y: scroll;
-}
+} */
 
 body {
   background-color: #f1f1f1;
@@ -50,31 +50,4 @@ img {
 body.dark-mode .no-hover-background-after-click.touch-active {
   background: var(--dark-mode-hover-background-color);
   transition: background-color 0.2s ease-out;
-}
-
-li.li-padding-bottom-10 {
-  padding-bottom: 10px;
-}
-
-ul.ul-margin-top-0 {
-  margin-top: 0px;
-}
-ol.ol-margin-top-0 {
-  margin-top: 0px;
-}
-
-h5.h5-margin-0 {
-  margin: 0;
-}
-
-h6.h6-margin-0 {
-  margin: 0;
-}
-
-h5.h5-text-gap {
-  margin-bottom: 20px;
-}
-
-h5.h5-img-gap {
-  margin-bottom: 30px;
 }
