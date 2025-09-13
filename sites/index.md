@@ -78,7 +78,7 @@ permalink: /
 }
 </style>
 
-<div style="background:#181820; position:relative; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+<div style="background:var(--dark-mode-background-color); position:relative; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden;">
   <div class="hero-container" style="width:100%; max-width:1100px; margin:0 auto; padding:0 16px; display:flex; align-items:center; justify-content:space-between;">
     <div class="hero-left" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; z-index:2; text-align:left; margin-left: 25px;">
       <h1 style="color:#fff; font-size:3rem; font-weight:800; margin-bottom:12px;">

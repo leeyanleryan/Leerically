@@ -1,18 +1,13 @@
 :root {
+  --topbar-h: 64px;
+  --page-bg: var(--dark-mode-background-color, #0f0f10);
+  --text: #fff;
+  --muted: rgba(255,255,255,.75);
+  --accent-a: #C956FF;
+  --accent-b: #FF834E;
+
   /* fixed sizes */
-  --sidebar-w:          280px;  /* your sidebar width */
-  --content-w:          900px;  /* your .w3-main max-width */
-  --arrow-off:          110px;  /* the “-110px” centering offset */
-
-  /* how far the left arrow sits from the sidebar */
-  --arrow-sidebar-gap:  30px;   /* ← increase this to move the left arrow farther right */
-
-  /* how far the right arrow sits from the window edge */
-  --arrow-window-gap:   0px;   /* ← decrease this to move the right arrow closer left */
-
-  /* how much space between each arrow and the main body */
-  --body-gap-left:      100px;  /* ← increase this for a bigger gap between left arrow & body */
-  --body-gap-right:     30px;   /* ← decrease this for a smaller gap between body & right arrow */
+  --content-w: 900px;
 
   /* border rounding */
   --pill-border-radius: 0.7rem;
@@ -30,7 +25,7 @@
 
   /* background colors for different modes */
   --light-mode-background-color: #f1f1f1;
-  --dark-mode-background-color: #252525;
+  --dark-mode-background-color: #181820;
 
   /* hover/focus background colors for different modes */
   --light-mode-hover-background-color: rgba(0,0,0,0.03);
