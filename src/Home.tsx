@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { use, useEffect, useRef } from "react";
 import Typed from "typed.js";
 import "./Home.css";
 
@@ -10,15 +10,37 @@ const animatedLyrics = [
   "Letras"    // Spanish
 ];
 
+const animatedLanguages = [
+  "English",
+  "日本語",    // Japanese
+  "한국어",    // Korean
+  "Français", // French
+  "Español"   // Spanish
+]
+
 const Home: React.FC = () => {
   const lyricsRef = useRef<HTMLSpanElement>(null);
+  const languagesRef = useRef<HTMLSpanElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Typed.js animation
     if (lyricsRef.current) {
       const typed = new Typed(lyricsRef.current, {
         strings: animatedLyrics,
+        typeSpeed: 80,
+        backSpeed: 40,
+        backDelay: 1200,
+        loop: true,
+        showCursor: false
+      });
+      return () => typed.destroy();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (languagesRef.current) {
+      const typed = new Typed(languagesRef.current, {
+        strings: animatedLanguages,
         typeSpeed: 80,
         backSpeed: 40,
         backDelay: 1200,
@@ -67,26 +89,28 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="home-bg">
-      <div className="hero-container">
-        <div className="hero-left">
-          <h1>
-            Understand <span ref={lyricsRef}></span>
-          </h1>
-          <p>
-            Search lyrics, translations, and interpretations.
-          </p>
-          <div className="hero-buttons">
-            <button>
-              Search
-            </button>
-            <a href="/submit">
-              Random Song
-            </a>
+    <div>
+      <div className="home-bg">
+        <div className="hero-container">
+          <div className="hero-left">
+            <h1>
+              Understand <span ref={lyricsRef}></span>
+            </h1>
+            <p>
+              Search lyrics, translations, and interpretations.
+            </p>
+            <div className="hero-buttons">
+              <button>
+                Search
+              </button>
+              <a href="/submit">
+                Random Song
+              </a>
+            </div>
           </div>
-        </div>
-        <div id="circleWaveformContainer">
-          <canvas id="circleWaveform" ref={canvasRef} width={350} height={350} />
+          <div id="circleWaveformContainer">
+            <canvas id="circleWaveform" ref={canvasRef} width={350} height={350} />
+          </div>
         </div>
       </div>
     </div>

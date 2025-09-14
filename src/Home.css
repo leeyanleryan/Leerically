@@ -1,21 +1,17 @@
 .home-bg {
-  background: var(--dark-mode-background-color); 
-  position: relative;
-  height: 100vh;
+  background: var(--page-bg); 
+  margin-top: var(--topbar-h);
+  min-height: calc(100vh - var(--topbar-h));
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 .hero-container {
   width: 100%;
   max-width: 1100px;
-  margin: 0 auto;
   padding: 0 16px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .hero-left {
@@ -23,14 +19,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
   z-index: 2;
-  text-align: left;
   margin-left: 25px;
 }
 
 .hero-left h1 {
-  color: #fff;
+  color: var(--text);
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 12px;
@@ -40,7 +34,7 @@
 }
 
 .hero-left p {
-  color: #CCCCCC;
+  color: var(--text-secondary);
   font-size: 1.3rem;
   margin-top: 12px;
   max-width: 450px;
@@ -51,8 +45,8 @@
 }
 
 .hero-buttons button {
-  background: linear-gradient(90deg, #C956FF, #FF834E);
-  color: #fff;
+  background: var(--gradient);
+  color: var(--text);
   border: none;
   border-radius: 999px;
   padding: 12px 32px;
@@ -62,19 +56,10 @@
 }
 
 .hero-buttons a {
-  color: #C956FF;
+  color: var(--accent-a);
   margin-left: 18px;
   font-size: 1rem;
   text-decoration: underline;
-}
-
-#circleWaveformContainer {
-  width: 350px;
-  height: 350px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
 }
 
 #circleWaveform {

@@ -6,9 +6,11 @@
   --topbar-h: 64px;
   --page-bg: #181820;
   --text: #fff;
+  --text-secondary: #CCCCCC;
   --muted: rgba(255,255,255,.75);
   --accent-a: #C956FF;
   --accent-b: #FF834E;
+  --gradient : linear-gradient(90deg, var(--accent-a), var(--accent-b));
 
   --theme-transition: 0.3s;
 }

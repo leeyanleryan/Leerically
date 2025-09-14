@@ -1,5 +1,5 @@
 .topbar {
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   right: 0; 
@@ -82,8 +82,8 @@
 }
 
 .btn-cta{
-  color:#fff; border:0;
-  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  color:var(--text); border:0;
+  background: var(--gradient);
   box-shadow: 0 6px 16px rgba(0,0,0,.12);
 }
 
