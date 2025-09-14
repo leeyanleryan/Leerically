@@ -39,6 +39,8 @@ const Home: React.FC = () => {
     const radius = 140;
 
     function drawCircleWave() {
+      if (!ctx) return;
+      if (!canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.save();
       const gradient = ctx.createLinearGradient(0,0,canvas.width,0);
@@ -84,7 +86,7 @@ const Home: React.FC = () => {
           </div>
         </div>
         <div id="circleWaveformContainer">
-          <canvas ref={canvasRef} width={350} height={350} />
+          <canvas id="circleWaveform" ref={canvasRef} width={350} height={350} />
         </div>
       </div>
     </div>

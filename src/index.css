@@ -4,35 +4,13 @@
   -moz-osx-font-smoothing: grayscale;
 
   --topbar-h: 64px;
-  --page-bg: var(--dark-mode-background-color, #0f0f10);
+  --page-bg: #181820;
   --text: #fff;
   --muted: rgba(255,255,255,.75);
   --accent-a: #C956FF;
   --accent-b: #FF834E;
 
   --theme-transition: 0.3s;
-
-  --light-mode-border-color: rgba(0,0,0,0.1);
-  --dark-mode-border-color: rgba(255,255,255,0.1);
-
-  --light-mode-border: 1px solid var(--light-mode-border-color);
-  --dark-mode-border: 1px solid var(--dark-mode-border-color);
-
-  --light-mode-background-color: #f1f1f1;
-  --dark-mode-background-color: #181820;
-
-  --light-mode-hover-background-color: rgba(0,0,0,0.03);
-  --dark-mode-hover-background-color: rgba(255,255,255,0.04);
-
-  --light-mode-active-background-color: #b3ddff;
-  --dark-mode-active-background-color: #0076d6;
-
-  --light-mode-accent-background-color: #fbfbfb;
-  --dark-mode-accent-background-color: #1e1e1e;
-  --dark-mode-accent2-background-color: #2d2d2d;
-
-  --light-mode-text-color: black;
-  --dark-mode-text-color: white;
 }
 
 html,body,h1,h2,h3,h4,h5,h6 {
@@ -42,16 +20,11 @@ html,body,h1,h2,h3,h4,h5,h6 {
 }
 
 body {
-  background-color: #f1f1f1;
-  color: #000000;
+  background-color: var(--page-bg);
+  color: var(--text);
   transition: background-color var(--theme-transition) ease, 
               color var(--theme-transition) ease;
   margin: 0;
-}
-
-body.dark-mode {
-  background-color: var(--dark-mode-background-color);
-  color: #ffffff;
 }
 
 img {
@@ -63,24 +36,4 @@ img {
   -webkit-tap-highlight-color: transparent;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .no-hover-background-after-click:hover {
-    background: var(--light-mode-hover-background-color);
-  }
-  body.dark-mode .no-hover-background-after-click:hover {
-    background: var(--dark-mode-hover-background-color);
-  }
-}
-.no-hover-background-after-click:active {
-  background: transparent !important;
-}
-.no-hover-background-after-click.touch-active {
-  background: var(--light-mode-hover-background-color);
-  transition: background-color 0.2s ease-out;
-}
-body.dark-mode .no-hover-background-after-click.touch-active {
-  background: var(--dark-mode-hover-background-color);
-  transition: background-color 0.2s ease-out;
 }
