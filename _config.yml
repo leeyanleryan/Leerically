@@ -1,8 +1,0 @@
-title: Leerically
-description: >-
-  Accurate lyrics for all your favourite songs in one place.
-baseurl: ""
-url: "https://leerically.com"
-theme: null
-plugins:
-  - jekyll-redirect-from
