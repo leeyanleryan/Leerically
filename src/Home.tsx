@@ -74,7 +74,7 @@ const Home: React.FC = () => {
           <p>
             Search lyrics, translations, and interpretations.
           </p>
-          <div>
+          <div className="hero-buttons">
             <button>
               Search
             </button>

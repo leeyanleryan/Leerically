@@ -1,49 +1,84 @@
 .home-bg {
-  background:var(--dark-mode-background-color); 
-  position:relative; 
-  height:100vh; 
-  display:flex; 
-  align-items:center; 
-  justify-content:center; 
-  overflow:hidden;
+  background: var(--dark-mode-background-color); 
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .hero-container {
-  width:100%; 
-  max-width:1100px; 
-  margin:0 auto; 
-  padding:0 16px; 
-  display:flex; 
-  align-items:center; 
-  justify-content:space-between;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .hero-left {
-  flex:1; 
-  display:flex; 
-  flex-direction:column; 
-  justify-content:center; 
-  align-items:flex-start; 
-  z-index:2; 
-  text-align:left; 
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2;
+  text-align: left;
   margin-left: 25px;
 }
 
 .hero-left h1 {
-  color:#fff; 
-  font-size:3rem; 
-  font-weight:800; 
-  margin-bottom:12px;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 12px;
 
   line-height: 1.1;
   min-height: 56px;
 }
 
 .hero-left p {
-  color:#CCCCCC; 
-  font-size:1.3rem; 
-  margin-top:12px; 
-  max-width:450px;
+  color: #CCCCCC;
+  font-size: 1.3rem;
+  margin-top: 12px;
+  max-width: 450px;
+}
+
+.hero-buttons {
+  margin-top: 24px;
+}
+
+.hero-buttons button {
+  background: linear-gradient(90deg, #C956FF, #FF834E);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hero-buttons a {
+  color: #C956FF;
+  margin-left: 18px;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+#circleWaveformContainer {
+  width: 350px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#circleWaveform {
+  z-index: 1;
 }
 
 @media (max-width: 900px) {

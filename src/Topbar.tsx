@@ -26,7 +26,7 @@ const Topbar: React.FC = () => {
         </div>
 
         <button className={`menu-btn${menuOpen ? ' open' : ''}`} aria-label="Toggle Menu" onClick={toggleMenu}>
-          <span style={{ fontSize: 24, color: 'var(--text)' }}>&#9776;</span>
+          <i className="fa fa-bars"></i>
         </button>
       </div>
     </header>
