@@ -1,68 +1,87 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --topbar-h: 64px;
+  --page-bg: var(--dark-mode-background-color, #0f0f10);
+  --text: #fff;
+  --muted: rgba(255,255,255,.75);
+  --accent-a: #C956FF;
+  --accent-b: #FF834E;
+
+  --theme-transition: 0.3s;
+
+  --light-mode-border-color: rgba(0,0,0,0.1);
+  --dark-mode-border-color: rgba(255,255,255,0.1);
+
+  --light-mode-border: 1px solid var(--light-mode-border-color);
+  --dark-mode-border: 1px solid var(--dark-mode-border-color);
+
+  --light-mode-background-color: #f1f1f1;
+  --dark-mode-background-color: #181820;
+
+  --light-mode-hover-background-color: rgba(0,0,0,0.03);
+  --dark-mode-hover-background-color: rgba(255,255,255,0.04);
+
+  --light-mode-active-background-color: #b3ddff;
+  --dark-mode-active-background-color: #0076d6;
+
+  --light-mode-accent-background-color: #fbfbfb;
+  --dark-mode-accent-background-color: #1e1e1e;
+  --dark-mode-accent2-background-color: #2d2d2d;
+
+  --light-mode-text-color: black;
+  --dark-mode-text-color: white;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+html,body,h1,h2,h3,h4,h5,h6 {
+  font-family: "Raleway", sans-serif;
+  scroll-behavior: auto;
+  scroll-padding-top: 43px;
 }
 
 body {
+  background-color: #f1f1f1;
+  color: #000000;
+  transition: background-color var(--theme-transition) ease, 
+              color var(--theme-transition) ease;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+body.dark-mode {
+  background-color: var(--dark-mode-background-color);
+  color: #ffffff;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.no-double-tap-zoom {
+  -webkit-tap-highlight-color: transparent;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .no-hover-background-after-click:hover {
+    background: var(--light-mode-hover-background-color);
   }
-  a:hover {
-    color: #747bff;
+  body.dark-mode .no-hover-background-after-click:hover {
+    background: var(--dark-mode-hover-background-color);
   }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+.no-hover-background-after-click:active {
+  background: transparent !important;
+}
+.no-hover-background-after-click.touch-active {
+  background: var(--light-mode-hover-background-color);
+  transition: background-color 0.2s ease-out;
+}
+body.dark-mode .no-hover-background-after-click.touch-active {
+  background: var(--dark-mode-hover-background-color);
+  transition: background-color 0.2s ease-out;
 }
