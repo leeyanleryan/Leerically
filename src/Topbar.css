@@ -1,4 +1,4 @@
-.topbar{
+.topbar {
   position: fixed; 
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   /* border-bottom: 1px solid rgba(255,255,255,.08); */
 }
 
-.topbar_inner{
+.topbar_inner {
   max-width: 1200px;
   margin: 0 auto;
   height: 100%;
@@ -19,21 +19,34 @@
   padding: 0 16px;
 }
 
-.brand{
+.brand {
   color: var(--text); text-decoration: none;
   font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
   font-size: 18px;
 }
 
-.primary-nav{ display: flex; gap: 18px; margin-left: 8px; }
-.primary-nav a{
-  text-decoration: none; color: var(--muted); font-size: 14px;
+.primary-nav { 
+  display: flex; 
+  gap: 18px; 
+  margin-left: 8px; 
 }
-.primary-nav a:hover, .primary-nav a:focus{ color: var(--text); }
 
-.search{ margin-left: auto; }
-.search input{
-  height: 36px; 
+.primary-nav a {
+  text-decoration: none; 
+  color: var(--muted); 
+  font-size: 14px;
+}
+
+.primary-nav a:hover, .primary-nav a:focus { 
+  color: var(--text); 
+}
+
+.search {
+  margin-left: auto;
+}
+
+.search input {
+  height: 36px;
   width: 35vw;
   max-width: 250px;
   border-radius: 999px;
@@ -43,23 +56,40 @@
   padding: 0 12px; 
   outline: none;
 }
-.search input::placeholder{ color: rgba(255,255,255,.6); }
 
-.auth{ display: flex; gap: 8px; }
-.btn{
+.search input::placeholder { 
+  color: rgba(255,255,255,.6); 
+}
+
+.auth { 
+  display: flex; 
+  gap: 8px; 
+}
+
+.btn {
   display:inline-flex; align-items:center; justify-content:center;
   height: 36px; padding: 0 14px; border-radius: 999px;
   font-size: 14px; text-decoration:none;
 }
-.btn-ghost{ color: var(--text); border:1px solid rgba(255,255,255,.25); }
-.btn-ghost:hover{ border-color: rgba(255,255,255,.45); }
+
+.btn-ghost { 
+  color: var(--text); 
+  border:1px solid rgba(255,255,255,.25); 
+}
+
+.btn-ghost:hover { 
+  border-color: rgba(255,255,255,.45); 
+}
 
 .btn-cta{
   color:#fff; border:0;
   background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
   box-shadow: 0 6px 16px rgba(0,0,0,.12);
 }
-.btn-cta:hover{ filter: brightness(1.06); }
+
+.btn-cta:hover{ 
+  filter: brightness(1.06);
+}
 
 .menu-btn {
   display: none;
@@ -102,7 +132,9 @@
     display: flex;
   }
 
-  .auth { display:none; }
+  .auth { 
+    display:none; 
+  }
 }
 
 @media (max-width: 319px) {

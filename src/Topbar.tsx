@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Topbar.css';
 
 const Topbar: React.FC = () => {
@@ -9,11 +10,11 @@ const Topbar: React.FC = () => {
   return (
     <header className="topbar" role="banner">
       <div className="topbar_inner">
-        <a className="brand" href="/">LEERICALLY</a>
+        <Link className="brand" to="/">LEERICALLY</Link>
 
         <nav className={`primary-nav${menuOpen ? ' open' : ''}`} aria-label="Primary">
-          <a href="/about">About</a>
-          <a href="/featured">Featured</a>
+          <Link to="/about">About</Link>
+          <Link to="/featured">Featured</Link>
         </nav>
 
         <form className="search" action="/search" role="search" method="get">
