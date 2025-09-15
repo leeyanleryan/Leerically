@@ -10,9 +10,13 @@
   --muted: rgba(255,255,255,.75);
   --accent-a: #C956FF;
   --accent-b: #FF834E;
+  --link: var(--accent-a);
   --gradient : linear-gradient(90deg, var(--accent-a), var(--accent-b));
 
   --theme-transition: 0.3s;
+
+  --section-a-width: 1100px;
+  --section-b-width: 900px;
 }
 
 html,body,h1,h2,h3,h4,h5,h6 {

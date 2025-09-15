@@ -1,0 +1,26 @@
+.about-container {
+  max-width: 900px;
+  text-align: center;
+}
+
+.about-container h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+  color: var(--text);
+}
+
+.about-container a {
+  color: var(--link);
+}
+
+.about-box {
+  background: rgba(255,255,255,0.06); /* or #22222a for a light effect */
+  border-radius: 32px;
+  padding: 40px 32px;
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  line-height: 1.7;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  margin-bottom: 24px;
+}

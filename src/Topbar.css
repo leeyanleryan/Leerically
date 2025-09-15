@@ -15,13 +15,18 @@
   max-width: 1200px;
   margin: 0 auto;
   height: 100%;
-  display: flex; align-items: center; gap: 16px;
+  display: flex; 
+  align-items: center; 
+  gap: 16px;
   padding: 0 16px;
 }
 
 .brand {
-  color: var(--text); text-decoration: none;
-  font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--text); 
+  text-decoration: none;
+  font-weight: 800; 
+  letter-spacing: .18em; 
+  text-transform: uppercase;
   font-size: 18px;
 }
 
@@ -37,7 +42,8 @@
   font-size: 14px;
 }
 
-.primary-nav a:hover, .primary-nav a:focus { 
+.primary-nav a:hover, 
+.primary-nav a:focus { 
   color: var(--text); 
 }
 
@@ -67,9 +73,14 @@
 }
 
 .btn {
-  display:inline-flex; align-items:center; justify-content:center;
-  height: 36px; padding: 0 14px; border-radius: 999px;
-  font-size: 14px; text-decoration:none;
+  display:inline-flex; 
+  align-items:center; 
+  justify-content:center;
+  height: 36px; 
+  padding: 0 14px; 
+  border-radius: 999px;
+  font-size: 14px; 
+  text-decoration:none;
 }
 
 .btn-ghost { 
@@ -82,7 +93,8 @@
 }
 
 .btn-cta{
-  color:var(--text); border:0;
+  color:var(--text); 
+  border:0;
   background: var(--gradient);
   box-shadow: 0 6px 16px rgba(0,0,0,.12);
 }
