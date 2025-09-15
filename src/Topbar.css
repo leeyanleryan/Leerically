@@ -5,7 +5,6 @@
   right: 0; 
   height: var(--topbar-h);
   z-index: 1000;
-  background: var(--glass-bg);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   /* border-bottom: 1px solid rgba(255,255,255,.08); */
@@ -121,8 +120,10 @@
   color: var(--text);
 }
 
-@media (max-width: 900px) {
-  .brand { font-size: 16px; }
+@media (max-width: 1000px) {
+  .brand { 
+    font-size: 16px; 
+  }
 
   .menu-btn {
     display: block;

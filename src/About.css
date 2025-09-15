@@ -15,11 +15,11 @@
 }
 
 .about-box {
-  background: rgba(255,255,255,0.06); /* or #22222a for a light effect */
+  background: #22222a;
   border-radius: 32px;
   padding: 40px 32px;
   color: var(--text-secondary);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: 1.7;
   box-shadow: 0 2px 16px rgba(0,0,0,0.04);
   margin-bottom: 24px;
