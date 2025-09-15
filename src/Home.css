@@ -1,7 +1,8 @@
 .home-bg {
   background: var(--page-bg); 
-  margin-top: var(--topbar-h);
-  min-height: calc(100vh - var(--topbar-h));
+  min-height: calc(100vh - 2*var(--topbar-h));
+  padding-top: var(--topbar-h);
+  padding-bottom: var(--topbar-h);
   display: flex;
   align-items: center;
   justify-content: center;
