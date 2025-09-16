@@ -7,6 +7,7 @@
   --page-bg: #181820;
   --page-bg-secondary: #202030;
   --text: #fff;
+  --text-box: #2a2a36;
   --text-secondary: #CCCCCC;
   --muted: rgba(255,255,255,.75);
   --accent-a: #C956FF;
@@ -26,6 +27,12 @@ html,body,h1,h2,h3,h4,h5,h6 {
   scroll-padding-top: 43px;
 }
 
+@media (min-width: 1001px) {
+  html {
+    overflow-y: scroll;
+  }
+}
+
 body {
   background-color: var(--page-bg);
   color: var(--text);
@@ -33,3 +40,14 @@ body {
               color var(--theme-transition) ease;
   margin: 0;
 }
+
+/* img {
+  max-width: 100%;
+  height: auto;
+}
+
+.no-double-tap-zoom {
+  -webkit-tap-highlight-color: transparent;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+} */
