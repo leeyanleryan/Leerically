@@ -4,18 +4,20 @@ import "./Home.css";
 
 const animatedLyrics = [
   "Lyrics",
+  "歌词",      // Chinese
   "歌詞",      // Japanese
-  "가사",      // Korean
-  "Paroles",  // French
-  "Letras"    // Spanish
+  // "가사",      // Korean
+  // "Paroles",  // French
+  // "Letras"    // Spanish
 ];
 
 const animatedLanguages = [
   "English",
+  "中文",      // Chinese
   "日本語",    // Japanese
-  "한국어",    // Korean
-  "Français", // French
-  "Español"   // Spanish
+  // "한국어",    // Korean
+  // "Français", // French
+  // "Español"   // Spanish
 ]
 
 const Home: React.FC = () => {
@@ -90,26 +92,51 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <div className="home-bg">
-        <div className="hero-container">
-          <div className="hero-left">
-            <h1>
-              Understand <span ref={lyricsRef}></span>
-            </h1>
-            <p>
-              Search lyrics, translations, and interpretations.
-            </p>
+      <div className="hero-section darkest">
+        <div className="hero-container tl-ir">
+          <div className="text left">
+            <h1>Understand <span ref={lyricsRef}></span></h1>
+            <p>Search lyrics, translations, and interpretations.</p>
             <div className="hero-buttons">
-              <button>
-                Search
-              </button>
-              <a href="/submit">
-                Random Song
-              </a>
+              <button>Search</button>
+              <a href="/submit">Random Song</a>
             </div>
           </div>
-          <div id="circleWaveformContainer">
-            <canvas id="circleWaveform" ref={canvasRef} width={350} height={350} />
+          <div id="circleWaveformContainer" className="icon right">
+            <canvas id="circleWaveform" className="icon right" ref={canvasRef} width={350} height={350} />
+          </div>
+        </div>
+      </div>
+
+      <div className="hero-section darker">
+        <div className="hero-container il-tr">
+          <div className="icon left">
+            {/* SVG Icon taken from https://heroicons.com. 
+                The only thing that changes is d="..." */}
+            <svg className="icon left" 
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                 strokeWidth={0.5} stroke="url(#accent-gradient)"
+                 width={350} height={350}>
+              <defs>
+                <linearGradient id="accent-gradient" x1="0" y1="0" x2="24" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#C956FF" />
+                  <stop offset="1" stopColor="#FF834E" />
+                </linearGradient>
+              </defs>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802"
+              />
+            </svg>
+          </div>
+          <div className="text right">
+            <h1>Learn <span ref={languagesRef}></span></h1>
+            <p>Explore breakdowns and language tests.</p>
+            <div className="hero-buttons">
+              <button>Tests</button>
+              <a href="/submit">Random Song</a>
+            </div>
           </div>
         </div>
       </div>

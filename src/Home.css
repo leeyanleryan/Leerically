@@ -1,5 +1,4 @@
-.home-bg {
-  background: var(--page-bg); 
+.hero-section {
   min-height: calc(100vh - 2*var(--topbar-h));
   padding-top: var(--topbar-h);
   padding-bottom: var(--topbar-h);
@@ -8,23 +7,30 @@
   justify-content: center;
 }
 
+.hero-section.darkest {
+  background: var(--page-bg); 
+}
+
+.hero-section.darker {
+  background: var(--page-bg-secondary); 
+}
+
 .hero-container {
   width: 100%;
   max-width: 1100px;
   padding: 0 16px;
   display: flex;
+  justify-content: space-between;
 }
 
-.hero-left {
-  flex: 1; 
+.hero-container .text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 2;
-  margin-left: 25px;
 }
 
-.hero-left h1 {
+.hero-container .text h1 {
   color: var(--text);
   font-size: 3rem;
   font-weight: 800;
@@ -34,15 +40,27 @@
   min-height: 56px;
 }
 
-.hero-left p {
+.hero-container .text p {
   color: var(--text-secondary);
   font-size: 1.3rem;
-  margin-top: 12px;
+  margin-top: 0;
   max-width: 450px;
 }
 
+.hero-container .text.left {
+  margin-left: 25px;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.hero-container .text.right {
+  margin-right: 25px;
+  text-align: right;
+  align-items: flex-start;
+}
+
 .hero-buttons {
-  margin-top: 24px;
+  margin-top: 12px;
 }
 
 .hero-buttons button {
@@ -62,17 +80,18 @@
   text-decoration: underline;
 }
 
-#circleWaveform {
-  z-index: 1;
-}
-
 @media (max-width: 1000px) {
-  .hero-container {
+  .hero-container.il-tr {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .hero-container.tl-ir {
     flex-direction: column-reverse !important;
     align-items: center !important;
     justify-content: center !important;
   }
-  .hero-left {
+  .hero-container .text {
     margin-left: 0 !important;
     align-items: center !important;
     text-align: center !important;
@@ -80,57 +99,49 @@
 }
 
 @media (max-width: 500px) {
-  .hero-left h1 {
+  .hero-container .text h1 {
     font-size: 2.0rem !important;
     margin-bottom: 0 !important;
   }
-  .hero-left p {
+  .hero-container .text p {
     font-size: 1.0rem !important;
     margin-top: 0 !important;
   }
-  .hero-left button {
+  .hero-container .text button {
     padding: 10px 24px !important;
     font-size: 1.0rem !important;
   }
-  .hero-left a {
+  .hero-container .text a {
     font-size: 1.0rem !important;
     margin-left: 12px !important;
   }
-  #circleWaveformContainer {
+  .hero-container .icon {
     width: 300px !important;
     height: 300px !important;
     margin-bottom: 24px !important;
   }
-  #circleWaveform {
-    width: 300px !important;
-    height: 300px !important;
-  }
 }
 
 @media (max-width: 400px) {
-  .hero-left h1 {
+  .hero-container .text h1 {
     line-height: 0.8 !important;
     min-height: 40px !important;
     font-size: 1.6rem !important;
     margin-bottom: 0 !important;
   }
-  .hero-left p {
+  .hero-container .text p {
     font-size: 0.8rem !important;
     margin-top: 0 !important;
   }
-  .hero-left button {
+  .hero-container .text button {
     padding: 8px 20px !important;
     font-size: 0.8rem !important;
   }
-  .hero-left a {
+  .hero-container .text a {
     font-size: 0.8rem !important;
     margin-left: 8px !important;
   }
-  #circleWaveformContainer {
-    width: 250px !important;
-    height: 250px !important;
-  }
-  #circleWaveform {
+  .hero-container .icon {
     width: 250px !important;
     height: 250px !important;
   }
