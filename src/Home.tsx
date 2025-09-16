@@ -93,11 +93,11 @@ const Home: React.FC = () => {
   return (
     <div>
       <div className="hero-section darkest">
-        <div className="hero-container direction-normal">
+        <div className="hero-container text-icon direction-reverse">
           <div className="text left">
             <h1>Understand <span ref={lyricsRef}></span></h1>
             <p>Search lyrics, translations, and interpretations.</p>
-            <div className="hero-buttons">
+            <div className="buttons">
               <button>Search</button>
               <a href="/submit">Random Song</a>
             </div>
@@ -109,7 +109,7 @@ const Home: React.FC = () => {
       </div>
 
       <div className="hero-section darker">
-        <div className="hero-container direction-reverse">
+        <div className="hero-container text-icon direction-normal">
           <div className="icon left">
             {/* SVG Icon taken from https://heroicons.com. 
                 The only thing that changes is d="..." */}
@@ -133,7 +133,7 @@ const Home: React.FC = () => {
           <div className="text right">
             <h1>Learn <span ref={languagesRef}></span></h1>
             <p>Explore breakdowns and language tests.</p>
-            <div className="hero-buttons">
+            <div className="buttons">
               <button>Tests</button>
               <a href="/submit">Random Song</a>
             </div>
