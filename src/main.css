@@ -33,14 +33,3 @@ body {
               color var(--theme-transition) ease;
   margin: 0;
 }
-
-/* img {
-  max-width: 100%;
-  height: auto;
-}
-
-.no-double-tap-zoom {
-  -webkit-tap-highlight-color: transparent;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-} */
