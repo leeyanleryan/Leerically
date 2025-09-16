@@ -12,23 +12,23 @@ const Topbar: React.FC = () => {
       <div className="topbar_inner">
         <Link className="brand" to="/">LEERICALLY</Link>
 
-        <nav className={`primary-nav${menuOpen ? ' open' : ''}`} aria-label="Primary">
+        {/* <nav className={`primary-nav${menuOpen ? ' open' : ''}`} aria-label="Primary">
           <Link to="/about">About</Link>
           <Link to="/featured">Featured</Link>
-        </nav>
+        </nav> */}
 
         <form className="search" action="/search" role="search" method="get">
           <input type="search" name="q" placeholder="Search" aria-label="Search" />
         </form>
 
-        <div className="auth">
+        {/* <div className="auth">
           <a className="btn btn-ghost" href="/signin">Sign In</a>
           <a className="btn btn-cta" href="/signup">Sign Up</a>
-        </div>
+        </div> */}
 
-        <button className={`menu-btn${menuOpen ? ' open' : ''}`} aria-label="Toggle Menu" onClick={toggleMenu}>
+        {/* <button className={`menu-btn${menuOpen ? ' open' : ''}`} aria-label="Toggle Menu" onClick={toggleMenu}>
           <i className="fa fa-bars"></i>
-        </button>
+        </button> */}
       </div>
     </header>
   );
