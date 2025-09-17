@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Typed from "typed.js";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 const animatedLyrics = [
@@ -90,6 +91,8 @@ const Home: React.FC = () => {
     drawCircleWave();
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <div>
       <div className="hero-section darkest">
@@ -98,7 +101,7 @@ const Home: React.FC = () => {
             <h1>Understand <span ref={lyricsRef}></span></h1>
             <p>Search lyrics, translations, and interpretations.</p>
             <div className="buttons">
-              <button>Search</button>
+              <button onClick={() => navigate("/search")}>Search</button>
               <a href="/submit">Random Song</a>
             </div>
           </div>

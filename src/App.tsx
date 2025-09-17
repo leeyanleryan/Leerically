@@ -3,6 +3,7 @@ import './App.css'
 import Topbar from './Topbar'
 import Home from './Home'
 import About from './About'
+import Search from './Search'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </Router>
   )
