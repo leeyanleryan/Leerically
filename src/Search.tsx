@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./Search.css";
 
 const allSongs = [
@@ -12,9 +13,20 @@ const allSongs = [
 
 const languageFilters = ["All", "English", "Chinese", "Japanese"];
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 const Search: React.FC = () => {
-  const [query, setQuery] = useState("");
+  const queryParams = useQuery();
+  const initialQuery = queryParams.get("q") || "";
+  const [query, setQuery] = useState(initialQuery);
   const [language, setLanguage] = useState("All");
+
+  const location = useLocation();
+  useEffect(() => {
+    setQuery(queryParams.get("q") || "");
+  }, [location.search]);
 
   const filteredSongs = allSongs.filter(song => {
     const matchesQuery =
