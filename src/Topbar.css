@@ -65,6 +65,12 @@
   color: rgba(255,255,255,.6); 
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
 .auth { 
   display: flex; 
   gap: 8px; 

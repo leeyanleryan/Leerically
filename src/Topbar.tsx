@@ -14,6 +14,7 @@ const Topbar: React.FC = () => {
 
         <nav className={`primary-nav${menuOpen ? ' open' : ''}`} aria-label="Primary">
           <Link to="/about">About</Link>
+          <Link to="/search">Songs</Link>
         </nav>
 
         <form className="search" action="/search" role="search" method="get">

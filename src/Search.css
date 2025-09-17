@@ -1,22 +1,12 @@
-.search-outer {
-  min-height: calc(100vh - 2*var(--topbar-h));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--page-bg);
-}
-
 .search-box {
   background: var(--text-box);
-  border-radius: 32px;
-  padding: 32px 32px 24px 32px;
+  border-radius: 16px;
+  padding: 32px 32px 32px 32px;
   color: var(--text-secondary);
   font-size: 1.1rem;
   line-height: 1.7;
   box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-  min-width: 350px;
-  max-width: 500px;
-  width: 100%;
+  width: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,16 +21,15 @@
 
 .modern-search-input {
   width: 100%;
-  max-width: 350px;
+  max-width: 500px;
   padding: 14px 18px;
   font-size: 1.1rem;
-  border: none;
+  border: 1px solid rgba(255,255,255,.25); 
   border-radius: 999px;
-  background: #232346;
+  background: var(--text-box);
   color: #fff;
   outline: none;
   box-sizing: border-box;
-  transition: box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 
@@ -64,9 +53,8 @@
   padding: 8px 22px;
   font-size: 1rem;
   color: var(--text-secondary);
-  background: #232346;
+  border:1px solid rgba(255,255,255,.25); 
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
   font-weight: 600;
 }
 
@@ -74,6 +62,14 @@
 .filter-pill:hover {
   background: var(--gradient);
   color: #fff;
+}
+
+.filter-pill.active {
+  border: 0;
+}
+
+.filter-pill:hover {
+  opacity: 0.7;
 }
 
 .modern-songs-list {
@@ -88,11 +84,10 @@
 .modern-song-item {
   padding: 14px 18px;
   margin-bottom: 10px;
-  background: #232346;
   border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.25); 
   color: #fff;
   font-size: 1rem;
-  transition: background 0.2s;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -100,7 +95,7 @@
 }
 
 .modern-song-item:hover {
-  background: #2d2d5a;
+  background: rgba(255,255,255,.05);
 }
 
 .song-lang {
