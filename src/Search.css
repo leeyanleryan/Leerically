@@ -64,8 +64,8 @@
   color: #fff;
 }
 
-.filter-pill.active {
-  border: 0;
+.filter-pill.active:hover {
+  opacity: 1;
 }
 
 .filter-pill:hover {

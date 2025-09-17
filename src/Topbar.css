@@ -77,19 +77,19 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .btn {
-  display:inline-flex; 
-  align-items:center; 
-  justify-content:center;
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center;
   height: 36px; 
   padding: 0 14px; 
   border-radius: 999px;
   font-size: 14px; 
-  text-decoration:none;
+  text-decoration: none;
 }
 
 .btn-ghost { 
   color: var(--text); 
-  border:1px solid rgba(255,255,255,.25); 
+  border: 1px solid rgba(255,255,255,.25); 
 }
 
 .btn-ghost:hover { 
@@ -97,8 +97,8 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .btn-cta{
-  color:var(--text); 
-  border:0;
+  color: var(--text); 
+  border: 0; 
   background: var(--gradient);
   box-shadow: 0 6px 16px rgba(0,0,0,.12);
 }

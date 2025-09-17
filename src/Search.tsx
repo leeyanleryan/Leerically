@@ -49,7 +49,7 @@ const Search: React.FC = () => {
           <div className="search-bar-row">
             <input
               type="text"
-              placeholder="Search by song, artist, or album..."
+              placeholder="Search by artist, album, or song..."
               value={query}
               onChange={e => setQuery(e.target.value)}
               className="modern-search-input"
