@@ -64,7 +64,7 @@ const Search: React.FC = () => {
         <ul className="modern-songs-list">
           {filteredSongs.map((song, idx) => (
             <li key={idx} className="modern-song-item">
-              <span>{song.artist}: <strong>{song.title}</strong></span> <span className="song-lang">{song.language}</span>
+              <span>{song.artist}: <strong>{song.title}</strong></span> <span className="song-lang">{song.album}</span>
             </li>
           ))}
           {filteredSongs.length === 0 && <p>No results found.</p>}
