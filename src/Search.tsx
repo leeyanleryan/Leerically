@@ -7,8 +7,6 @@ const allSongs = [
   { artist: "BABYMETAL", album: "METAL RESISTANCE", title: "No Rain No Rainbow", year: 2016, language: "Japanese" },
   { artist: "THE ORAL CIGARETTES", album: "FIXION", title: "Amy", year: 2016, language: "Japanese" },
   { artist: "THE ORAL CIGARETTES", album: "BLACK MEMORY", title: "Flower", year: 2017, language: "Japanese" },
-  { artist: "Artist A", album: "Album A", title: "Some English Song", year: 2020, language: "English" },
-  { artist: "Artist B", album: "Album B", title: "Chinese Melody", year: 2021, language: "Chinese" },
 ];
 
 const languageFilters = ["All", "English", "Chinese", "Japanese"];
@@ -66,7 +64,7 @@ const Search: React.FC = () => {
         <ul className="modern-songs-list">
           {filteredSongs.map((song, idx) => (
             <li key={idx} className="modern-song-item">
-              <strong>{song.title}</strong> by {song.artist} ({song.album}, {song.year}) <span className="song-lang">{song.language}</span>
+              <span>{song.artist}: <strong>{song.title}</strong></span> <span className="song-lang">{song.language}</span>
             </li>
           ))}
           {filteredSongs.length === 0 && <p>No results found.</p>}

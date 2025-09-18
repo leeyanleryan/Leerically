@@ -1,6 +1,6 @@
 .search-box {
   border-radius: 16px;
-  padding: calc(1.5*var(--topbar-h)) 16px;
+  padding: calc(1.2*var(--topbar-h)) 16px;
   color: var(--text-secondary);
   line-height: 1.5;
   margin: 0 auto;
@@ -64,7 +64,6 @@
   padding: 0;
   margin: 0;
   width: 100%;
-  max-height: 350px;
   overflow-y: auto;
 }
 .modern-songs-list p {
@@ -85,6 +84,9 @@
 }
 .modern-song-item:hover {
   background: rgba(255,255,255,.05);
+}
+.modern-song-item strong {
+  color: var(--accent-a);
 }
 
 .song-lang {
