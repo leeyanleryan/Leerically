@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import yaml from 'js-yaml';
 import NotFound from './404';
-import { allSongs, sluggify } from './songsData';
+import { allSongs, sluggify } from '../ts/songsData';
 
 function getSongSlugFromUrl(path: string) {
   return path.replace(/^\//, '').replace(/\.yml$/, '');

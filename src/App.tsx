@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css'
-import Topbar from './Topbar'
-import Home from './Home'
-import About from './About'
-import Search from './Search'
-import SignIn from './SignIn'
-import SignUp from './SignUp'
-import Song from './Song'
-import NotFound from './404';
+import './css/App.css'
+import Topbar from './tsx/Topbar'
+import Home from './tsx/Home'
+import About from './tsx/About'
+import Search from './tsx/Search'
+import SignIn from './tsx/SignIn'
+import SignUp from './tsx/SignUp'
+import Song from './tsx/Song'
+import NotFound from './tsx/404';
 
 function App() {
   return (

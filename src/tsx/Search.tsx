@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
-import './Search.css'
-import { allSongs, sluggify } from './songsData';
+import '../css/Search.css'
+import { allSongs, sluggify } from '../ts/songsData';
 
 const languageFilters = ["All", "English", "Chinese", "Japanese"];
 
