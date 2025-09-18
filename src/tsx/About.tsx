@@ -60,7 +60,7 @@ const About: React.FC = () => {
       <div className="hero-section darker">
         <div className="hero-container text-icon direction-reverse">
           <div className="text left">
-            <h1>Attribution</h1>
+            <h1>Attributions</h1>
             <p>
               Icons taken from&nbsp;
               <a href="https://www.flaticon.com/" title="Flaticon">Flaticon</a> 
