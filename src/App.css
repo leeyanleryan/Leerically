@@ -1,22 +1,16 @@
 .hero-section {
   padding-top: var(--topbar-h);
   padding-bottom: var(--topbar-h);
+  height: calc(100vh - 2*var(--topbar-h));
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hero-section.darkest {
   background: var(--page-bg); 
 }
 .hero-section.darker {
   background: var(--page-bg-secondary); 
-}
-.hero-section.flex {
-  height: calc(100vh - 2*var(--topbar-h));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-section.block {
-  height: calc(640px - 2*var(--topbar-h));
-  margin: 0 auto;
 }
 
 .hero-container {
@@ -31,11 +25,6 @@
 .hero-container.text-box {
   max-width: 900px;
   text-align: center;
-}
-.hero-container.block {
-  height: inherit;
-  align-items: center;
-  margin: 0 auto;
 }
 
 .hero-container .text {

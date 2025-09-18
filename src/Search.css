@@ -1,19 +1,13 @@
 .search-box {
-  background: var(--text-box);
   border-radius: 16px;
-  padding: 32px 32px 32px 32px;
+  padding: calc(1.5*var(--topbar-h)) 16px;
   color: var(--text-secondary);
-  font-size: 1.1rem;
-  line-height: 1.7;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-  width: 900px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 900px;
 }
 
 .search-bar-row {
-  width: 100%;
   display: flex;
   justify-content: center;
   margin-bottom: 18px;
@@ -21,21 +15,18 @@
 
 .modern-search-input {
   width: 100%;
-  max-width: 500px;
+  max-width: 350px;
   padding: 14px 18px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border: 1px solid rgba(255,255,255,.25); 
   border-radius: 999px;
-  background: var(--text-box);
+  background: none;
   color: #fff;
-  outline: none;
-  box-sizing: border-box;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
-
 .modern-search-input::placeholder {
   color: #aaa;
-  opacity: 1;
+  opacity: 0.5;
 }
 
 .filter-row {
@@ -48,27 +39,23 @@
 
 .filter-pill {
   background: none;
-  border: none;
   border-radius: 999px;
   padding: 8px 22px;
-  font-size: 1rem;
   color: var(--text-secondary);
-  border:1px solid rgba(255,255,255,.25); 
+  border: 1px solid rgba(255,255,255,.25); 
   cursor: pointer;
-  font-weight: 600;
 }
-
-.filter-pill.active,
-.filter-pill:hover {
-  background: var(--gradient);
+.filter-pill.active {
+  background: var(--gradient) !important;
+  border: 0;
   color: #fff;
 }
-
 .filter-pill.active:hover {
   opacity: 1;
 }
-
 .filter-pill:hover {
+  background: rgba(255,255,255,.15);
+  color: #fff;
   opacity: 0.7;
 }
 

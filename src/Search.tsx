@@ -43,38 +43,34 @@ const Search: React.FC = () => {
   });
 
   return (
-    <div className="hero-section darkest block">
-      <div className="hero-container text-box">
-        <div className="search-box">
-          <div className="search-bar-row">
-            <input
-              type="text"
-              placeholder="Search by artist, album, or song..."
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-              className="modern-search-input"
-            />
-          </div>
-          <div className="filter-row">
-            {languageFilters.map(l => (
-              <button
-                key={l}
-                className={`filter-pill${language === l ? " active" : ""}`}
-                onClick={() => setLanguage(l)}
-              >
-                {l}
-              </button>
-            ))}
-          </div>
-          <ul className="modern-songs-list">
-            {filteredSongs.map((song, idx) => (
-              <li key={idx} className="modern-song-item">
-                <strong>{song.title}</strong> by {song.artist} ({song.album}, {song.year}) <span className="song-lang">{song.language}</span>
-              </li>
-            ))}
-            {filteredSongs.length === 0 && <p>No results found.</p>}
-          </ul>
+    <div>
+      <div className="search-box">
+        <div className="search-bar-row">
+          <input
+            type="text"
+            placeholder="Search by artist, album, or song..."
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            className="modern-search-input"/>
         </div>
+        <div className="filter-row">
+          {languageFilters.map(l => (
+            <button
+              key={l}
+              className={`filter-pill${language === l ? " active" : ""}`}
+              onClick={() => setLanguage(l)}>
+              {l}
+            </button>
+          ))}
+        </div>
+        <ul className="modern-songs-list">
+          {filteredSongs.map((song, idx) => (
+            <li key={idx} className="modern-song-item">
+              <strong>{song.title}</strong> by {song.artist} ({song.album}, {song.year}) <span className="song-lang">{song.language}</span>
+            </li>
+          ))}
+          {filteredSongs.length === 0 && <p>No results found.</p>}
+        </ul>
       </div>
     </div>
   );
