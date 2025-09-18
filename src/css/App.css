@@ -84,8 +84,11 @@
   cursor: pointer;
 }
 
-.hero-container .buttons a {
+.hero-container .text a {
   color: var(--link);
+}
+
+.hero-container .text .buttons a {
   margin-left: 18px;
   font-size: 1rem;
   text-decoration: underline;
@@ -145,7 +148,7 @@
     padding: 10px 24px !important;
     font-size: 1.0rem !important;
   }
-  .hero-container .text a {
+  .hero-container .text .buttons a {
     font-size: 1.0rem !important;
     margin-left: 12px !important;
   }
@@ -177,7 +180,7 @@
     padding: 8px 20px !important;
     font-size: 0.8rem !important;
   }
-  .hero-container .text a {
+  .hero-container .text .buttons a {
     font-size: 0.8rem !important;
     margin-left: 8px !important;
   }

@@ -23,7 +23,6 @@ const animatedLanguages = [
 const Home: React.FC = () => {
   const lyricsRef = useRef<HTMLSpanElement>(null);
   const languagesRef = useRef<HTMLSpanElement>(null);
-  // const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     if (lyricsRef.current) {
@@ -53,47 +52,7 @@ const Home: React.FC = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   const canvas = canvasRef.current;
-  //   if (!canvas) return;
-  //   const ctx = canvas.getContext("2d");
-  //   if (!ctx) return;
-  //   const centerX = canvas.width / 2;
-  //   const centerY = canvas.height / 2;
-  //   const radius = 140;
-
-  //   function drawCircleWave() {
-  //     if (!ctx) return;
-  //     if (!canvas) return;
-  //     ctx.clearRect(0, 0, canvas.width, canvas.height);
-  //     ctx.save();
-  //     const gradient = ctx.createLinearGradient(0,0,canvas.width,0);
-  //     gradient.addColorStop(0, "#C956FF");
-  //     gradient.addColorStop(1, "#FF834E");
-  //     ctx.strokeStyle = gradient;
-  //     ctx.lineWidth = 8;
-  //     ctx.beginPath();
-  //     for(let i=0; i<=360; i+=2){
-  //       let angle = (i * Math.PI) / 180;
-  //       let wave = Math.sin(angle * 4 + Date.now()/500) * 18;
-  //       let r = radius + wave;
-  //       let x = centerX + r * Math.cos(angle);
-  //       let y = centerY + r * Math.sin(angle);
-  //       if(i===0) ctx.moveTo(x, y);
-  //       else ctx.lineTo(x, y);
-  //     }
-  //     ctx.closePath();
-  //     ctx.stroke();
-  //     ctx.restore();
-  //     requestAnimationFrame(drawCircleWave);
-  //   }
-  //   drawCircleWave();
-  // }, []);
-
   const navigate = useNavigate();
-
-  {/* SVG Icon taken from https://heroicons.com. 
-      The only thing that changes is d="..." */}
 
   return (
     <div>
@@ -107,9 +66,6 @@ const Home: React.FC = () => {
               <a href="/submit">Random Song</a>
             </div>
           </div>
-          {/* <div id="circleWaveformContainer" className="icon right">
-            <canvas id="circleWaveform" className="icon right" ref={canvasRef} width={350} height={350} />
-          </div> */}
           <div className="icon right">
             <svg className="icon left" 
                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
