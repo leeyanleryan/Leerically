@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Typed from "typed.js";
 import { useNavigate } from "react-router-dom";
-import "./Home.css";
 
 const animatedLyrics = [
   "Lyrics",

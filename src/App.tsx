@@ -4,6 +4,7 @@ import Topbar from './Topbar'
 import Home from './Home'
 import About from './About'
 import Search from './Search'
+import Song from './Song'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/:slug" element={<Song />} />
       </Routes>
     </Router>
   )
