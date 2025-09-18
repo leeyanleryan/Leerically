@@ -45,10 +45,11 @@ jobs:
           token: ${{ secrets.DATA_REPO_TOKEN }}
           path: leerically-data
 
-      - name: Copy data folders into dist
+      - name: Create dist/data and copy data folders
         run: |
-          cp -r ./leerically-data/songs ./dist/
-          cp -r ./leerically-data/word-banks ./dist/
+          mkdir -p ./dist/data
+          cp -r ./leerically-data/songs ./dist/data/
+          cp -r ./leerically-data/word-banks ./dist/data/
 
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
