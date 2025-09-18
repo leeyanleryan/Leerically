@@ -53,6 +53,9 @@ jobs:
       - name: Build Vite React app
         run: npm run build
 
+      - name: Copy data into dist
+        run: cp -r ./data ./dist/
+
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
