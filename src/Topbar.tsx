@@ -17,16 +17,16 @@ const Topbar: React.FC = () => {
           <Link to="/search">Songs</Link>
         </nav>
 
-        <form className="search" action="/search" role="search" method="get">
-          <input type="search" name="q" placeholder="Search" aria-label="Search" />
-        </form>
+        <button className="bar-btn search" aria-label="Search">
+          <Link to="/search"><i className="fa-solid fa-magnifying-glass"></i></Link>
+        </button>
 
         <div className="auth">
-          <a className="btn btn-ghost" href="/signin">Sign In</a>
-          <a className="btn btn-cta" href="/signup">Sign Up</a>
+          <Link to="/signin" className="btn btn-ghost">Sign In</Link>
+          <Link to="/signup" className="btn btn-cta">Sign Up</Link>
         </div>
 
-        <button className={`menu-btn${menuOpen ? ' open' : ''}`} aria-label="Toggle Menu" onClick={toggleMenu}>
+        <button className={`bar-btn menu${menuOpen ? ' open' : ''}`} aria-label="Toggle Menu" onClick={toggleMenu}>
           <i className="fa fa-bars"></i>
         </button>
       </div>

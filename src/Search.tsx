@@ -43,7 +43,7 @@ const Search: React.FC = () => {
   });
 
   return (
-    <div className="hero-section">
+    <div className="hero-section darkest block">
       <div className="hero-container text-box">
         <div className="search-box">
           <div className="search-bar-row">
