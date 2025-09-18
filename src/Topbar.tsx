@@ -8,13 +8,16 @@ const Topbar: React.FC = () => {
   const toggleMenu = () => setMenuOpen((open) => !open);
 
   return (
-    <header className="topbar" role="banner">
-      <div className="topbar_inner">
+    <header className={`topbar${menuOpen ? ' open' : ''}`} role="banner">
+      <div className="topbar-inner">
         <Link className="brand" to="/">LEERICALLY</Link>
+
+        {menuOpen && <div className="menu-overlay" onClick={toggleMenu}></div>}
 
         <nav className={`primary-nav${menuOpen ? ' open' : ''}`} aria-label="Primary">
           <Link to="/about">About</Link>
-          <Link to="/search">Songs</Link>
+          <Link to="/signin" className="hide">Sign In</Link>
+          <Link to="/signup" className="hide">Sign Up</Link>
         </nav>
 
         <button className="bar-btn search" aria-label="Search">

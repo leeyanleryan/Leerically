@@ -9,7 +9,7 @@
   backdrop-filter: blur(5px);
 }
 
-.topbar_inner {
+.topbar-inner {
   max-width: 1200px;
   margin: 0 auto;
   height: 100%;
@@ -26,6 +26,17 @@
   letter-spacing: .18em; 
   text-transform: uppercase;
   font-size: 18px;
+  z-index: 21;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 200px;
+  background: var(--page-bg);
+  z-index: 20;
 }
 
 .primary-nav { 
@@ -43,6 +54,10 @@
 .primary-nav a:hover, 
 .primary-nav a:focus { 
   color: var(--text); 
+}
+
+.primary-nav .hide {
+  display: none;
 }
 
 .auth { 
@@ -96,7 +111,7 @@
 }
 
 .bar-btn i {
-  font-size: 24px;
+  font-size: 20px;
   color: var(--text);
 }
 
@@ -105,6 +120,11 @@
 }
 
 @media (max-width: 1000px) {
+  .topbar.open {
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+  }
+
   .brand { 
     font-size: 16px; 
   }
@@ -118,18 +138,22 @@
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--glass-bg);
     display: none;
     flex-direction: column;
     gap: 20px;
     padding: 16px;
+    z-index: 21;
   }
 
   .primary-nav.open {
     display: flex;
   }
 
+  .primary-nav .hide {
+    display: inline;
+  }
+
   .auth { 
-    display:none; 
+    display: none; 
   }
 }
