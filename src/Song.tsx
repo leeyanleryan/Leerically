@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import yaml from 'js-yaml';
+import NotFound from './404';
+import { allSongs, sluggify } from './songsData';
 
 function getSongSlugFromUrl(path: string) {
   return path.replace(/^\//, '').replace(/\.yml$/, '');
+}
+
+function getAllSlugs() {
+  return allSongs.map(song =>
+    `${sluggify(song.artist)}-${sluggify(song.album)}-${sluggify(song.title)}`
+  );
 }
 
 async function fetchLyrics(slug: string) {
@@ -18,6 +26,13 @@ const Song: React.FC = () => {
   const [lyricsData, setLyricsData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const slug = getSongSlugFromUrl(location.pathname);
+  const validSlugs = getAllSlugs();
+
+  if (!validSlugs.includes(slug)) {
+    return <NotFound />;
+  }
 
   useEffect(() => {
     const slug = getSongSlugFromUrl(location.pathname);

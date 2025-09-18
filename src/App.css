@@ -43,6 +43,9 @@
   text-align: right;
   align-items: flex-start;
 }
+.hero-container .text.center {
+  text-align: center;
+}
 
 .hero-container .text h1 {
   color: var(--text);

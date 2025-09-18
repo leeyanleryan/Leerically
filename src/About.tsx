@@ -1,7 +1,7 @@
 const About: React.FC = () => {
   return (
     <div>
-      <div className="hero-section darkest flex">
+      <div className="hero-section darkest">
         <div className="hero-container text-box direction-normal">
           <div className="text center">
             <h1>Purpose</h1>
