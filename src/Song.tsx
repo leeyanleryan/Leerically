@@ -28,7 +28,7 @@ const Song: React.FC = () => {
         setLyricsData(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch(() => {
         setError('Lyrics not found.');
         setLoading(false);
       });

@@ -27,6 +27,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Clone Leerically-data repo
+        uses: actions/checkout@v4
+        with:
+          repository: leeyanleryan/Leerically-data
+          token: ${{ secrets.DATA_REPO_TOKEN }}
+          path: leerically-data
+
+      - name: Copy data folders
+        run: |
+          rm -rf ./data
+          mkdir ./data
+          cp -r ./leerically-data/songs ./data/
+          cp -r ./leerically-data/conversions ./data/
+          cp -r ./leerically-data/word-banks ./data/
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
