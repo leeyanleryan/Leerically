@@ -47,7 +47,7 @@
 }
 .filter-pill.active {
   background: var(--gradient) !important;
-  border: 0;
+  border: 1px solid var(--page-bg);
   color: #fff;
 }
 .filter-pill.active:hover {
@@ -68,6 +68,10 @@
 }
 .modern-songs-list p {
   text-align: center;
+}
+
+.modern-song-link {
+  text-decoration: none;
 }
 
 .modern-song-item {
