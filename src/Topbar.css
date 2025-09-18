@@ -42,13 +42,15 @@
 .primary-nav { 
   display: flex; 
   gap: 18px; 
-  margin-left: 8px; 
+  margin-left: 8px;
+  z-index: 21;
 }
 
 .primary-nav a {
   text-decoration: none; 
   color: var(--muted); 
   font-size: 14px;
+  z-index: 21;
 }
 
 .primary-nav a:hover, 
@@ -74,6 +76,7 @@
   border-radius: 999px;
   font-size: 14px; 
   text-decoration: none;
+  z-index: 21;
 }
 
 .btn-ghost { 
@@ -119,6 +122,12 @@
   color: var(--text);
 }
 
+@media (min-width: 1001px) {
+  .menu-overlay {
+    display: none;
+  }
+}
+
 @media (max-width: 1000px) {
   .topbar.open {
     -webkit-backdrop-filter: blur(0px);
@@ -140,6 +149,7 @@
     right: 0;
     display: none;
     flex-direction: column;
+    align-items: flex-start;
     gap: 20px;
     padding: 16px;
     z-index: 21;
@@ -151,6 +161,11 @@
 
   .primary-nav .hide {
     display: inline;
+  }
+
+  .primary-nav a {
+    display: inline;
+    width: auto;
   }
 
   .auth { 

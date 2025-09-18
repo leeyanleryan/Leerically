@@ -16,6 +16,7 @@
 }
 .hero-section.block {
   height: calc(640px - 2*var(--topbar-h));
+  margin: 0 auto;
 }
 
 .hero-container {
