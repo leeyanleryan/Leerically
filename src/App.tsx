@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './css/main.css'
 import './css/App.css'
 import Topbar from './tsx/Topbar'
 import Home from './tsx/Home'

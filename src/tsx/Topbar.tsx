@@ -30,7 +30,10 @@ const Topbar: React.FC = () => {
     <header className={`topbar${menuOpen ? ' open' : ''}`} role="banner">
       {menuOpen && (<div id="menu-overlay" className="menu-overlay" ref={overlayRef}></div>)}
       <div className="topbar-inner" ref={navRef}>
-        <Link to="/" className="brand" onClick={() => setMenuOpen(false)}>LEERICALLY</Link>
+        <Link to="/" className="brand" onClick={() => setMenuOpen(false)}>
+          <img src="/favicon/favicon.webp" alt="Leerically Logo" height="24" width="24" />
+          LEERICALLY
+        </Link>
         <nav id="primary-nav" className={`primary-nav${menuOpen ? ' open' : ''}`} aria-label="Primary">
           <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
           <Link to="/signin" className="hide" onClick={() => setMenuOpen(false)}>Sign In</Link>

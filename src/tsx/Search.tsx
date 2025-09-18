@@ -61,7 +61,7 @@ const Search: React.FC = () => {
             return (
               <Link to={slug} className="modern-song-link">
                 <li key={idx} className="modern-song-item">
-                  <span>{song.artist}: <strong>{song.title}</strong></span> <span className="song-lang">{song.album}</span>
+                  <span>{song.artist}: <strong>{song.title}</strong></span> <span className="song-album">{song.album}</span>
                 </li>
               </Link>
             );

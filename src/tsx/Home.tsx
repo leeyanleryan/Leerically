@@ -23,7 +23,7 @@ const animatedLanguages = [
 const Home: React.FC = () => {
   const lyricsRef = useRef<HTMLSpanElement>(null);
   const languagesRef = useRef<HTMLSpanElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  // const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     if (lyricsRef.current) {
@@ -53,44 +53,47 @@ const Home: React.FC = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const radius = 140;
+  // useEffect(() => {
+  //   const canvas = canvasRef.current;
+  //   if (!canvas) return;
+  //   const ctx = canvas.getContext("2d");
+  //   if (!ctx) return;
+  //   const centerX = canvas.width / 2;
+  //   const centerY = canvas.height / 2;
+  //   const radius = 140;
 
-    function drawCircleWave() {
-      if (!ctx) return;
-      if (!canvas) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.save();
-      const gradient = ctx.createLinearGradient(0,0,canvas.width,0);
-      gradient.addColorStop(0, "#C956FF");
-      gradient.addColorStop(1, "#FF834E");
-      ctx.strokeStyle = gradient;
-      ctx.lineWidth = 8;
-      ctx.beginPath();
-      for(let i=0; i<=360; i+=2){
-        let angle = (i * Math.PI) / 180;
-        let wave = Math.sin(angle * 4 + Date.now()/500) * 18;
-        let r = radius + wave;
-        let x = centerX + r * Math.cos(angle);
-        let y = centerY + r * Math.sin(angle);
-        if(i===0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
-      ctx.closePath();
-      ctx.stroke();
-      ctx.restore();
-      requestAnimationFrame(drawCircleWave);
-    }
-    drawCircleWave();
-  }, []);
+  //   function drawCircleWave() {
+  //     if (!ctx) return;
+  //     if (!canvas) return;
+  //     ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //     ctx.save();
+  //     const gradient = ctx.createLinearGradient(0,0,canvas.width,0);
+  //     gradient.addColorStop(0, "#C956FF");
+  //     gradient.addColorStop(1, "#FF834E");
+  //     ctx.strokeStyle = gradient;
+  //     ctx.lineWidth = 8;
+  //     ctx.beginPath();
+  //     for(let i=0; i<=360; i+=2){
+  //       let angle = (i * Math.PI) / 180;
+  //       let wave = Math.sin(angle * 4 + Date.now()/500) * 18;
+  //       let r = radius + wave;
+  //       let x = centerX + r * Math.cos(angle);
+  //       let y = centerY + r * Math.sin(angle);
+  //       if(i===0) ctx.moveTo(x, y);
+  //       else ctx.lineTo(x, y);
+  //     }
+  //     ctx.closePath();
+  //     ctx.stroke();
+  //     ctx.restore();
+  //     requestAnimationFrame(drawCircleWave);
+  //   }
+  //   drawCircleWave();
+  // }, []);
 
   const navigate = useNavigate();
+
+  {/* SVG Icon taken from https://heroicons.com. 
+      The only thing that changes is d="..." */}
 
   return (
     <div>
@@ -104,17 +107,10 @@ const Home: React.FC = () => {
               <a href="/submit">Random Song</a>
             </div>
           </div>
-          <div id="circleWaveformContainer" className="icon right">
+          {/* <div id="circleWaveformContainer" className="icon right">
             <canvas id="circleWaveform" className="icon right" ref={canvasRef} width={350} height={350} />
-          </div>
-        </div>
-      </div>
-
-      <div className="hero-section darker">
-        <div className="hero-container text-icon direction-normal">
-          <div className="icon left">
-            {/* SVG Icon taken from https://heroicons.com. 
-                The only thing that changes is d="..." */}
+          </div> */}
+          <div className="icon right">
             <svg className="icon left" 
                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                  strokeWidth={0.5} stroke="url(#accent-gradient)"
@@ -129,6 +125,29 @@ const Home: React.FC = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div className="hero-section darker">
+        <div className="hero-container text-icon direction-normal">
+          <div className="icon left">
+            <svg className="icon left"
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                 strokeWidth={0.5} stroke="url(#accent-gradient)"
+                 width={350} height={350}>
+              <defs>
+                <linearGradient id="accent-gradient" x1="0" y1="0" x2="24" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#C956FF" />
+                  <stop offset="1" stopColor="#FF834E" />
+                </linearGradient>
+              </defs>
+              <path
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" 
               />
             </svg>
           </div>

@@ -11,8 +11,9 @@
   --text-box: #1F1F28;
   --text-secondary: #CCCCCC;
   --muted: rgba(255,255,255,.75);
-  --accent-a: #C956FF;
-  --accent-b: #FF834E;
+  --accent-a: #C956FF; --accent-b: #FF834E;
+  --accent-a1: #4F8CFF; --accent-b1: #FF6EC7;
+  --accent-a2: #1DE9B6; --accent-b2: #FFD600;
   --link: var(--accent-a);
   --gradient : linear-gradient(90deg, var(--accent-a), var(--accent-b));
 

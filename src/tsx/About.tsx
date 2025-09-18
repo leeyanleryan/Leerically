@@ -15,6 +15,7 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
+      <a href="https://www.flaticon.com/free-icons/music-sheet" title="music sheet icons">Music sheet icons created by pancaza - Flaticon</a>
     </div>
   );
 };
