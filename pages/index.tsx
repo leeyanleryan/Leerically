@@ -69,7 +69,7 @@ const Home: React.FC = () => {
     <>
       <Head>
         <title>Leerically</title>
-        <meta name="description" content="A platform for understanding song lyrics." />
+        <meta name="description" content="A platform for browsing song lyrics with detailed translations and interpretations." />
       </Head>
       <div className="hero-section darkest">
         <div className="hero-container text-icon direction-reverse">

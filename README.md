@@ -1,6 +1,6 @@
 # Leerically
 
-A web app for browsing song lyrics with translations and romanizations.
+A website for browsing song lyrics with detailed translations and interpretations.
 
 ## Link
 
