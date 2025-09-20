@@ -2,7 +2,7 @@ name: Build & Deploy Next.js to S3
 
 on:
   push:
-    branches: [ main ]
+    branches: [ mmp ]
   workflow_dispatch:
 
 permissions:
