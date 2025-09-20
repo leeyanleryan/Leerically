@@ -32,7 +32,7 @@ const Topbar: React.FC = () => {
       {menuOpen && (<div id="menu-overlay" className="menu-overlay" ref={overlayRef}></div>)}
       <div className="topbar-inner" ref={navRef}>
         <Link href="/" className="brand" onClick={() => setMenuOpen(false)}>
-          <Image src="/favicon.webp" alt="Leerically Logo" height="24" width="24" />
+          <Image src="/favicon-big.webp" alt="Leerically Logo" height="24" width="24" />
           LEERICALLY
         </Link>
         <nav id="primary-nav" className={`primary-nav${menuOpen ? ' open' : ''}`} aria-label="Primary">
