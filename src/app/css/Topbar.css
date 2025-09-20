@@ -14,7 +14,7 @@
   max-width: 1200px;
   margin: 0 auto;
   height: 100%;
-  display: flex; 
+  display: flex;
   align-items: center;
   gap: 4px;
   padding: 0 16px;
@@ -23,8 +23,8 @@
 .brand {
   color: var(--text); 
   text-decoration: none;
-  font-weight: 800; 
-  letter-spacing: .14em; 
+  font-weight: 800;
+  letter-spacing: .14em;
   text-transform: uppercase;
   font-size: 18px;
   z-index: 21;
@@ -35,21 +35,20 @@
 
 .primary-nav { 
   margin-left: 12px;
-  display: flex; 
+  display: flex;
   z-index: 21;
   gap: 2px;
 }
 
 .primary-nav a {
-  text-decoration: none; 
-  color: var(--muted); 
+  text-decoration: none;
+  color: var(--muted);
   font-size: 14px;
   z-index: 21;
   padding: 6px;
 }
 
-.primary-nav a:hover, 
-.primary-nav a:focus { 
+.primary-nav a:hover { 
   color: var(--text); 
 }
 
