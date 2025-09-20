@@ -6,7 +6,7 @@ import '../css/Topbar.css';
 const Topbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
+  const primaryNavRef = useRef<HTMLElement>(null);
 
   const toggleMenu = () => setMenuOpen((open) => !open);
 
@@ -16,9 +16,9 @@ const Topbar: React.FC = () => {
       const target = e.target as Node;
       if (
         navRef.current &&
-        overlayRef.current &&
+        primaryNavRef.current &&
         !navRef.current.contains(target) &&
-        !overlayRef.current.contains(target)
+        !primaryNavRef.current.contains(target)
       ) {
         setMenuOpen(false);
       }
@@ -28,15 +28,20 @@ const Topbar: React.FC = () => {
   }, [menuOpen]);
 
   return (
-    <header className={`topbar${menuOpen ? ' open' : ''}`} role="banner">
-      {menuOpen && (<div id="menu-overlay" className="menu-overlay" ref={overlayRef}></div>)}
-      <div className="topbar-inner" ref={navRef}>
+    <header className={`topbar${menuOpen ? ' open' : ''}`} role="banner" ref={navRef}>
+      <div className="topbar-inner">
         <Link href="/" className="brand" onClick={() => setMenuOpen(false)}>
           <Image src="/favicon-big.webp" alt="Leerically Logo" height="24" width="24" />
           LEERICALLY
         </Link>
-        <nav id="primary-nav" className={`primary-nav${menuOpen ? ' open' : ''}`} aria-label="Primary">
+        <nav
+          id="primary-nav"
+          className={`primary-nav${menuOpen ? ' open' : ''}`}
+          aria-label="Primary"
+          ref={primaryNavRef}
+        >
           <Link href="/about" onClick={() => setMenuOpen(false)}>About</Link>
+          <Link href="/tests" onClick={() => setMenuOpen(false)}>Tests</Link>
           <Link href="/sign-in" className="hide" onClick={() => setMenuOpen(false)}>Sign In</Link>
           <Link href="/sign-up" className="hide" onClick={() => setMenuOpen(false)}>Sign Up</Link>
         </nav>
