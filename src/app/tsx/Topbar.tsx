@@ -40,9 +40,7 @@ const Topbar: React.FC = () => {
           <Link href="/sign-in" className="hide" onClick={() => setMenuOpen(false)}>Sign In</Link>
           <Link href="/sign-up" className="hide" onClick={() => setMenuOpen(false)}>Sign Up</Link>
         </nav>
-        <button className="bar-btn search" aria-label="Search">
-          <Link href="/search" onClick={() => setMenuOpen(false)}><i className="fa-solid fa-magnifying-glass"></i></Link>
-        </button>
+        <Link href="/search" onClick={() => setMenuOpen(false)} className="bar-btn search"><i className="fa-solid fa-magnifying-glass"></i></Link>
         <div className="auth">
           <Link href="/sign-in" className="btn btn-ghost">Sign In</Link>
           <Link href="/sign-up" className="btn btn-cta">Sign Up</Link>
