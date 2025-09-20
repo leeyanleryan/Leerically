@@ -90,7 +90,7 @@ const Song: React.FC<SongProps> = ({ lyricsData }) => {
                 entry.divider ? (
                   <hr key={idx} style={{ margin: "16px 0" }} />
                 ) : (
-                  <div key={idx} style={{ marginBottom: "12px" }}>
+                  <div key={idx} style={{ margin: "0px 8px 12px 8px" }}>
                     <div>{entry.original}</div>
                     {entry.romanized && (
                       <div style={{ color: "#aaa" }}>{entry.romanized}</div>
