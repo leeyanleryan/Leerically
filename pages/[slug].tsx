@@ -84,7 +84,7 @@ const Song: React.FC<SongProps> = ({ lyricsData }) => {
           <h2>
             {lyricsData.artist} - {lyricsData.album}
           </h2>
-          <div style={{ textAlign: "left", margin: "0 auto", maxWidth: 600 }}>
+          <div style={{ textAlign: "left", margin: "0 auto", maxWidth: 800 }}>
             {Array.isArray(lyricsData.lyrics) ? (
               lyricsData.lyrics.map((entry: LyricsEntry, idx: number) =>
                 entry.divider ? (
