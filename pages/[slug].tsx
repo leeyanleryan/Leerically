@@ -96,7 +96,7 @@ const Song: React.FC<SongProps> = ({ lyricsData }) => {
                       <div style={{ color: "#aaa" }}>{entry.romanized}</div>
                     )}
                     {entry.english && (
-                      <div style={{ color: "#7fd" }}>{entry.english}</div>
+                      <div style={{ color: "#FC79B8" }}>{entry.english}</div>
                     )}
                   </div>
                 )
