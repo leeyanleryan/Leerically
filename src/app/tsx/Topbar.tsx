@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import Image from 'next/image';
 import '../css/Topbar.css';
 
 const Topbar: React.FC = () => {
@@ -30,21 +31,21 @@ const Topbar: React.FC = () => {
     <header className={`topbar${menuOpen ? ' open' : ''}`} role="banner">
       {menuOpen && (<div id="menu-overlay" className="menu-overlay" ref={overlayRef}></div>)}
       <div className="topbar-inner" ref={navRef}>
-        <Link to="/" className="brand" onClick={() => setMenuOpen(false)}>
-          <img src="/favicon/favicon.webp" alt="Leerically Logo" height="24" width="24" />
+        <Link href="/" className="brand" onClick={() => setMenuOpen(false)}>
+          <Image src="/favicon/favicon.webp" alt="Leerically Logo" height="24" width="24" />
           LEERICALLY
         </Link>
         <nav id="primary-nav" className={`primary-nav${menuOpen ? ' open' : ''}`} aria-label="Primary">
-          <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link to="/signin" className="hide" onClick={() => setMenuOpen(false)}>Sign In</Link>
-          <Link to="/signup" className="hide" onClick={() => setMenuOpen(false)}>Sign Up</Link>
+          <Link href="/about" onClick={() => setMenuOpen(false)}>About</Link>
+          <Link href="/sign-in" className="hide" onClick={() => setMenuOpen(false)}>Sign In</Link>
+          <Link href="/sign-up" className="hide" onClick={() => setMenuOpen(false)}>Sign Up</Link>
         </nav>
         <button className="bar-btn search" aria-label="Search">
-          <Link to="/search" onClick={() => setMenuOpen(false)}><i className="fa-solid fa-magnifying-glass"></i></Link>
+          <Link href="/search" onClick={() => setMenuOpen(false)}><i className="fa-solid fa-magnifying-glass"></i></Link>
         </button>
         <div className="auth">
-          <Link to="/signin" className="btn btn-ghost">Sign In</Link>
-          <Link to="/signup" className="btn btn-cta">Sign Up</Link>
+          <Link href="/sign-in" className="btn btn-ghost">Sign In</Link>
+          <Link href="/sign-up" className="btn btn-cta">Sign Up</Link>
         </div>
         <button className={`bar-btn menu${menuOpen ? ' open' : ''}`} aria-label="Toggle Menu" onClick={toggleMenu}>
           <i className="fa fa-bars"></i>

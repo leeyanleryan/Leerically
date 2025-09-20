@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import Head from 'next/head';
 
 const About: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -24,11 +25,11 @@ const About: React.FC = () => {
       ctx.lineWidth = 8;
       ctx.beginPath();
       for(let i=0; i<=360; i+=2){
-        let angle = (i * Math.PI) / 180;
-        let wave = Math.sin(angle * 4 + Date.now()/500) * 18;
-        let r = radius + wave;
-        let x = centerX + r * Math.cos(angle);
-        let y = centerY + r * Math.sin(angle);
+        const angle = (i * Math.PI) / 180;
+        const wave = Math.sin(angle * 4 + Date.now()/500) * 18;
+        const r = radius + wave;
+        const x = centerX + r * Math.cos(angle);
+        const y = centerY + r * Math.sin(angle);
         if(i===0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
@@ -41,7 +42,11 @@ const About: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>Leerically | About</title>
+        <meta name="description" content="Find out more about Leerically." />
+      </Head>
       <div className="hero-section darkest">
         <div className="hero-container text-box direction-normal">
           <div className="text center">
@@ -49,7 +54,7 @@ const About: React.FC = () => {
             <div className="box">
               <p>
                 Leerically is a free platform designed to help you understand song lyrics of various languages. 
-                Whether you're a music lover, language learner, or just curious about the meaning behind your favorite tracks, 
+                Whether you&apos;re a music lover, language learner, or just curious about the meaning behind your favorite tracks, 
                 Leerically makes it easy to search for lyrics, view translations, explore interpretations, and test yourself in multiple languages.
               </p>
             </div>
@@ -73,7 +78,7 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

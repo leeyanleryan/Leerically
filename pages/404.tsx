@@ -1,6 +1,12 @@
+import Head from 'next/head';
+
 const NotFound: React.FC = () => {
   return (
     <div>
+      <Head>
+        <title>Leerically | 404 - Page Not Found</title>
+        <meta name="robots" content="noindex" />
+      </Head>
       <div className="hero-section darkest">
         <div className="hero-container direction-normal">
           <div className="text center">

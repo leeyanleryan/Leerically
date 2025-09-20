@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
-import '../css/Search.css'
-import { allSongs, sluggify } from '../ts/songsData';
+import Link from "next/link";
+import { useRouter } from "next/router";
+import '../src/app/css/Search.css'
+import { allSongs, sluggify } from '../src/app/ts/songsData';
+import Head from 'next/head';
 
 const languageFilters = ["All", "English", "Chinese", "Japanese"];
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
-
 const Search: React.FC = () => {
-  const queryParams = useQuery();
-  const initialQuery = queryParams.get("q") || "";
+  const router = useRouter();
+  const initialQuery = typeof router.query.q === "string" ? router.query.q : "";
   const [query, setQuery] = useState(initialQuery);
   const [language, setLanguage] = useState("All");
 
-  const location = useLocation();
   useEffect(() => {
-    setQuery(queryParams.get("q") || "");
-  }, [location.search]);
+    setQuery(typeof router.query.q === "string" ? router.query.q : "");
+  }, [router.query.q]);
 
   const filteredSongs = allSongs.filter(song => {
     const fields = [
@@ -35,12 +32,16 @@ const Search: React.FC = () => {
   });
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>Leerically | Search</title>
+        <meta name="description" content="Search for song lyrics by artist, album, or song title." />
+      </Head>
       <div className="search-box">
         <div className="search-bar-row">
           <input
             type="text"
-            placeholder="Search by artist, album, or song..."
+            placeholder="Search by artist, album, or song title..."
             value={query}
             onChange={e => setQuery(e.target.value)}
             className="modern-search-input"/>
@@ -59,8 +60,8 @@ const Search: React.FC = () => {
           {filteredSongs.map((song, idx) => {
             const slug = `/${sluggify(song.artist)}-${sluggify(song.album)}-${sluggify(song.title)}`;
             return (
-              <Link to={slug} className="modern-song-link">
-                <li key={idx} className="modern-song-item">
+              <Link href={slug} className="modern-song-link" key={idx}>
+                <li className="modern-song-item">
                   <span>{song.artist}: <strong>{song.title}</strong></span> <span className="song-album">{song.album}</span>
                 </li>
               </Link>
@@ -69,7 +70,7 @@ const Search: React.FC = () => {
           {filteredSongs.length === 0 && <p>No results found.</p>}
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-name: Build & Deploy Vite React to S3
+name: Build & Deploy Next.js to S3
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Vite React app
+      - name: Build Next.js app
         run: npm run build
 
       - name: Clone Leerically-data repo
@@ -45,11 +45,11 @@ jobs:
           token: ${{ secrets.DATA_REPO_TOKEN }}
           path: leerically-data
 
-      - name: Create dist/data and copy data folders
+      - name: Copy data folders to out/data
         run: |
-          mkdir -p ./dist/data
-          cp -r ./leerically-data/songs ./dist/data/
-          cp -r ./leerically-data/word-banks ./dist/data/
+          mkdir -p ./out/data
+          cp -r ./leerically-data/songs ./out/data/
+          cp -r ./leerically-data/word-banks ./out/data/
 
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
@@ -57,9 +57,9 @@ jobs:
           role-to-assume: ${{ env.ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Sync dist to S3
+      - name: Sync out to S3
         run: |
-          aws s3 sync ./dist s3://${{ env.S3_BUCKET }}/${{ env.S3_PREFIX }} --delete --only-show-errors
+          aws s3 sync ./out s3://${{ env.S3_BUCKET }}/${{ env.S3_PREFIX }} --delete --only-show-errors
           
       - name: Invalidate CloudFront
         run: |

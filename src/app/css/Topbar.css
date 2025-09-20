@@ -45,7 +45,6 @@
 .primary-nav { 
   display: flex; 
   gap: 20px; 
-  margin-left: 8px;
   z-index: 21;
 }
 
@@ -160,6 +159,8 @@
 
   .primary-nav.open {
     display: flex;
+    margin-left: 16px;
+    padding-top: 8px;
   }
 
   .primary-nav .hide {
@@ -169,6 +170,7 @@
   .primary-nav a {
     display: inline;
     width: auto;
+    font-size: 13px;
   }
 
   .auth { 

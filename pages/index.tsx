@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import Typed from "typed.js";
-import { useNavigate } from "react-router-dom";
+import Link from "next/link";
+import Head from 'next/head'
+import { useRouter } from "next/router";
+import { allSongs, sluggify } from "../src/app/ts/songsData";
 
 const animatedLyrics = [
   "Lyrics",
@@ -52,18 +55,35 @@ const Home: React.FC = () => {
     }
   }, []);
 
-  const navigate = useNavigate();
+  const router = useRouter();
+
+  const handleRandomSong = () => {
+    const slugs = allSongs.map(song =>
+      `${sluggify(song.artist)}-${sluggify(song.album)}-${sluggify(song.title)}`
+    );
+    const randomSlug = slugs[Math.floor(Math.random() * slugs.length)];
+    router.push(`/${randomSlug}`);
+  };
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>Leerically</title>
+        <meta name="description" content="A platform for understanding song lyrics." />
+      </Head>
       <div className="hero-section darkest">
         <div className="hero-container text-icon direction-reverse">
           <div className="text left">
             <h1>Understand <span ref={lyricsRef}></span></h1>
             <p>Search lyrics, translations, and interpretations.</p>
             <div className="buttons">
-              <button onClick={() => navigate("/search")}>Search</button>
-              <a href="/submit">Random Song</a>
+              <Link href="/search">
+                <button>Search</button>
+              </Link>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="#" onClick={e => {e.preventDefault(); handleRandomSong();}}>
+                Random Song
+              </a>
             </div>
           </div>
           <div className="icon right">
@@ -112,12 +132,15 @@ const Home: React.FC = () => {
             <p>Explore breakdowns and language tests.</p>
             <div className="buttons">
               <button>Tests</button>
-              <a href="/submit">Random Song</a>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="#" onClick={e => {e.preventDefault(); handleRandomSong();}}>
+                Random Song
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
