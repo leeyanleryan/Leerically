@@ -37,6 +37,7 @@
   margin-left: 12px;
   display: flex; 
   z-index: 21;
+  gap: 2px;
 }
 
 .primary-nav a {
@@ -44,7 +45,7 @@
   color: var(--muted); 
   font-size: 14px;
   z-index: 21;
-  padding: 8px;
+  padding: 6px;
 }
 
 .primary-nav a:hover, 
@@ -141,9 +142,9 @@
     flex-direction: column;
     align-items: flex-start;
     margin-left: 0;
-    padding-left: 24px;
-    padding-bottom: 16px;
+    padding: 0 0 16px 24px;
     z-index: 21;
+    gap: 0;
   }
 
   .primary-nav.open {
@@ -159,6 +160,7 @@
     display: inline;
     width: auto;
     font-size: 13px;
+    padding: 8px;
   }
 
   .auth { 

@@ -41,7 +41,6 @@ const Topbar: React.FC = () => {
           ref={primaryNavRef}
         >
           <Link href="/about" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link href="/tests" onClick={() => setMenuOpen(false)}>Tests</Link>
           <Link href="/sign-in" className="hide" onClick={() => setMenuOpen(false)}>Sign In</Link>
           <Link href="/sign-up" className="hide" onClick={() => setMenuOpen(false)}>Sign Up</Link>
         </nav>
