@@ -27,6 +27,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Clone Leerically-data repo
+        uses: actions/checkout@v4
+        with:
+          repository: leeyanleryan/Leerically-data
+          token: ${{ secrets.DATA_REPO_TOKEN }}
+          path: leerically-data
+
+      - name: Copy data folders to public/data
+        run: |
+          mkdir -p ./public/data
+          cp -r ./leerically-data/songs ./public/data/
+          cp -r ./leerically-data/word-banks ./public/data/
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -37,19 +50,6 @@ jobs:
 
       - name: Build Next.js app
         run: npm run build
-
-      - name: Clone Leerically-data repo
-        uses: actions/checkout@v4
-        with:
-          repository: leeyanleryan/Leerically-data
-          token: ${{ secrets.DATA_REPO_TOKEN }}
-          path: leerically-data
-
-      - name: Copy data folders to out/data
-        run: |
-          mkdir -p ./out/data
-          cp -r ./leerically-data/songs ./out/data/
-          cp -r ./leerically-data/word-banks ./out/data/
 
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
