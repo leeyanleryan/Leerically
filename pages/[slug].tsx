@@ -88,7 +88,7 @@ const Song: React.FC<SongProps> = ({ lyricsData }) => {
             {Array.isArray(lyricsData.lyrics) ? (
               lyricsData.lyrics.map((entry: LyricsEntry, idx: number) =>
                 entry.divider ? (
-                  <hr key={idx} style={{ margin: "16px 0" }} />
+                  <hr key={idx} style={{ margin: "16px 4px" }} />
                 ) : (
                   <div key={idx} style={{ margin: "0px 8px 12px 8px" }}>
                     <div>{entry.original}</div>
