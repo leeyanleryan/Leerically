@@ -82,9 +82,7 @@ const Song: React.FC<SongProps> = ({ lyricsData }) => {
       <div className="song-container">
         <div>
           <h1>{lyricsData.title}</h1>
-          <h2>
-            {lyricsData.artist} - {lyricsData.album}
-          </h2>
+          <h2>{lyricsData.artist} - {lyricsData.album}</h2>
           <div className="lyrics-container">
             {Array.isArray(lyricsData.lyrics) ? (
               lyricsData.lyrics.map((entry: LyricsEntry, idx: number) =>

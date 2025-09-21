@@ -1,10 +1,6 @@
-# Leerically
+# [Leerically](https://leerically.com)
 
 A website for browsing song lyrics with detailed translations and interpretations.
-
-## Link
-
-[https://leerically.com](https://leerically.com)
 
 ## Features
 
