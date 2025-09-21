@@ -1,0 +1,31 @@
+.song-container {
+  margin: 0 auto; 
+  padding-top: 64px; 
+  text-align: center;
+}
+
+.lyrics-container {
+  text-align: left;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.lyrics-divider {
+  margin: 16px 4px;
+}
+
+.lyrics-text {
+  margin: 0px 8px 12px 8px;
+}
+
+.lyrics-text .original {
+  color: var(--text-original);
+}
+
+.lyrics-text .romanized {
+  color: var(--text-romanized);
+}
+
+.lyrics-text .english {
+  color: var(--text-english);
+}

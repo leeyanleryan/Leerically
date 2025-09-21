@@ -5,6 +5,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import NotFound from './404';
 import { allSongs, sluggify } from '../src/app/ts/songsData';
+import '../src/app/css/Song.css';
 
 type LyricsEntry = {
   original: string;
@@ -78,25 +79,25 @@ const Song: React.FC<SongProps> = ({ lyricsData }) => {
           }
         />
       </Head>
-      <div style={{ margin: "0 auto", paddingTop: "64px", textAlign: "center" }}>
+      <div className="song-container">
         <div>
           <h1>{lyricsData.title}</h1>
           <h2>
             {lyricsData.artist} - {lyricsData.album}
           </h2>
-          <div style={{ textAlign: "left", margin: "0 auto", maxWidth: 800 }}>
+          <div className="lyrics-container">
             {Array.isArray(lyricsData.lyrics) ? (
               lyricsData.lyrics.map((entry: LyricsEntry, idx: number) =>
                 entry.divider ? (
-                  <hr key={idx} style={{ margin: "16px 4px" }} />
+                  <hr key={idx} className="lyrics-divider" />
                 ) : (
-                  <div key={idx} style={{ margin: "0px 8px 12px 8px" }}>
-                    <div>{entry.original}</div>
+                  <div key={idx} className="lyrics-text">
+                    <div className="original">{entry.original}</div>
                     {entry.romanized && (
-                      <div style={{ color: "#aaa" }}>{entry.romanized}</div>
+                      <div className="romanized">{entry.romanized}</div>
                     )}
                     {entry.english && (
-                      <div style={{ color: "#FC79B8" }}>{entry.english}</div>
+                      <div className="english">{entry.english}</div>
                     )}
                   </div>
                 )

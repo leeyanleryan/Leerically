@@ -4,18 +4,25 @@
   -moz-osx-font-smoothing: grayscale;
 
   --topbar-h: 64px;
+
   --page-bg: #181820;
   --page-bg-secondary: #1C1C28;
-  --glass-bg: rgba(24,24,32,.92);
-  --text: #fff;
-  --text-box: #1F1F28;
+  --glass-bg: rgba(24,24,32,.94);
+
+  --accent-a: #C956FF; --accent-a1: #4F8CFF; --accent-a2: #1DE9B6;
+  --accent-b: #FF834E; --accent-b1: #FF6EC7; --accent-b2: #FFD600;
+  --gradient: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  --gradient1: linear-gradient(90deg, var(--accent-a1), var(--accent-b1));
+  --gradient2: linear-gradient(90deg, var(--accent-a2), var(--accent-b2));
+
+  --text: #fff; 
   --text-secondary: #CCCCCC;
-  --muted: rgba(255,255,255,.75);
-  --accent-a: #C956FF; --accent-b: #FF834E;
-  --accent-a1: #4F8CFF; --accent-b1: #FF6EC7;
-  --accent-a2: #1DE9B6; --accent-b2: #FFD600;
+  --text-box: #1F1F28;
+  --text-original: #FFF; 
+  --text-romanized: #AAA; 
+  --text-english: #FC79B8;
+  
   --link: var(--accent-a);
-  --gradient : linear-gradient(90deg, var(--accent-a), var(--accent-b));
 
   --theme-transition: 0.3s;
 

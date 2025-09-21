@@ -1,8 +1,8 @@
 export const allSongs = [
-  { artist: "Aimer", album: "Penny Rain", title: "Ref:rain", year: 2019, language: "Japanese" },
-  { artist: "BABYMETAL", album: "METAL RESISTANCE", title: "No Rain No Rainbow", year: 2016, language: "Japanese" },
-  { artist: "THE ORAL CIGARETTES", album: "BLACK MEMORY", title: "Flower", year: 2017, language: "Japanese" },
-  { artist: "THE ORAL CIGARETTES", album: "FIXION", title: "Amy", year: 2016, language: "Japanese" },
+  { artist: "Aimer", album: "Penny Rain", title: "Ref:rain", language: "Japanese" },
+  { artist: "BABYMETAL", album: "METAL RESISTANCE", title: "No Rain No Rainbow", language: "Japanese" },
+  { artist: "THE ORAL CIGARETTES", album: "BLACK MEMORY", title: "Flower", language: "Japanese" },
+  { artist: "THE ORAL CIGARETTES", album: "FIXION", title: "Amy", language: "Japanese" },
 ].sort((a, b) => {
   const artistCmp = a.artist.localeCompare(b.artist);
   if (artistCmp !== 0) return artistCmp;

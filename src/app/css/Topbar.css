@@ -42,7 +42,7 @@
 
 .primary-nav a {
   text-decoration: none;
-  color: var(--muted);
+  color: var(--text-secondary);
   font-size: 14px;
   z-index: 21;
   padding: 6px;
