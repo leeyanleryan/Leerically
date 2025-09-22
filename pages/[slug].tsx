@@ -8,10 +8,12 @@ import { allSongs, sluggify } from '../src/app/ts/songsData';
 import '../src/app/css/Song.css';
 
 type LyricsEntry = {
+  divider: boolean;
+  language: string;
   original: string;
-  romanized?: string;
-  english?: string;
-  divider?: boolean;
+  romanized: string;
+  english: string;
+  explanation: Array<string>;
 };
 
 type LyricsData = {
@@ -80,30 +82,24 @@ const Song: React.FC<SongProps> = ({ lyricsData }) => {
         />
       </Head>
       <div className="song-container">
-        <div>
-          <h1>{lyricsData.title}</h1>
-          <h2>{lyricsData.artist} - {lyricsData.album}</h2>
-          <div className="lyrics-container">
-            {Array.isArray(lyricsData.lyrics) ? (
-              lyricsData.lyrics.map((entry: LyricsEntry, idx: number) =>
-                entry.divider ? (
-                  <hr key={idx} className="lyrics-divider" />
-                ) : (
-                  <div key={idx} className="lyrics-text">
-                    <div className="original">{entry.original}</div>
-                    {entry.romanized && (
-                      <div className="romanized">{entry.romanized}</div>
-                    )}
-                    {entry.english && (
-                      <div className="english">{entry.english}</div>
-                    )}
-                  </div>
-                )
+        <h1>{lyricsData.title}</h1>
+        <h2>{lyricsData.artist} - {lyricsData.album}</h2>
+        <div className="lyrics-container">
+          {Array.isArray(lyricsData.lyrics) ? (
+            lyricsData.lyrics.map((entry: LyricsEntry, idx: number) =>
+              entry.divider ? (
+                <hr key={idx} className="lyrics-divider" />
+              ) : (
+                <div key={idx} className="lyrics-text">
+                  {entry.original && <div className="original">{entry.original}</div>}
+                  {entry.romanized && (<div className="romanized">{entry.romanized}</div>)}
+                  {entry.english && (<div className="english">{entry.english}</div>)}
+                </div>
               )
-            ) : (
-              <pre>{lyricsData.lyrics}</pre>
-            )}
-          </div>
+            )
+          ) : (
+            <pre>{lyricsData.lyrics}</pre>
+          )}
         </div>
       </div>
     </>

@@ -19,7 +19,16 @@
 }
 
 .lyrics-text {
-  margin: 0px 8px 12px 8px;
+  display: block;
+  width: fit-content;
+  cursor: pointer;
+  padding: 3px 5px;
+  margin: 5px 3px;
+}
+
+.lyrics-text:hover {
+  background: rgba(255, 255, 255, 0.085);
+  border-radius: 6px;
 }
 
 .lyrics-text .original {
