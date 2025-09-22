@@ -7,6 +7,8 @@
 
   --page-bg: #181820;
   --page-bg-secondary: #1C1C28;
+  --text-box: #1F1F28;
+  --expl-box: #282831;
   --glass-bg: rgba(24,24,32,.94);
 
   --accent-a: #C956FF; --accent-a1: #4F8CFF; --accent-a2: #1DE9B6;
@@ -17,7 +19,7 @@
 
   --text: #fff; 
   --text-secondary: #CCCCCC;
-  --text-box: #1F1F28;
+  --text-tertiary: #9e9e9e;
   --text-original: #FFF; 
   --text-romanized: #AAA; 
   --text-english: #FC79B8;
