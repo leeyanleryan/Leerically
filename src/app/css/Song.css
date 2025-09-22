@@ -45,7 +45,7 @@
 }
 
 .explanation-table-wrapper {
-  margin: 12px 0 12px 0;
+  margin: 12px 0;
   padding: 0 12px;
 }
 
@@ -80,9 +80,39 @@
 }
 
 @media (max-width: 600px) {
+  .song-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 17px;
+  }
+
+  .song-container h2 {
+    font-size: 1.35rem;
+  }
+
+  .lyrics-divider {
+    margin: 12px 4px;
+  }
+
+  .lyrics-text {
+    font-size: 1rem;
+  }
+
+  .explanation-table-wrapper {
+    margin: 10px 0;
+    padding: 0 12px;
+  }
+
   .explanation-table th,
   .explanation-table td {
-    /* padding: 6px 6px;
-    font-size: 0.95rem; */
+    padding: 6px 10px;
+  }
+
+  .explanation-table th {
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+  }
+
+  .explanation-table td {
+    font-size: 0.85rem;
   }
 }
