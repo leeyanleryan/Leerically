@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+.song-container h1 {
+  margin-top: 4px;
+}
+
 .lyrics-container {
   text-align: left;
   margin: 0 auto;
