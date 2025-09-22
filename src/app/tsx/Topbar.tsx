@@ -30,7 +30,7 @@ const Topbar: React.FC = () => {
   return (
     <header className={`topbar${menuOpen ? ' open' : ''}`} role="banner" ref={navRef}>
       <div className="topbar-inner">
-        <Link href="/" className="brand" onClick={() => setMenuOpen(false)}>
+        <Link href="/" className="brand" onClick={() => setMenuOpen(false)} title="Leerically">
           <Image src="/favicon-big.webp" alt="Leerically Logo" height="24" width="24" />
           LEERICALLY
         </Link>
@@ -40,14 +40,16 @@ const Topbar: React.FC = () => {
           aria-label="Primary"
           ref={primaryNavRef}
         >
-          <Link href="/about" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link href="/sign-in" className="hide" onClick={() => setMenuOpen(false)}>Sign In</Link>
-          <Link href="/sign-up" className="hide" onClick={() => setMenuOpen(false)}>Sign Up</Link>
+          <Link href="/about" onClick={() => setMenuOpen(false)} title="About">About</Link>
+          <Link href="/sign-in" className="hide" onClick={() => setMenuOpen(false)} title="Sign In">Sign In</Link>
+          <Link href="/sign-up" className="hide" onClick={() => setMenuOpen(false)} title="Sign Up">Sign Up</Link>
         </nav>
-        <Link href="/search" onClick={() => setMenuOpen(false)} className="bar-btn search"><i className="fa-solid fa-magnifying-glass"></i></Link>
+        <Link href="/search" onClick={() => setMenuOpen(false)} className="bar-btn search" title="Search">
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </Link>
         <div className="auth">
-          <Link href="/sign-in" className="btn btn-ghost">Sign In</Link>
-          <Link href="/sign-up" className="btn btn-cta">Sign Up</Link>
+          <Link href="/sign-in" className="btn btn-ghost" title="Sign In">Sign In</Link>
+          <Link href="/sign-up" className="btn btn-cta" title="Sign Up">Sign Up</Link>
         </div>
         <button className={`bar-btn menu${menuOpen ? ' open' : ''}`} aria-label="Toggle Menu" onClick={toggleMenu}>
           <i className="fa fa-bars"></i>

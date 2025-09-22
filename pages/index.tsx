@@ -77,11 +77,11 @@ const Home: React.FC = () => {
             <h1>Understand <span ref={lyricsRef}></span></h1>
             <p>Search lyrics, translations, and interpretations.</p>
             <div className="buttons">
-              <Link href="/search">
+              <Link href="/search" title="Search">
                 <button>Search</button>
               </Link>
               &nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="#" onClick={e => {e.preventDefault(); handleRandomSong();}}>
+              <a href="#" onClick={e => {e.preventDefault(); handleRandomSong();}} title="Random Song">
                 Random Song
               </a>
             </div>

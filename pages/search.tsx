@@ -61,7 +61,7 @@ const Search: React.FC = () => {
             const slug = `/${sluggify(song.artist)}-${sluggify(song.album)}-${sluggify(song.title)}`;
             return (
               <li className="song-item" key={idx}>
-                <Link href={slug} className="song-link">
+                <Link href={slug} className="song-link" title={`${song.artist} - ${song.title} (${song.album})`}>
                   <span className="song-main">
                     {song.artist}: <strong>{song.title}</strong>
                   </span> 
