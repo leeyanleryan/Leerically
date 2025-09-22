@@ -25,9 +25,17 @@ type LyricsData = {
   lyrics: LyricsEntry[] | string;
 };
 
+type WordBankEntry = {
+  original: string;
+  romanized?: string;
+  romaji?: string;
+  english?: string;
+  functions?: Record<string, { english: string }>;
+};
+
 type SongProps = {
   lyricsData: LyricsData;
-  wordBanks: Record<string, any>;
+  wordBanks: Record<string, Record<string, WordBankEntry>>;
 };
 
 function getAllSlugs() {
@@ -56,14 +64,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const lyricsData = await fetchLyrics(params!.slug as string);
-  const wordBanks: Record<string, any> = {};
+  const wordBanks: Record<string, Record<string, WordBankEntry>> = {};
   for (const lang of lyricsData.languages) {
     const filePath = path.join(process.cwd(), 'public', 'data', 'word-banks', `${lang}.yml`);
     try {
       const file = await fs.readFile(filePath, 'utf8');
-      wordBanks[lang] = yaml.load(file);
+      wordBanks[lang] = yaml.load(file) as Record<string, WordBankEntry>;
     } catch {
-      wordBanks[lang] = null;
+      wordBanks[lang] = {};
     }
   }
   return {
@@ -75,15 +83,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
-  if (!lyricsData) { return <NotFound />; }
-
   const [openExplanations, setOpenExplanations] = useState<Record<number, boolean>>({});
 
+  if (!lyricsData) { return <NotFound />; }
+
   function getWordExplanation(word: string, lang: string, func: string) {
-    let expl_ori = word;
+    const expl_ori = word;
     let expl_rom = "";
     let expl_eng = "";
-    let expl = wordBanks[lang][expl_ori];
+    const expl = wordBanks[lang][expl_ori];
     if (!expl) {
       return {
         original: expl_ori,
@@ -92,14 +100,14 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
       }
     }
     if (lang === "jp") {
-      expl_rom = expl.romaji;
+      expl_rom = expl.romaji ?? "-";
     } else {
-      expl_rom = expl.romanized;
+      expl_rom = expl.romanized ?? "-";
     }
     if (func === "-") {
-      expl_eng = expl.english;
+      expl_eng = expl.english ?? "-";
     } else {
-      expl_eng = expl.functions[func].english;
+      expl_eng = expl.functions?.[func]?.english ?? "-";
     }
     return {
       original: expl_ori,
