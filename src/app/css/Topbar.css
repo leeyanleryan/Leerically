@@ -16,7 +16,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   padding: 0 16px;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .primary-nav { 
-  margin-left: 12px;
+  margin-left: 8px;
   display: flex;
   z-index: 21;
   gap: 2px;
@@ -99,13 +99,13 @@
   cursor: pointer;
   padding: 0;
   z-index: 21;
+  padding: 4px;
 }
 .bar-btn.menu {
   display: none;
 }
 .bar-btn.search {
   margin-left: auto;
-  padding: 8px;
 }
 
 .bar-btn i {
@@ -124,10 +124,6 @@
 }
 
 @media (max-width: 1000px) {
-  .brand { 
-    font-size: 16px; 
-  }
-
   .bar-btn.menu {
     display: block;
   }

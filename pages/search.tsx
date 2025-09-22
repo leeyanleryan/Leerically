@@ -44,7 +44,7 @@ const Search: React.FC = () => {
             placeholder="Search by artist, album, or song title..."
             value={query}
             onChange={e => setQuery(e.target.value)}
-            className="modern-search-input"/>
+            className="search-input"/>
         </div>
         <div className="filter-row">
           {languageFilters.map(l => (
@@ -56,15 +56,20 @@ const Search: React.FC = () => {
             </button>
           ))}
         </div>
-        <ul className="modern-songs-list">
+        <ul className="songs-list">
           {filteredSongs.map((song, idx) => {
             const slug = `/${sluggify(song.artist)}-${sluggify(song.album)}-${sluggify(song.title)}`;
             return (
-              <Link href={slug} className="modern-song-link" key={idx}>
-                <li className="modern-song-item">
-                  <span>{song.artist}: <strong>{song.title}</strong></span> <span className="song-album">{song.album}</span>
-                </li>
-              </Link>
+              <li className="song-item" key={idx}>
+                <Link href={slug} className="song-link">
+                  <span className="song-main">
+                    {song.artist}: <strong>{song.title}</strong>
+                  </span> 
+                  <span className="song-album">
+                    {song.album}
+                  </span>
+                </Link>
+              </li>
             );
           })}
           {filteredSongs.length === 0 && <p>No results found.</p>}

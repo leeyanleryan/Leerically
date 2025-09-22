@@ -5,7 +5,7 @@ const NotFound: React.FC = () => {
     <div>
       <Head>
         <title>Leerically | 404 - Page Not Found</title>
-        <meta name="robots" content="noindex" />
+        <meta name="description" content="The page you are looking for does not exist." />
       </Head>
       <div className="hero-section darkest">
         <div className="hero-container direction-normal">

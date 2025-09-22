@@ -1,6 +1,6 @@
 .search-box {
   border-radius: 16px;
-  padding: calc(var(--topbar-h) + 22px) 16px;
+  padding: calc(var(--topbar-h) + 4px) 16px;
   color: var(--text-secondary);
   line-height: 1.5;
   margin: 0 auto;
@@ -13,7 +13,7 @@
   margin-bottom: 18px;
 }
 
-.modern-search-input {
+.search-input {
   width: 100%;
   max-width: 340px;
   padding: 12px 18px;
@@ -24,7 +24,7 @@
   color: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
-.modern-search-input::placeholder {
+.search-input::placeholder {
   color: #aaa;
   opacity: 0.5;
 }
@@ -40,6 +40,7 @@
 .filter-pill {
   background: none;
   border-radius: 999px;
+  font-size: 0.85rem;
   padding: 8px 22px;
   color: var(--text-secondary);
   border: 1px solid rgba(255,255,255,.25); 
@@ -56,45 +57,103 @@
 .filter-pill:hover {
   background: rgba(255,255,255,.1);
   color: #fff;
-  opacity: 0.7;
 }
 
-.modern-songs-list {
+.songs-list {
   list-style: none;
   padding: 0;
   margin: 0;
   width: 100%;
   overflow-y: auto;
 }
-.modern-songs-list p {
+.songs-list p {
   text-align: center;
 }
 
-.modern-song-link {
-  text-decoration: none;
-}
-
-.modern-song-item {
-  padding: 14px 18px;
+.song-item {
   margin-bottom: 10px;
+  background: rgba(255,255,255,.04);
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,.25); 
-  color: #fff;
-  font-size: 1rem;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
-.modern-song-item:hover {
-  background: rgba(255,255,255,.05);
+.song-item:hover {
+  background: rgba(255,255,255,.08);
 }
-.modern-song-item strong {
+.song-item strong {
   color: var(--accent-a);
 }
 
+.song-link {
+  display: flex;
+  padding: 14px 18px;
+  text-decoration: none;
+  color: #FFF;
+}
+
 .song-album {
-  font-size: 0.95rem;
   color: var(--accent-b);
+  margin-left: auto;
   text-align: right;
+}
+
+@media (max-width: 599px) {
+  .search-input {
+    max-width: 305px;
+    font-size: 0.95rem;
+    padding: 11px 17px;
+  }
+
+  .search-bar-row {
+    margin-bottom: 14px;
+  }
+
+  .filter-row {
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .filter-pill {
+    padding: 7px 19px;
+    font-size: 0.8rem;
+  }
+
+  .song-item {
+    margin-bottom: 8px;
+  }
+
+  .song-link {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 399px) {
+  .search-input {
+    max-width: 250px;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+  }
+
+  .search-bar-row {
+    margin-bottom: 12px;
+  }
+
+  .filter-row {
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .filter-pill {
+    padding: 6px 15px;
+    font-size: 0.7rem;
+  }
+
+  .song-item {
+    margin-bottom: 7px;
+  }
+
+  .song-link {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
 }
