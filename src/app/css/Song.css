@@ -70,23 +70,19 @@
   letter-spacing: 0.03em;
 }
 
-/* .explanation-table tr:last-child td {
-  border-bottom: none;
-} */
-
 .explanation-table td {
   font-size: 0.95rem;
   color: var(--text-tertiary);
 }
 
-/* .explanation-table tbody tr:hover {
-  background: rgba(255, 255, 255, 0.07);
-} */
+.explanation-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
 
-/* @media (max-width: 600px) {
+@media (max-width: 600px) {
   .explanation-table th,
   .explanation-table td {
-    padding: 6px 6px;
-    font-size: 0.95rem;
+    /* padding: 6px 6px;
+    font-size: 0.95rem; */
   }
-} */
+}

@@ -96,7 +96,7 @@
   text-align: right;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 600px) {
   .search-input {
     max-width: 305px;
     font-size: 0.95rem;
@@ -127,7 +127,7 @@
   }
 }
 
-@media (max-width: 399px) {
+@media (max-width: 400px) {
   .search-input {
     max-width: 250px;
     font-size: 0.85rem;
