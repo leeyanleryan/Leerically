@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import yaml from 'js-yaml';
 import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -84,6 +84,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
   const [openExplanations, setOpenExplanations] = useState<Record<number, boolean>>({});
+
+  useEffect(() => {
+    const stanzas = document.querySelectorAll('.no-hover-background-after-click');
+    stanzas.forEach(stanza => {
+      const handler = () => {
+        stanza.classList.add('touch-active');
+        setTimeout(() => stanza.classList.remove('touch-active'), 100);
+      };
+      stanza.addEventListener('touchstart', handler);
+      (stanza as any).__touchHandler = handler;
+    });
+    return () => {
+      stanzas.forEach(stanza => {
+        stanza.removeEventListener('touchstart', (stanza as any).__touchHandler);
+      });
+    };
+  }, [lyricsData]);
 
   if (!lyricsData) { return <NotFound />; }
 
