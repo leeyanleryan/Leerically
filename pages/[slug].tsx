@@ -86,18 +86,23 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
   const [openExplanations, setOpenExplanations] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
+    type StanzaElement = Element & { __touchHandler?: EventListener };
     const stanzas = document.querySelectorAll('.no-hover-background-after-click');
     stanzas.forEach(stanza => {
+      const stanzaEl = stanza as StanzaElement;
       const handler = () => {
-        stanza.classList.add('touch-active');
-        setTimeout(() => stanza.classList.remove('touch-active'), 100);
+        stanzaEl.classList.add('touch-active');
+        setTimeout(() => stanzaEl.classList.remove('touch-active'), 100);
       };
-      stanza.addEventListener('touchstart', handler);
-      (stanza as any).__touchHandler = handler;
+      stanzaEl.addEventListener('touchstart', handler);
+      stanzaEl.__touchHandler = handler;
     });
     return () => {
       stanzas.forEach(stanza => {
-        stanza.removeEventListener('touchstart', (stanza as any).__touchHandler);
+        const stanzaEl = stanza as StanzaElement;
+        if (stanzaEl.__touchHandler) {
+          stanzaEl.removeEventListener('touchstart', stanzaEl.__touchHandler);
+        }
       });
     };
   }, [lyricsData]);
