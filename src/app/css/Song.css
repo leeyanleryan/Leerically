@@ -16,6 +16,8 @@
 
 .lyrics-divider {
   margin: 16px 4px;
+  border: none;
+  border-top: 1px solid var(--text-divider);
 }
 
 .lyrics-text {

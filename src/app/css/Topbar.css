@@ -6,6 +6,7 @@
   height: var(--topbar-h);
   z-index: 1000;
   background: var(--glass-bg);
+  /* background: var(--page-bg); */
   /* border-bottom: 1px solid rgba(255,255,255,.15); */
   /* border-image: linear-gradient(90deg, #C956FF, #FF834E) 1; */
 }

@@ -21,6 +21,7 @@
   --text: #fff; 
   --text-secondary: #CCCCCC;
   --text-tertiary: #9e9e9e;
+  --text-divider: rgba(255, 255, 255, 0.25);
   --text-original: #FFF; 
   --text-romanized: #AAA; 
   --text-english: #FC79B8;
