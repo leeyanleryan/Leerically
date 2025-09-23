@@ -28,8 +28,20 @@
 }
 
 .lyrics-text:hover {
-  background: rgba(255, 255, 255, 0.07);
+  /* background: rgba(255, 255, 255, 0.07); */
   border-radius: 6px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .no-hover-background-after-click:hover {
+    background: rgba(255, 255, 255, 0.07);
+  }
+}
+.no-hover-background-after-click:active {
+  background: transparent !important;
+}
+.no-hover-background-after-click.touch-active {
+  background: rgba(255, 255, 255, 0.07);
 }
 
 .lyrics-text .original {

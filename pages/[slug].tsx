@@ -88,6 +88,13 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
   if (!lyricsData) { return <NotFound />; }
 
   function getWordExplanation(word: string, lang: string, func: string) {
+    if (word == "-" && lang == "-" && func == "-") {
+      return { 
+        original: "-", 
+        romanized: "-", 
+        english: "-" 
+      };
+    }
     const expl_ori = word;
     let expl_rom = "";
     let expl_eng = "";
@@ -117,6 +124,9 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
   }
 
   function parseExplanation(explanationArr: string[]) {
+    if (!explanationArr) {
+      return [{ word: "-", lang: "-", func: "-" }];
+    }
     return explanationArr.map(str => {
       const [word, lang, func] = str.split("|");
       return { word, lang, func };
@@ -156,15 +166,14 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
               ) : (
                 <div key={idx}>
                   <div
-                    className="lyrics-text"
-                    onClick={() => entry.explanation && handleToggle(idx)}
-                    style={{ cursor: entry.explanation ? "pointer" : "default" }}
+                    className="lyrics-text no-hover-background-after-click"
+                    onClick={() => handleToggle(idx)}
                   >
                     {entry.original && <div className="original">{entry.original}</div>}
                     {entry.romanized && (<div className="romanized">{entry.romanized}</div>)}
                     {entry.english && (<div className="english">{entry.english}</div>)}
                   </div>
-                  {openExplanations[idx] && entry.explanation && (
+                  {openExplanations[idx] &&  (
                     <div className="explanation-table-wrapper">
                       <table className="explanation-table">
                         <thead>
