@@ -23,6 +23,8 @@ type LyricsData = {
   artist: string;
   album: string;
   languages: string[];
+  background: string;
+  interpretation: string;
   lyrics: LyricsEntry[] | string;
 };
 
@@ -252,13 +254,9 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
             <hr className="lyrics-divider" />
             <div className="song-section">
               <h3>Background</h3>
-              <p>
-
-              </p>
+              <p>{lyricsData.background}</p>
               <h3>Interpretation</h3>
-              <p>
-                
-              </p>
+              <p>{lyricsData.interpretation}</p>
             </div>
           </div>
         )}
