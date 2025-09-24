@@ -11,9 +11,8 @@
 .song-toolbar {
   display: flex;
   align-items: center;
-  margin: 22px auto 10px auto;
-  padding-left: 4px;
-  padding-right: 4px;
+  margin: 22px auto 5px auto;
+  padding: 0 4px 3px 4px;
   max-width: 792px;
   flex-wrap: wrap;
 }

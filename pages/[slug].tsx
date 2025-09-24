@@ -109,6 +109,12 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     };
   }, [lyricsData]);
 
+  useEffect(() => {
+    document.querySelectorAll('.no-hover-background-after-click').forEach(el => {
+      el.classList.remove('touch-active');
+    });
+  }, [activeTab]);
+
   if (!lyricsData) { return <NotFound />; }
 
   function getWordExplanation(word: string, lang: string, func: string) {
@@ -210,7 +216,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
           </div>
         </div>
         {activeTab === 'Lyrics' && (
-          <div className="lyrics-container">
+          <div className="lyrics-container" key={activeTab}>
             {Array.isArray(lyricsData.lyrics) ? (
               lyricsData.lyrics.map((entry: LyricsEntry, idx: number) =>
                 entry.divider ? (
@@ -259,12 +265,12 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
           </div>
         )}
         {activeTab === 'Interpretation' && (
-          <div>
+          <div key={activeTab}>
             <p>Interpretation view coming soon!</p>
           </div>
         )}
         {activeTab === 'Test' && (
-          <div>
+          <div key={activeTab}>
             <p>Test view coming soon!</p>
           </div>
         )}
