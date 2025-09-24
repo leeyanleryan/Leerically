@@ -10,22 +10,24 @@
 
 .song-toolbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 18px 0 10px 0;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 18px auto 10px auto;
+  padding-left: 4px;
+  padding-right: 4px;
+  max-width: 792px;
+  flex-wrap: wrap;
 }
 
 .toolbar-left {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
 .toolbar-right {
   display: flex;
   align-items: center;
+  margin-left: auto;
 }
 
 .settings-btn {
@@ -138,6 +140,10 @@
     font-size: 1.35rem;
   }
 
+  .toolbar-left {
+    gap: 8px;
+  }
+
   .lyrics-divider {
     margin: 12px 4px;
   }
@@ -163,5 +169,11 @@
 
   .explanation-table td {
     font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .toolbar-left {
+    gap: 6px;
   }
 }
