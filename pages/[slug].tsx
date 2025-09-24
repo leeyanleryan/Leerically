@@ -190,29 +190,12 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
         <h2>{lyricsData.artist} - {lyricsData.album}</h2>
         <div className="song-toolbar">
           <div className="toolbar-left">
-            <button
-              className={`filter-pill${activeTab === 'Lyrics' ? ' active' : ''}`}
-              onClick={() => setActiveTab('Lyrics')}
-            >
-              Lyrics
-            </button>
-            <button
-              className={`filter-pill${activeTab === 'Interpretation' ? ' active' : ''}`}
-              onClick={() => setActiveTab('Interpretation')}
-            >
-              Interpretation
-            </button>
-            <button
-              className={`filter-pill${activeTab === 'Test' ? ' active' : ''}`}
-              onClick={() => setActiveTab('Test')}
-            >
-              Test
-            </button>
+            <button className={`filter-pill${activeTab === 'Lyrics' ? ' active' : ''}`} onClick={() => setActiveTab('Lyrics')}>Lyrics</button>
+            <button className={`filter-pill${activeTab === 'Interpretation' ? ' active' : ''}`} onClick={() => setActiveTab('Interpretation')}>Interpretation</button>
+            <button className={`filter-pill${activeTab === 'Test' ? ' active' : ''}`} onClick={() => setActiveTab('Test')}>Test</button>
           </div>
           <div className="toolbar-right">
-            <button className="filter-pill settings-btn" title="Settings">
-              <i className="fa fa-cog"></i>
-            </button>
+            <button className="filter-pill settings-btn" title="Settings">=<i className="fa fa-cog"></i></button>
           </div>
         </div>
         {activeTab === 'Lyrics' && (
@@ -265,13 +248,19 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
           </div>
         )}
         {activeTab === 'Interpretation' && (
-          <div key={activeTab}>
-            <p>Interpretation view coming soon!</p>
+          <div className="lyrics-container" key={activeTab}>
+            <hr className="lyrics-divider" />
+            <div>
+              <p>Interpretation view coming soon!</p>
+            </div>
           </div>
         )}
         {activeTab === 'Test' && (
-          <div key={activeTab}>
-            <p>Test view coming soon!</p>
+          <div className="lyrics-container" key={activeTab}>
+            <hr className="lyrics-divider" />
+            <div>
+              <p>Test view coming soon!</p>
+            </div>
           </div>
         )}
       </div>
