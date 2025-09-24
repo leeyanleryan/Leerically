@@ -11,7 +11,7 @@
 .song-toolbar {
   display: flex;
   align-items: center;
-  margin: 18px auto 10px auto;
+  margin: 22px auto 10px auto;
   padding-left: 4px;
   padding-right: 4px;
   max-width: 792px;
@@ -138,6 +138,10 @@
 
   .song-container h2 {
     font-size: 1.35rem;
+  }
+
+  .song-toolbar {
+    margin: 18px auto 10px auto;
   }
 
   .toolbar-left {

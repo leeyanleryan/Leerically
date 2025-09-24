@@ -85,6 +85,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
   const [openExplanations, setOpenExplanations] = useState<Record<number, boolean>>({});
+  const [activeTab, setActiveTab] = useState<'Lyrics' | 'Interpretation' | 'Test'>('Lyrics');
 
   useEffect(() => {
     type StanzaElement = Element & { __touchHandler?: EventListener };
@@ -183,9 +184,24 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
         <h2>{lyricsData.artist} - {lyricsData.album}</h2>
         <div className="song-toolbar">
           <div className="toolbar-left">
-            <button className="filter-pill">Lyrics</button>
-            <button className="filter-pill">Interpretation</button>
-            <button className="filter-pill">Test</button>
+            <button
+              className={`filter-pill${activeTab === 'Lyrics' ? ' active' : ''}`}
+              onClick={() => setActiveTab('Lyrics')}
+            >
+              Lyrics
+            </button>
+            <button
+              className={`filter-pill${activeTab === 'Interpretation' ? ' active' : ''}`}
+              onClick={() => setActiveTab('Interpretation')}
+            >
+              Interpretation
+            </button>
+            <button
+              className={`filter-pill${activeTab === 'Test' ? ' active' : ''}`}
+              onClick={() => setActiveTab('Test')}
+            >
+              Test
+            </button>
           </div>
           <div className="toolbar-right">
             <button className="filter-pill settings-btn" title="Settings">
@@ -193,53 +209,65 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
             </button>
           </div>
         </div>
-        <div className="lyrics-container">
-          {Array.isArray(lyricsData.lyrics) ? (
-            lyricsData.lyrics.map((entry: LyricsEntry, idx: number) =>
-              entry.divider ? (
-                <hr key={idx} className="lyrics-divider" />
-              ) : (
-                <div key={idx}>
-                  <div
-                    className="lyrics-text no-hover-background-after-click"
-                    onClick={() => handleToggle(idx)}
-                  >
-                    {entry.original && <div className="original">{entry.original}</div>}
-                    {entry.romanized && (<div className="romanized">{entry.romanized}</div>)}
-                    {entry.english && (<div className="english">{entry.english}</div>)}
-                  </div>
-                  {openExplanations[idx] &&  (
-                    <div className="explanation-table-wrapper">
-                      <table className="explanation-table">
-                        <thead>
-                          <tr>
-                            <th>Original</th>
-                            <th>Romanized</th>
-                            <th>English</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {parseExplanation(entry.explanation).map((exp, i) => {
-                            const wordData = getWordExplanation(exp.word, exp.lang, exp.func);
-                            return (
-                              <tr key={i}>
-                                <td>{wordData.original}</td>
-                                <td>{wordData.romanized}</td>
-                                <td>{wordData.english}</td>
-                              </tr>
-                            );
-                          })}
-                        </tbody>
-                      </table>
+        {activeTab === 'Lyrics' && (
+          <div className="lyrics-container">
+            {Array.isArray(lyricsData.lyrics) ? (
+              lyricsData.lyrics.map((entry: LyricsEntry, idx: number) =>
+                entry.divider ? (
+                  <hr key={idx} className="lyrics-divider" />
+                ) : (
+                  <div key={idx}>
+                    <div
+                      className="lyrics-text no-hover-background-after-click"
+                      onClick={() => handleToggle(idx)}
+                    >
+                      {entry.original && <div className="original">{entry.original}</div>}
+                      {entry.romanized && (<div className="romanized">{entry.romanized}</div>)}
+                      {entry.english && (<div className="english">{entry.english}</div>)}
                     </div>
-                  )}
-                </div>
+                    {openExplanations[idx] &&  (
+                      <div className="explanation-table-wrapper">
+                        <table className="explanation-table">
+                          <thead>
+                            <tr>
+                              <th>Original</th>
+                              <th>Romanized</th>
+                              <th>English</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {parseExplanation(entry.explanation).map((exp, i) => {
+                              const wordData = getWordExplanation(exp.word, exp.lang, exp.func);
+                              return (
+                                <tr key={i}>
+                                  <td>{wordData.original}</td>
+                                  <td>{wordData.romanized}</td>
+                                  <td>{wordData.english}</td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </div>
+                )
               )
-            )
-          ) : (
-            <pre>{lyricsData.lyrics}</pre>
-          )}
-        </div>
+            ) : (
+              <pre>{lyricsData.lyrics}</pre>
+            )}
+          </div>
+        )}
+        {activeTab === 'Interpretation' && (
+          <div>
+            <p>Interpretation view coming soon!</p>
+          </div>
+        )}
+        {activeTab === 'Test' && (
+          <div>
+            <p>Test view coming soon!</p>
+          </div>
+        )}
       </div>
     </>
   );
