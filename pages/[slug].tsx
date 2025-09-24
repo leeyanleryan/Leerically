@@ -7,6 +7,7 @@ import path from 'path';
 import NotFound from './404';
 import { allSongs, sluggify } from '../src/app/ts/songsData';
 import '../src/app/css/Song.css';
+import '../src/app/css/Filter.css';
 
 type LyricsEntry = {
   divider: boolean;
@@ -180,6 +181,18 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
       <div className="song-container">
         <h1>{lyricsData.title}</h1>
         <h2>{lyricsData.artist} - {lyricsData.album}</h2>
+        <div className="song-toolbar">
+          <div className="toolbar-left">
+            <button className="filter-pill">Lyrics</button>
+            <button className="filter-pill">Interpretation</button>
+            <button className="filter-pill">Test</button>
+          </div>
+          <div className="toolbar-right">
+            <button className="filter-pill settings-btn" title="Settings">
+              <i className="fa fa-cog"></i>
+            </button>
+          </div>
+        </div>
         <div className="lyrics-container">
           {Array.isArray(lyricsData.lyrics) ? (
             lyricsData.lyrics.map((entry: LyricsEntry, idx: number) =>

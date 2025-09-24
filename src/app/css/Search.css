@@ -37,28 +37,6 @@
   flex-wrap: wrap;
 }
 
-.filter-pill {
-  background: none;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  padding: 8px 22px;
-  color: var(--text-secondary);
-  border: 1px solid rgba(255,255,255,.25); 
-  cursor: pointer;
-}
-.filter-pill.active {
-  background: var(--gradient) !important;
-  border: 1px solid var(--page-bg);
-  color: #fff;
-}
-.filter-pill.active:hover {
-  opacity: 1;
-}
-.filter-pill:hover {
-  background: rgba(255,255,255,.1);
-  color: #fff;
-}
-
 .songs-list {
   list-style: none;
   padding: 0;
@@ -112,11 +90,6 @@
     margin-bottom: 18px;
   }
 
-  .filter-pill {
-    padding: 7px 19px;
-    font-size: 0.8rem;
-  }
-
   .song-item {
     margin-bottom: 8px;
   }
@@ -141,11 +114,6 @@
   .filter-row {
     gap: 8px;
     margin-bottom: 15px;
-  }
-
-  .filter-pill {
-    padding: 6px 15px;
-    font-size: 0.7rem;
   }
 
   .song-item {
