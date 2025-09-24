@@ -234,7 +234,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
       const allGlossesSet = new Set<string>();
 
       for (const entry of lyricsData.lyrics) {
-        if ((entry as any).divider) continue;
+        if ((entry as LyricsEntry).divider) continue;
         if (!entry.explanation) continue;
 
         const exps = parseExplanation(entry.explanation);
