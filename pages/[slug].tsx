@@ -85,7 +85,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
   const [openExplanations, setOpenExplanations] = useState<Record<number, boolean>>({});
-  const [activeTab, setActiveTab] = useState<'Lyrics' | 'Interpretation' | 'Test'>('Lyrics');
+  const [activeTab, setActiveTab] = useState<'Lyrics' | 'Info' | 'Test'>('Lyrics');
 
   useEffect(() => {
     type StanzaElement = Element & { __touchHandler?: EventListener };
@@ -191,11 +191,11 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
         <div className="song-toolbar">
           <div className="toolbar-left">
             <button className={`filter-pill${activeTab === 'Lyrics' ? ' active' : ''}`} onClick={() => setActiveTab('Lyrics')}>Lyrics</button>
-            <button className={`filter-pill${activeTab === 'Interpretation' ? ' active' : ''}`} onClick={() => setActiveTab('Interpretation')}>Interpretation</button>
+            <button className={`filter-pill${activeTab === 'Info' ? ' active' : ''}`} onClick={() => setActiveTab('Info')}>Info</button>
             <button className={`filter-pill${activeTab === 'Test' ? ' active' : ''}`} onClick={() => setActiveTab('Test')}>Test</button>
           </div>
           <div className="toolbar-right">
-            <button className="filter-pill settings-btn" title="Settings">=<i className="fa fa-cog"></i></button>
+            <button className="filter-pill settings-btn" title="Settings"><i className="fa fa-cog"></i></button>
           </div>
         </div>
         {activeTab === 'Lyrics' && (
@@ -247,19 +247,26 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
             )}
           </div>
         )}
-        {activeTab === 'Interpretation' && (
+        {activeTab === 'Info' && (
           <div className="lyrics-container" key={activeTab}>
             <hr className="lyrics-divider" />
-            <div>
-              <p>Interpretation view coming soon!</p>
+            <div className="song-section">
+              <h3>Background</h3>
+              <p>
+
+              </p>
+              <h3>Interpretation</h3>
+              <p>
+                
+              </p>
             </div>
           </div>
         )}
         {activeTab === 'Test' && (
           <div className="lyrics-container" key={activeTab}>
             <hr className="lyrics-divider" />
-            <div>
-              <p>Test view coming soon!</p>
+            <div className="song-section">
+              <p></p>
             </div>
           </div>
         )}

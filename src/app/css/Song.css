@@ -79,18 +79,6 @@
   border-radius: 6px;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .no-hover-background-after-click:hover {
-    background: rgba(255, 255, 255, 0.07);
-  }
-}
-.no-hover-background-after-click:active {
-  background: transparent !important;
-}
-.no-hover-background-after-click.touch-active {
-  background: rgba(255, 255, 255, 0.07);
-}
-
 .lyrics-text .original {
   color: var(--text-original);
 }
@@ -101,6 +89,18 @@
 
 .lyrics-text .english {
   color: var(--text-english);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .no-hover-background-after-click:hover {
+    background: rgba(255, 255, 255, 0.07);
+  }
+}
+.no-hover-background-after-click:active {
+  background: transparent !important;
+}
+.no-hover-background-after-click.touch-active {
+  background: rgba(255, 255, 255, 0.07);
 }
 
 .explanation-table-wrapper {
@@ -136,6 +136,19 @@
 
 .explanation-table tbody tr:hover {
   background: rgba(255, 255, 255, 0.04);
+}
+
+.song-section {
+  max-width: 800px;
+  padding: 0 8px;
+  text-align: left;
+}
+.song-section h3 {
+  margin-bottom: 0px;
+}
+.song-section p {
+  margin-top: 12px;
+  margin-bottom: 24px;
 }
 
 @media (max-width: 600px) {
