@@ -318,7 +318,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
       return (
         <div className="lt-test-empty">
           <p>
-            Not enough annotated lines yet. Add <code>explanation</code> cells to more lyrics to enable the quiz.
+            Not enough annotated lyrics to generate a test. Please check back later or contribute annotations!
           </p>
         </div>
       );

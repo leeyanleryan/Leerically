@@ -152,8 +152,13 @@
   margin-bottom: 20px;
 }
 
-.lt-test-wrap { padding: 0 8px; }
-.lt-test-title { margin: 10px 0 12px; font-weight: 700; }
+.lt-test-wrap { 
+  padding: 0 8px; 
+}
+.lt-test-title { 
+  margin: 10px 0 12px; 
+  font-weight: 700; 
+}
 
 .lt-test-card {
   background: transparent;
@@ -168,6 +173,7 @@
   line-height: 1.6;
   color: var(--text-original);
 }
+
 .lt-highlight {
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.16);
@@ -183,6 +189,7 @@
   grid-template-columns: 1fr;
   gap: 8px;
 }
+
 .lt-option-button {
   width: 100%;
   text-align: left;
@@ -194,8 +201,13 @@
   cursor: pointer;
   transition: transform .05s ease, background .15s ease, border-color .15s ease;
 }
-.lt-option-button:hover { background: rgba(255,255,255,.08); }
-.lt-option-button.disabled { cursor: default; opacity: .9; }
+.lt-option-button:hover { 
+  background: rgba(255,255,255,.08); 
+}
+.lt-option-button.disabled { 
+  cursor: default; 
+  opacity: .9; 
+}
 .lt-option-button.correct {
   border-color: #2e7d32;
   background: rgba(46,125,50,.2);
@@ -218,7 +230,9 @@
   color: var(--text-secondary);
   cursor: pointer;
 }
-.lt-next-btn:hover { background: rgba(255,255,255,.08); }
+.lt-next-btn:hover { 
+  background: rgba(255,255,255,.08); 
+}
 
 @media (max-width: 600px) {
   .song-container h1 {
