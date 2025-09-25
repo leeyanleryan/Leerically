@@ -152,16 +152,11 @@
   margin-bottom: 20px;
 }
 
-.lt-test-wrap { 
-  padding: 0 8px; 
-}
 .lt-test-title { 
-  margin: 10px 0 12px; 
-  font-weight: 700; 
+  margin-bottom: 12px; 
 }
 
 .lt-test-card {
-  background: transparent;
   border: 1px solid var(--expl-box);
   border-radius: 12px;
   padding: 14px;
@@ -178,7 +173,8 @@
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.16);
   border-radius: 6px;
-  padding: 0 4px;
+  padding: 0 2px;
+  margin: 0 2px;
 }
 
 .lt-test-options {
@@ -199,7 +195,7 @@
   color: var(--text);
   padding: 10px 12px;
   cursor: pointer;
-  transition: transform .05s ease, background .15s ease, border-color .15s ease;
+  transition: transform .05s ease, border-color .15s ease;
 }
 .lt-option-button:hover { 
   background: rgba(255,255,255,.08); 
@@ -208,13 +204,22 @@
   cursor: default; 
   opacity: .9; 
 }
+.lt-option-button.disabled:hover { 
+  background: rgba(255,255,255,.04);
+}
 .lt-option-button.correct {
   border-color: #2e7d32;
   background: rgba(46,125,50,.2);
 }
+.lt-option-button.correct:hover {
+  background: rgba(46,125,50,.28);
+}
 .lt-option-button.incorrect {
   border-color: #c62828;
   background: rgba(198,40,40,.18);
+}
+.lt-option-button.incorrect:hover {
+  background: rgba(198,40,40,.26);
 }
 
 .lt-test-actions {

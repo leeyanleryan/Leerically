@@ -328,7 +328,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     const isWrongPick = (opt: string) => picked !== null && picked === opt && opt !== q.correct;
 
     return (
-      <div className="lt-test-wrap">
+      <>
         <h3 className="lt-test-title">Pick the meaning of the highlighted word</h3>
         <div className="lt-test-card">
           <div className="lt-test-sentence">
@@ -360,7 +360,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
             </button>
           </div>
         </div>
-      </div>
+      </>
     );
   };
 
