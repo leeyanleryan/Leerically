@@ -1,4 +1,3 @@
-// pages/[slug].tsx
 import React, { useState, useEffect } from 'react';
 import yaml from 'js-yaml';
 import Head from 'next/head';
@@ -31,8 +30,8 @@ type LyricsData = {
 
 type WordBankEntry = {
   original: string;
-  romanized?: string; // non-JP
-  romaji?: string;    // JP
+  romanized?: string;
+  romaji?: string;
   english?: string;
   functions?: Record<string, { english: string }>;
 };
@@ -140,9 +139,6 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     setOpenExplanations(prev => ({ ...prev, [idx]: !prev[idx] }));
   };
 
-  // ------------------------------------------------------------------
-  // Test tab types/utilities
-  // ------------------------------------------------------------------
   type GlossItem = {
     line: string;              // original line
     romanizedLine?: string;    // romanized line (whole)
@@ -365,12 +361,34 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
 
     const [q, setQ] = React.useState<Question | null>(makeQuestion);
     const [picked, setPicked] = React.useState<string | null>(null);
-    const [hintOpen, setHintOpen] = React.useState(false);
+    // const [hintOpen, setHintOpen] = React.useState(false);
+
+    // persistent prefs (load once)
+    const [alwaysRomHint, setAlwaysRomHint] = React.useState<boolean>(() => {
+      try { return JSON.parse(localStorage.getItem('lt-always-rom-hint') || 'false'); } catch { return false; }
+    });
+    const [alwaysEngHint, setAlwaysEngHint] = React.useState<boolean>(() => {
+      try { return JSON.parse(localStorage.getItem('lt-always-eng-hint') || 'false'); } catch { return false; }
+    });
+
+    // per-question visibility (initialized from the persistent prefs)
+    const [showRomHint, setShowRomHint] = React.useState<boolean>(alwaysRomHint);
+    const [showEngHint, setShowEngHint] = React.useState<boolean>(alwaysEngHint);
+
+    // keep localStorage in sync when prefs change
+    React.useEffect(() => {
+      localStorage.setItem('lt-always-rom-hint', JSON.stringify(alwaysRomHint));
+    }, [alwaysRomHint]);
+
+    React.useEffect(() => {
+      localStorage.setItem('lt-always-eng-hint', JSON.stringify(alwaysEngHint));
+    }, [alwaysEngHint]);
 
     const next = () => {
       setPicked(null);
-      setHintOpen(false);
       setQ(makeQuestion());
+      setShowRomHint(alwaysRomHint);
+      setShowEngHint(alwaysEngHint);
     };
 
     if (!ready || !q) {
@@ -397,38 +415,75 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
             <HighlightNth text={q.line} token={q.token} occurrence={q.occurrence} />
           </div>
 
-          {/* Hints block (romanized + english), covered until revealed */}
-          {(q.rline || q.eline) && (
+          {/* Hints (independent covers) */}
+          {q.rline && (
             <div className="lt-hint">
-              <div className="lt-hint-inner" data-covered={!hintOpen}>
-                {q.rline && (
-                  <div className="lt-hint-line lt-hint-romanized">
-                    {q.rStart >= 0 && q.rLen > 0
-                      ? <HighlightAt text={q.rline} start={q.rStart} length={q.rLen} />
-                      : q.romajiToken
-                        ? <HighlightNth text={q.rline} token={q.romajiToken} occurrence={q.occurrence} ignoreCase />
-                        : q.rline}
-                  </div>
-                )}
-                {q.eline && (
-                  <div className="lt-hint-line lt-hint-english">
-                    {q.eline}
-                  </div>
-                )}
-
-                {!hintOpen && (
+              <div className="lt-hint-inner" data-covered={!showRomHint}>
+                <div className="lt-hint-line lt-hint-romanized">
+                  {q.rStart >= 0 && q.rLen > 0
+                    ? <HighlightAt text={q.rline} start={q.rStart} length={q.rLen} />
+                    : q.romajiToken
+                      ? <HighlightNth text={q.rline} token={q.romajiToken} occurrence={q.occurrence} ignoreCase />
+                      : q.rline}
+                </div>
+                {!showRomHint && (
                   <button
                     type="button"
                     className="lt-hint-cover"
-                    onClick={() => setHintOpen(true)}
-                    aria-label="Show hint"
+                    onClick={() => setShowRomHint(true)}
+                    aria-label="Show romaji hint"
                   >
-                    <span>💡 Hint</span>
+                    <span>💡 Romaji</span>
                   </button>
                 )}
               </div>
             </div>
           )}
+
+          {q.eline && (
+            <div className="lt-hint">
+              <div className="lt-hint-inner" data-covered={!showEngHint}>
+                <div className="lt-hint-line lt-hint-english">
+                  {q.eline}
+                </div>
+                {!showEngHint && (
+                  <button
+                    type="button"
+                    className="lt-hint-cover"
+                    onClick={() => setShowEngHint(true)}
+                    aria-label="Show English hint"
+                  >
+                    <span>💡 English</span>
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+
+          <div className="lt-hint-toggles" style={{display:'flex', gap:'16px', alignItems:'center', margin:'8px 0'}}>
+            <label style={{display:'flex', gap:'6px', alignItems:'center'}}>
+              <input
+                type="checkbox"
+                checked={alwaysRomHint}
+                onChange={(e) => {
+                  setAlwaysRomHint(e.target.checked);
+                  setShowRomHint(e.target.checked); // reflect immediately on current question
+                }}
+              />
+              Always show Romaji hint
+            </label>
+            <label style={{display:'flex', gap:'6px', alignItems:'center'}}>
+              <input
+                type="checkbox"
+                checked={alwaysEngHint}
+                onChange={(e) => {
+                  setAlwaysEngHint(e.target.checked);
+                  setShowEngHint(e.target.checked); // reflect immediately on current question
+                }}
+              />
+              Always show English hint
+            </label>
+          </div>
 
           {/* Options */}
           <ul className="lt-test-options">
