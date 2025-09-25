@@ -252,6 +252,53 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     return <>{nodes}</>;
   }
 
+  function findNthIndex(
+    text: string,
+    token: string,
+    occurrence: number,
+    { ignoreCase = false, wholeWord = false }: { ignoreCase?: boolean; wholeWord?: boolean } = {}
+  ): number {
+    if (!token) return -1;
+    const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const esc = escape(token);
+
+    const before = wholeWord ? '(^|[^A-Za-z])' : '';
+    const after  = wholeWord ? '(?=$|[^A-Za-z])' : '';
+    const flags  = ignoreCase ? 'gi' : 'g';
+    const re     = new RegExp(`${before}(${esc})${after}`, flags);
+
+    let found = 0;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(text)) !== null) {
+      const preLen = wholeWord ? (m[1] ? m[1].length : 0) : 0;
+      const start  = m.index + preLen;
+      const len    = m[wholeWord ? 2 : 1]?.length ?? 0;
+
+      if (++found === occurrence) return start;
+
+      // advance safely
+      const nextIndex = start + len;
+      if (re.lastIndex < nextIndex) re.lastIndex = nextIndex;
+    }
+    return -1;
+  }
+
+  function RomajiHighlight({
+    text, token, occurrence
+  }: { text: string; token: string; occurrence: number }) {
+    // prefer whole-word; if not found, fall back to in-word
+    const hasWhole = findNthIndex(text, token, occurrence, { ignoreCase: true, wholeWord: true }) !== -1;
+    return (
+      <HighlightNth
+        text={text}
+        token={token}
+        occurrence={occurrence}
+        ignoreCase
+        wholeWord={hasWhole}
+      />
+    );
+  }
+
   const TestTab: React.FC<{ lyricsData: LyricsData }> = ({ lyricsData }) => {
     // Build the pool once
     const pool = React.useMemo(() => {
@@ -374,7 +421,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
                   <div className="lt-hint-line lt-hint-romanized">
                     {/* highlight matching token in romanized if available */}
                     {q.romajiToken
-                      ? <HighlightNth text={q.rline} token={q.romajiToken} occurrence={q.occurrence} ignoreCase wholeWord />
+                      ? <RomajiHighlight text={q.rline} token={q.romajiToken} occurrence={q.occurrence} />
                       : q.rline}
                   </div>
                 )}
