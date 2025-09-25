@@ -173,8 +173,17 @@
   color: var(--accent-b1);
   border: 1px solid rgba(255,255,255,.16);
   border-radius: 6px;
-  padding: 0 2px;
-  margin: 0 2px;
+  padding: 0 3px;
+  /* color: #fff; */
+  /* border: 2px solid transparent;
+  border-radius: 6px;
+  background: 
+    linear-gradient(var(--page-bg), var(--page-bg)) padding-box,
+    linear-gradient(to right, var(--accent-a), var(--accent-b)) border-box;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box; */
+  /* padding: 0 3px; */
+  /* margin: 0 2px; */
 }
 
 .lt-test-options {
