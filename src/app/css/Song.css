@@ -181,7 +181,7 @@
 } */
 
 .lt-highlight {
-  border: 2px solid var(--accent-b1);
+  border: 1px solid var(--accent-b1);
   border-radius: 6px;
   background: rgba(255, 110, 199, 0.10);
   padding: 0 4px;
