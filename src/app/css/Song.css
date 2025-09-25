@@ -170,7 +170,7 @@
 }
 
 .lt-highlight {
-  background: rgba(255,255,255,.08);
+  color: var(--accent-b1);
   border: 1px solid rgba(255,255,255,.16);
   border-radius: 6px;
   padding: 0 2px;
