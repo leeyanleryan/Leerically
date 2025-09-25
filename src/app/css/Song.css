@@ -239,6 +239,38 @@
   background: rgba(255,255,255,.08); 
 }
 
+.lt-hint { margin: 10px 0 12px; }
+.lt-hint-inner {
+  position: relative;
+  border: 1px solid var(--expl-box);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.lt-hint-inner[data-covered="true"] .lt-hint-line {
+  filter: blur(5px);
+  user-select: none;
+  pointer-events: none;
+}
+.lt-hint-cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(24,24,32,.55);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: .02em;
+  cursor: pointer;
+}
+.lt-hint-cover:hover { background: rgba(24,24,32,.65); }
+
+.lt-hint-line { line-height: 1.55; }
+.lt-hint-romanized { color: var(--text-romanized); margin-bottom: 6px; }
+.lt-hint-english { color: var(--text-english); }
+
 @media (max-width: 600px) {
   .song-container h1 {
     font-size: 1.8rem;

@@ -173,10 +173,13 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
   };
 
   type GlossItem = {
-    line: string;       // original line (in JP etc.)
-    word: string;       // the surface form from explanation
-    gloss: string;      // English meaning (incl. function-specific when present)
-    occurrence: number; // this is the nth time this word appears in the line (1-based)
+    line: string;              // original line
+    romanizedLine?: string;    // romanized line (whole)
+    englishLine?: string;      // english line (whole)
+    word: string;              // token in the original script
+    romajiToken?: string;      // token's romanization (from word bank)
+    gloss: string;             // meaning shown as an option
+    occurrence: number;        // nth time this token appears in the line
   };
 
   function shuffle<T>(arr: T[]): T[] {
@@ -186,59 +189,84 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
-  // highlight only the nth occurrence of `token` in `text` (safe, no innerHTML)
   function HighlightNth({
     text,
     token,
     occurrence,
     className = 'lt-highlight',
+    ignoreCase = false,
+    wholeWord = false,
   }: {
     text: string;
     token: string;
     occurrence: number;
     className?: string;
+    ignoreCase?: boolean;
+    wholeWord?: boolean;
   }) {
     if (!token) return <>{text}</>;
-    let found = 0;
-    const parts: React.ReactNode[] = [];
 
-    let from = 0;
-    while (true) {
-      const at = text.indexOf(token, from);
-      if (at === -1) {
-        parts.push(text.slice(from));
-        break;
+    const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const esc = escapeRegExp(token);
+
+    // Whole-word boundaries for A–Z letters; tweak if you need diacritics.
+    const before = wholeWord ? '(^|[^A-Za-z])' : '';
+    const after  = wholeWord ? '(?=$|[^A-Za-z])' : '';
+
+    const flags = ignoreCase ? 'gi' : 'g';
+    const re = new RegExp(`${before}(${esc})${after}`, flags);
+
+    const nodes: React.ReactNode[] = [];
+    let lastIndex = 0;
+    let found = 0;
+    let m: RegExpExecArray | null;
+
+    while ((m = re.exec(text)) !== null) {
+      const matchIndex = m.index;
+      const preLen = wholeWord ? (m[1] ? m[1].length : 0) : 0;
+      const groupIndex = wholeWord ? 2 : 1;
+      const matchedToken = m[groupIndex];
+      if (!matchedToken) {
+        // safety: advance the regex to avoid infinite loops
+        re.lastIndex = matchIndex + 1;
+        continue;
       }
-      const next = at + token.length;
-      // push prefix
-      parts.push(text.slice(from, at));
-      // push highlighted or plain token
+
+      const tokenStart = matchIndex + preLen;
+      const tokenEnd = tokenStart + matchedToken.length;
+
+      nodes.push(text.slice(lastIndex, tokenStart));
+
       found += 1;
-      if (found === occurrence) {
-        parts.push(<span key={at} className={className}>{token}</span>);
-      } else {
-        parts.push(text.slice(at, next));
-      }
-      from = next;
+      nodes.push(
+        found === occurrence
+          ? <span key={tokenStart} className={className}>{matchedToken}</span>
+          : matchedToken
+      );
+
+      lastIndex = tokenEnd;
+      if (re.lastIndex < lastIndex) re.lastIndex = lastIndex;
     }
 
-    return <>{parts}</>;
+    nodes.push(text.slice(lastIndex));
+    return <>{nodes}</>;
   }
 
   const TestTab: React.FC<{ lyricsData: LyricsData }> = ({ lyricsData }) => {
-    // Build a pool: for each annotated line, collect (word, gloss, nth-occurrence)
+    // Build the pool once
     const pool = React.useMemo(() => {
-      if (!Array.isArray(lyricsData.lyrics)) return { lines: [] as { line: string; items: GlossItem[] }[], allGlosses: [] as string[] };
+      if (!Array.isArray(lyricsData.lyrics)) {
+        return { lines: [] as { line: string; items: GlossItem[] }[], allGlosses: [] as string[] };
+      }
 
       const lines: { line: string; items: GlossItem[] }[] = [];
       const allGlossesSet = new Set<string>();
 
-      for (const entry of lyricsData.lyrics) {
-        if ((entry as LyricsEntry).divider) continue;
+      for (const entry of lyricsData.lyrics as LyricsEntry[]) {
+        if (entry.divider) continue;
         if (!entry.explanation) continue;
 
         const exps = parseExplanation(entry.explanation);
-        // count nth occurrence per word for this line
         const counts = new Map<string, number>();
         const items: GlossItem[] = [];
 
@@ -252,22 +280,22 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
 
           items.push({
             line: entry.original,
+            romanizedLine: entry.romanized,
+            englishLine: entry.english,
             word: e.word,
+            romajiToken: info.romanized && info.romanized !== '-' ? info.romanized : undefined,
             gloss,
             occurrence: n,
           });
           allGlossesSet.add(gloss);
         }
 
-        if (items.length) {
-          lines.push({ line: entry.original, items });
-        }
+        if (items.length) lines.push({ line: entry.original, items });
       }
 
       return { lines, allGlosses: Array.from(allGlossesSet) };
     }, [lyricsData]);
 
-    // If there’s not enough data, render a helpful message
     const totalItems = React.useMemo(
       () => pool.lines.reduce((acc, l) => acc + l.items.length, 0),
       [pool]
@@ -275,8 +303,11 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     const ready = totalItems >= 1 && pool.allGlosses.length >= 2;
 
     type Question = {
-      line: string;
-      token: string;
+      line: string;        // original
+      rline: string;       // romanized
+      eline: string;       // english
+      token: string;       // original token
+      romajiToken: string; // romanized token (for highlighting)
       occurrence: number;
       correct: string;
       options: string[];
@@ -285,20 +316,19 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     const makeQuestion = React.useCallback((): Question | null => {
       if (!ready) return null;
 
-      // pick a random line with at least 1 item
       const line = pickOne(pool.lines);
       const item = pickOne(line.items);
 
-      // distractors: unique other glosses
       const distractorPool = pool.allGlosses.filter((g) => g !== item.gloss);
-      // ensure at most 3 distractors, unique, shuffled
       const distractors = shuffle(distractorPool).slice(0, 3);
-      // if the global pool is small, backfill to keep at least 2 options
       const options = shuffle([item.gloss, ...distractors]).slice(0, 4);
 
       return {
         line: item.line,
+        rline: item.romanizedLine ?? '',
+        eline: item.englishLine ?? '',
         token: item.word,
+        romajiToken: item.romajiToken ?? '',
         occurrence: item.occurrence,
         correct: item.gloss,
         options,
@@ -307,19 +337,18 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
 
     const [q, setQ] = React.useState<Question | null>(makeQuestion);
     const [picked, setPicked] = React.useState<string | null>(null);
+    const [hintOpen, setHintOpen] = React.useState(false);
 
-    // Next question
     const next = () => {
       setPicked(null);
+      setHintOpen(false);
       setQ(makeQuestion());
     };
 
     if (!ready || !q) {
       return (
         <div className="lt-test-empty">
-          <p>
-            Not enough annotated lyrics to generate a test. Please check back later or contribute annotations!
-          </p>
+          <p>Not enough annotated lyrics to generate a test. Add more <code>explanation</code> rows and try again.</p>
         </div>
       );
     }
@@ -330,11 +359,46 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     return (
       <>
         <h3 className="lt-test-title">Pick the meaning of the highlighted word</h3>
+
         <div className="lt-test-card">
+          {/* Original sentence */}
           <div className="lt-test-sentence">
             <HighlightNth text={q.line} token={q.token} occurrence={q.occurrence} />
           </div>
 
+          {/* Hints block (romanized + english), covered until revealed */}
+          {(q.rline || q.eline) && (
+            <div className="lt-hint">
+              <div className="lt-hint-inner" data-covered={!hintOpen}>
+                {q.rline && (
+                  <div className="lt-hint-line lt-hint-romanized">
+                    {/* highlight matching token in romanized if available */}
+                    {q.romajiToken
+                      ? <HighlightNth text={q.rline} token={q.romajiToken} occurrence={q.occurrence} ignoreCase wholeWord />
+                      : q.rline}
+                  </div>
+                )}
+                {q.eline && (
+                  <div className="lt-hint-line lt-hint-english">
+                    {q.eline}
+                  </div>
+                )}
+
+                {!hintOpen && (
+                  <button
+                    type="button"
+                    className="lt-hint-cover"
+                    onClick={() => setHintOpen(true)}
+                    aria-label="Show hint"
+                  >
+                    <span>💡 Hint</span>
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Options */}
           <ul className="lt-test-options">
             {q.options.map((opt) => (
               <li key={opt}>
@@ -355,9 +419,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
           </ul>
 
           <div className="lt-test-actions">
-            <button className="lt-next-btn" onClick={next}>
-              Next Question
-            </button>
+            <button className="lt-next-btn" onClick={next}>Next Question</button>
           </div>
         </div>
       </>
@@ -380,7 +442,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
         />
       </Head>
       <div className="song-container">
-        <h1>{lyricsData.title}</h1>
+        <h1>{lyricsData.artist} - {lyricsData.title}</h1>
         {/* <h2>{lyricsData.artist} - {lyricsData.album}</h2> */}
         <div className="song-toolbar">
           <div className="toolbar-left">
