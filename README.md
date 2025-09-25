@@ -11,4 +11,4 @@ A website for browsing song lyrics with detailed translations and interpretation
 
 ## Tech Stack
 
-Next.js, TypeScript, AWS S3, AWS CloudFront, GitHub Actions
+Next.js, TypeScript, AWS (S3, CloudFront)
