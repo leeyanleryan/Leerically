@@ -381,7 +381,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
       </Head>
       <div className="song-container">
         <h1>{lyricsData.title}</h1>
-        <h2>{lyricsData.artist} - {lyricsData.album}</h2>
+        {/* <h2>{lyricsData.artist} - {lyricsData.album}</h2> */}
         <div className="song-toolbar">
           <div className="toolbar-left">
             <button className={`filter-pill${activeTab === 'Lyrics' ? ' active' : ''}`} onClick={() => setActiveTab('Lyrics')}>Lyrics</button>
