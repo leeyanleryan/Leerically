@@ -238,6 +238,23 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     );
   }
 
+  // Find romaji token allowing optional spaces/hyphens between parts.
+  function findFlexibleRomajiIndex(
+    text: string,
+    token: string,
+    from: number
+  ): { start: number; length: number } | null {
+    if (!token) return null;
+    const esc = token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // make any run of whitespace in the token optional in the text: "hontou ni" -> /hontou[\s-]*ni/i
+    const pattern = esc.replace(/\s+/g, '[\\s-]*');
+    const re = new RegExp(pattern, 'i');
+    const slice = text.slice(from);
+    const m = re.exec(slice);
+    if (!m) return null;
+    return { start: from + m.index, length: m[0].length };
+  }
+
   const TestTab: React.FC<{ lyricsData: LyricsData }> = ({ lyricsData }) => {
     // Build the pool once, aligning romanized tokens to explanation order.
     const pool = React.useMemo(() => {
@@ -258,7 +275,6 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
 
         // Prepare romanized scanning
         const rline = entry.romanized ?? '';
-        const rLower = rline.toLowerCase();
         let cursor = 0; // move forward as we match each explanation's romaji
 
         for (const e of exps) {
@@ -270,16 +286,15 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
           const n = (counts.get(e.word) ?? 0) + 1;
           counts.set(e.word, n);
 
-          // try to align romaji token to the next occurrence after cursor
+          // try to align romaji token to the next occurrence after cursor (space/hyphen flexible)
           let rStart: number | undefined = undefined;
           let rLen: number | undefined = undefined;
           if (romTok) {
-            const q = romTok.toLowerCase();
-            const idx = rLower.indexOf(q, cursor);
-            if (idx !== -1) {
-              rStart = idx;
-              rLen = romTok.length;
-              cursor = idx + romTok.length; // advance so next exp searches after this one
+            const hit = findFlexibleRomajiIndex(rline, romTok, cursor);
+            if (hit) {
+              rStart = hit.start;
+              rLen = hit.length;
+              cursor = hit.start + hit.length; // advance so next exp searches after this one
             }
           }
 
@@ -309,7 +324,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
       () => pool.lines.reduce((acc, l) => acc + l.items.length, 0),
       [pool]
     );
-    const ready = totalItems >= 1 && pool.allGlosses.length >= 2;
+    const ready = totalItems >= 2;
 
     type Question = {
       line: string;        // original
@@ -361,7 +376,10 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     if (!ready || !q) {
       return (
         <div className="lt-test-empty">
-          <p>Not enough annotated lyrics to generate a test. Add more <code>explanation</code> rows and try again.</p>
+          <p>
+            Not enough annotated lyrics to generate a test. Please check back
+            later or contribute annotations!
+          </p>
         </div>
       );
     }
