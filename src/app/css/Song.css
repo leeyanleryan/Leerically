@@ -279,7 +279,7 @@
 .lt-hint-cover:hover { background: rgba(24,24,32,.65); }
 
 .lt-hint-line { line-height: 1.55; }
-.lt-hint-romanized { color: var(--text-romanized); margin-bottom: 6px; }
+.lt-hint-romanized { color: var(--text-romanized); }
 .lt-hint-english { color: var(--text-english); }
 
 @media (max-width: 600px) {

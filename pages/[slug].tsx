@@ -431,9 +431,9 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
                     type="button"
                     className="lt-hint-cover"
                     onClick={() => setShowRomHint(true)}
-                    aria-label="Show romaji hint"
+                    aria-label="Show romanized hint"
                   >
-                    <span>💡 Romaji</span>
+                    <span>💡 Romanized</span>
                   </button>
                 )}
               </div>
@@ -470,7 +470,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
                   setShowRomHint(e.target.checked); // reflect immediately on current question
                 }}
               />
-              Always show Romaji hint
+              Always show Romanized hint
             </label>
             <label style={{display:'flex', gap:'6px', alignItems:'center'}}>
               <input
