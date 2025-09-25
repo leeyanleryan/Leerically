@@ -1,3 +1,4 @@
+// pages/[slug].tsx
 import React, { useState, useEffect } from 'react';
 import yaml from 'js-yaml';
 import Head from 'next/head';
@@ -30,8 +31,8 @@ type LyricsData = {
 
 type WordBankEntry = {
   original: string;
-  romanized?: string;
-  romaji?: string;
+  romanized?: string; // non-JP
+  romaji?: string;    // JP
   english?: string;
   functions?: Record<string, { english: string }>;
 };
@@ -77,12 +78,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       wordBanks[lang] = {};
     }
   }
-  return {
-    props: {
-      lyricsData,
-      wordBanks,
-    },
-  };
+  return { props: { lyricsData, wordBanks } };
 };
 
 const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
@@ -120,58 +116,33 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
   if (!lyricsData) { return <NotFound />; }
 
   function getWordExplanation(word: string, lang: string, func: string) {
-    if (word == "-" && lang == "-" && func == "-") {
-      return { 
-        original: "-", 
-        romanized: "-", 
-        english: "-" 
-      };
+    if (word === '-' && lang === '-' && func === '-') {
+      return { original: '-', romanized: '-', english: '-' };
     }
-    const expl_ori = word;
-    let expl_rom = "";
-    let expl_eng = "";
-    const expl = wordBanks[lang][expl_ori];
+    const expl = wordBanks[lang]?.[word];
     if (!expl) {
-      return {
-        original: expl_ori,
-        romanized: "-",
-        english: "-",
-      }
+      return { original: word, romanized: '-', english: '-' };
     }
-    if (lang === "jp") {
-      expl_rom = expl.romaji ?? "-";
-    } else {
-      expl_rom = expl.romanized ?? "-";
-    }
-    if (func === "-") {
-      expl_eng = expl.english ?? "-";
-    } else {
-      expl_eng = expl.functions?.[func]?.english ?? "-";
-    }
-    return {
-      original: expl_ori,
-      romanized: expl_rom,
-      english: expl_eng,
-    };
+    const rom = lang === 'jp' ? (expl.romaji ?? '-') : (expl.romanized ?? '-');
+    const eng = func === '-' ? (expl.english ?? '-') : (expl.functions?.[func]?.english ?? '-');
+    return { original: word, romanized: rom, english: eng };
   }
 
   function parseExplanation(explanationArr: string[]) {
-    if (!explanationArr) {
-      return [{ word: "-", lang: "-", func: "-" }];
-    }
+    if (!explanationArr) return [{ word: '-', lang: '-', func: '-' }];
     return explanationArr.map(str => {
-      const [word, lang, func] = str.split("|");
+      const [word, lang, func] = str.split('|');
       return { word, lang, func };
     });
   }
 
   const handleToggle = (idx: number) => {
-    setOpenExplanations(prev => ({
-      ...prev,
-      [idx]: !prev[idx],
-    }));
+    setOpenExplanations(prev => ({ ...prev, [idx]: !prev[idx] }));
   };
 
+  // ------------------------------------------------------------------
+  // Test tab types/utilities
+  // ------------------------------------------------------------------
   type GlossItem = {
     line: string;              // original line
     romanizedLine?: string;    // romanized line (whole)
@@ -179,7 +150,9 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     word: string;              // token in the original script
     romajiToken?: string;      // token's romanization (from word bank)
     gloss: string;             // meaning shown as an option
-    occurrence: number;        // nth time this token appears in the line
+    occurrence: number;        // nth time this original token appears in the line
+    rStart?: number;           // exact start index in romanized line (aligned by scan)
+    rLen?: number;             // length of the romanized token
   };
 
   function shuffle<T>(arr: T[]): T[] {
@@ -189,6 +162,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
+  // substring highlighter by nth occurrence (used for ORIGINAL script)
   function HighlightNth({
     text,
     token,
@@ -209,7 +183,6 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const esc = escapeRegExp(token);
 
-    // Whole-word boundaries for A–Z letters; tweak if you need diacritics.
     const before = wholeWord ? '(^|[^A-Za-z])' : '';
     const after  = wholeWord ? '(?=$|[^A-Za-z])' : '';
 
@@ -227,7 +200,6 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
       const groupIndex = wholeWord ? 2 : 1;
       const matchedToken = m[groupIndex];
       if (!matchedToken) {
-        // safety: advance the regex to avoid infinite loops
         re.lastIndex = matchIndex + 1;
         continue;
       }
@@ -236,12 +208,10 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
       const tokenEnd = tokenStart + matchedToken.length;
 
       nodes.push(text.slice(lastIndex, tokenStart));
-
       found += 1;
-      nodes.push(
-        found === occurrence
-          ? <span key={tokenStart} className={className}>{matchedToken}</span>
-          : matchedToken
+      nodes.push(found === occurrence
+        ? <span key={tokenStart} className={className}>{matchedToken}</span>
+        : matchedToken
       );
 
       lastIndex = tokenEnd;
@@ -252,55 +222,24 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
     return <>{nodes}</>;
   }
 
-  function findNthIndex(
-    text: string,
-    token: string,
-    occurrence: number,
-    { ignoreCase = false, wholeWord = false }: { ignoreCase?: boolean; wholeWord?: boolean } = {}
-  ): number {
-    if (!token) return -1;
-    const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const esc = escape(token);
-
-    const before = wholeWord ? '(^|[^A-Za-z])' : '';
-    const after  = wholeWord ? '(?=$|[^A-Za-z])' : '';
-    const flags  = ignoreCase ? 'gi' : 'g';
-    const re     = new RegExp(`${before}(${esc})${after}`, flags);
-
-    let found = 0;
-    let m: RegExpExecArray | null;
-    while ((m = re.exec(text)) !== null) {
-      const preLen = wholeWord ? (m[1] ? m[1].length : 0) : 0;
-      const start  = m.index + preLen;
-      const len    = m[wholeWord ? 2 : 1]?.length ?? 0;
-
-      if (++found === occurrence) return start;
-
-      // advance safely
-      const nextIndex = start + len;
-      if (re.lastIndex < nextIndex) re.lastIndex = nextIndex;
-    }
-    return -1;
-  }
-
-  function RomajiHighlight({
-    text, token, occurrence
-  }: { text: string; token: string; occurrence: number }) {
-    // prefer whole-word; if not found, fall back to in-word
-    const hasWhole = findNthIndex(text, token, occurrence, { ignoreCase: true, wholeWord: true }) !== -1;
+  // highlight by absolute index (used for ROMANIZED hint)
+  function HighlightAt({
+    text, start, length, className = 'lt-highlight'
+  }: { text: string; start: number; length: number; className?: string }) {
+    if (start < 0 || !Number.isFinite(start) || !length) return <>{text}</>;
+    const midStart = Math.max(0, Math.min(text.length, start));
+    const midEnd = Math.max(midStart, Math.min(text.length, midStart + length));
     return (
-      <HighlightNth
-        text={text}
-        token={token}
-        occurrence={occurrence}
-        ignoreCase
-        wholeWord={hasWhole}
-      />
+      <>
+        {text.slice(0, midStart)}
+        <span className={className}>{text.slice(midStart, midEnd)}</span>
+        {text.slice(midEnd)}
+      </>
     );
   }
 
   const TestTab: React.FC<{ lyricsData: LyricsData }> = ({ lyricsData }) => {
-    // Build the pool once
+    // Build the pool once, aligning romanized tokens to explanation order.
     const pool = React.useMemo(() => {
       if (!Array.isArray(lyricsData.lyrics)) {
         return { lines: [] as { line: string; items: GlossItem[] }[], allGlosses: [] as string[] };
@@ -317,24 +256,47 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
         const counts = new Map<string, number>();
         const items: GlossItem[] = [];
 
+        // Prepare romanized scanning
+        const rline = entry.romanized ?? '';
+        const rLower = rline.toLowerCase();
+        let cursor = 0; // move forward as we match each explanation's romaji
+
         for (const e of exps) {
           const info = getWordExplanation(e.word, e.lang, e.func);
           const gloss = info.english?.trim();
-          if (!gloss || gloss === '-' || !e.word) continue;
+          const romTok = info.romanized && info.romanized !== '-' ? info.romanized : undefined;
 
+          // original occurrence count
           const n = (counts.get(e.word) ?? 0) + 1;
           counts.set(e.word, n);
 
-          items.push({
-            line: entry.original,
-            romanizedLine: entry.romanized,
-            englishLine: entry.english,
-            word: e.word,
-            romajiToken: info.romanized && info.romanized !== '-' ? info.romanized : undefined,
-            gloss,
-            occurrence: n,
-          });
-          allGlossesSet.add(gloss);
+          // try to align romaji token to the next occurrence after cursor
+          let rStart: number | undefined = undefined;
+          let rLen: number | undefined = undefined;
+          if (romTok) {
+            const q = romTok.toLowerCase();
+            const idx = rLower.indexOf(q, cursor);
+            if (idx !== -1) {
+              rStart = idx;
+              rLen = romTok.length;
+              cursor = idx + romTok.length; // advance so next exp searches after this one
+            }
+          }
+
+          if (gloss && gloss !== '-' && e.word) {
+            items.push({
+              line: entry.original,
+              romanizedLine: rline,
+              englishLine: entry.english,
+              word: e.word,
+              romajiToken: romTok,
+              gloss,
+              occurrence: n,
+              rStart,
+              rLen,
+            });
+            allGlossesSet.add(gloss);
+          }
         }
 
         if (items.length) lines.push({ line: entry.original, items });
@@ -354,8 +316,10 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
       rline: string;       // romanized
       eline: string;       // english
       token: string;       // original token
-      romajiToken: string; // romanized token (for highlighting)
-      occurrence: number;
+      romajiToken: string; // romanized token (string)
+      rStart: number;      // exact start index in romanized line (-1 if unknown)
+      rLen: number;        // length of romanized token (0 if unknown)
+      occurrence: number;  // nth in original
       correct: string;
       options: string[];
     };
@@ -376,6 +340,8 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
         eline: item.englishLine ?? '',
         token: item.word,
         romajiToken: item.romajiToken ?? '',
+        rStart: typeof item.rStart === 'number' ? item.rStart : -1,
+        rLen: typeof item.rLen === 'number' ? item.rLen : (item.romajiToken?.length ?? 0),
         occurrence: item.occurrence,
         correct: item.gloss,
         options,
@@ -419,10 +385,11 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
               <div className="lt-hint-inner" data-covered={!hintOpen}>
                 {q.rline && (
                   <div className="lt-hint-line lt-hint-romanized">
-                    {/* highlight matching token in romanized if available */}
-                    {q.romajiToken
-                      ? <RomajiHighlight text={q.rline} token={q.romajiToken} occurrence={q.occurrence} />
-                      : q.rline}
+                    {q.rStart >= 0 && q.rLen > 0
+                      ? <HighlightAt text={q.rline} start={q.rStart} length={q.rLen} />
+                      : q.romajiToken
+                        ? <HighlightNth text={q.rline} token={q.romajiToken} occurrence={q.occurrence} ignoreCase />
+                        : q.rline}
                   </div>
                 )}
                 {q.eline && (
@@ -490,7 +457,6 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
       </Head>
       <div className="song-container">
         <h1>{lyricsData.artist} - {lyricsData.title}</h1>
-        {/* <h2>{lyricsData.artist} - {lyricsData.album}</h2> */}
         <div className="song-toolbar">
           <div className="toolbar-left">
             <button className={`filter-pill${activeTab === 'Lyrics' ? ' active' : ''}`} onClick={() => setActiveTab('Lyrics')}>Lyrics</button>
@@ -501,6 +467,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
             <button className="filter-pill settings-btn" title="Settings"><i className="fa fa-cog"></i></button>
           </div>
         </div>
+
         {activeTab === 'Lyrics' && (
           <div className="lyrics-container" key={activeTab}>
             {Array.isArray(lyricsData.lyrics) ? (
@@ -550,6 +517,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
             )}
           </div>
         )}
+
         {activeTab === 'Info' && (
           <div className="lyrics-container" key={activeTab}>
             <hr className="lyrics-divider" />
@@ -561,6 +529,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
             </div>
           </div>
         )}
+
         {activeTab === 'Test' && (
           <div className="lyrics-container" key={activeTab}>
             <hr className="lyrics-divider" />
