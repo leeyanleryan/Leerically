@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import yaml from 'js-yaml';
 import Head from 'next/head';
-import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs/promises';
 import path from 'path';
 import NotFound from './404';
 import { allSongs, sluggify } from '../src/app/ts/songsData';
-import '../src/app/css/Song.css';
-import '../src/app/css/Filter.css';
 
 type LyricsEntry = {
   divider: boolean;

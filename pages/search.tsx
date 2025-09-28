@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import '../src/app/css/Search.css'
 import { allSongs, sluggify } from '../src/app/ts/songsData';
 import Head from 'next/head';
-import '../src/app/css/Filter.css';
 
 const languageFilters = ["All", "English", "Chinese", "Japanese"];
 
