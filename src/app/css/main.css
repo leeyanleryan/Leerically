@@ -54,6 +54,21 @@ body {
   margin: 0;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+  background: var(--page-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--expl-box);
+  border-radius: 6px;
+}
+
+html {
+  scrollbar-color: var(--expl-box) var(--page-bg);
+  scrollbar-width: thin;
+}
+
 /* img {
   max-width: 100%;
   height: auto;
