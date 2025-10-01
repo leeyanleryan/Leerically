@@ -458,8 +458,8 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
             </div>
           )}
 
-          <div className="lt-hint-toggles" style={{display:'flex', gap:'16px', alignItems:'center', margin:'8px 0'}}>
-            <label style={{display:'flex', gap:'6px', alignItems:'center'}}>
+          <div className="lt-hint-toggles">
+            <label className="lt-hint-toggle">
               <input
                 type="checkbox"
                 checked={alwaysRomHint}
@@ -470,7 +470,7 @@ const Song: React.FC<SongProps> = ({ lyricsData, wordBanks }) => {
               />
               Always show Romanized hint
             </label>
-            <label style={{display:'flex', gap:'6px', alignItems:'center'}}>
+            <label className="lt-hint-toggle">
               <input
                 type="checkbox"
                 checked={alwaysEngHint}

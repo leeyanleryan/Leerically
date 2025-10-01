@@ -250,7 +250,10 @@
   background: rgba(255,255,255,.08); 
 }
 
-.lt-hint { margin: 10px 0 12px; }
+.lt-hint { 
+  margin: 10px 0; 
+}
+
 .lt-hint-inner {
   position: relative;
   border: 1px solid var(--expl-box);
@@ -262,6 +265,7 @@
   user-select: none;
   pointer-events: none;
 }
+
 .lt-hint-cover {
   position: absolute;
   inset: 0;
@@ -276,10 +280,30 @@
   letter-spacing: .02em;
   cursor: pointer;
 }
-.lt-hint-cover:hover { background: rgba(255,255,255,.02); }
+.lt-hint-cover:hover { 
+  background: rgba(255,255,255,.02); 
+}
 
-.lt-hint-romanized { color: var(--text-romanized); }
-.lt-hint-english { color: var(--text-english); }
+.lt-hint-toggles {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin: 8px 0 16px;
+}
+
+.lt-hint-toggle {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.lt-hint-romanized { 
+  color: var(--text-romanized); 
+}
+
+.lt-hint-english { 
+  color: var(--text-english); 
+}
 
 @media (max-width: 600px) {
   .song-container h1 {
@@ -326,8 +350,13 @@
     font-size: 0.85rem;
   }
 
-  .lt-test-card { padding: 12px; }
-  .lt-test-sentence { font-size: 1.05rem; }
+  .lt-test-card { 
+    padding: 12px; 
+  }
+
+  .lt-test-sentence { 
+    font-size: 1.05rem; 
+  }
 }
 
 @media (max-width: 400px) {
